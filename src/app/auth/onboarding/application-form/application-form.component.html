@@ -1,0 +1,73 @@
+<h2>Onboarding</h2>
+<p>Application Form</p>
+
+<p>Email: {{email}}</p>
+
+<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group" formGroupName="personalInfo">
+        <h3>Personal Info</h3>
+
+        <label for="first-name">First Name: </label>
+        <input id="first-name" type="text" formControlName="firstName">
+
+        <label for="last-name">Last Name: </label>
+        <input id="last-name" type="text" formControlName="lastName">
+
+        <label for="middle-name">Middle Name: </label>
+        <input id="middle-name" type="text" formControlName="middleName">
+
+        <label for="nick-name">Nick Name: </label>
+        <input id="nick-name" type="text" formControlName="nickName">
+
+        <label for="ssn">SSN: </label>
+        <input id="ssn" type="text" formControlName="ssn">
+
+        <label for="is-permanent-resident">Are you a citizen or permanent resident of the U.S? </label>
+        <input id="is-permanent-resident" type="checkbox" [checked]="isPermanentResident"
+            (change)="onPermanentResidentChange()" />
+
+        <div [hidden]="!isPermanentResident">
+            <label for="resident-type">Green Card or Citizen:</label>
+            <select formControlName="residentType" required>
+                <option value="greencard">Green Card</option>
+                <option value="citizen">Citizen</option>
+            </select>
+        </div>
+
+        <!-- TODO: start and end dates -->
+        <div [hidden]="isPermanentResident">
+            <label for="work-authorization">What is your work authorization?</label>
+            <select formControlName="workAuthorization" required>
+                <option *ngFor="let workAuth of workAuthorizationTypes" [value]="workAuth">{{workAuth}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" formGroupName="secondaryInfo">
+        <h3>Secondary Info</h3>
+
+        <label for="ceil-phone">Ceil Phone: </label>
+        <input id="ceil-phone" type="text" formControlName="ceilPhone">
+
+        <label for="work-phone">Work Phone: </label>
+        <input id="work-phone" type="text" formControlName="workPhone">
+
+        <div class="form-group" formGroupName="carInfo">
+            <h4>Car Info</h4>
+            <label for="car-maker">Maker: </label>
+            <input id="car-maker" type="text" formControlName="maker">
+
+            <label for="car-model">Model: </label>
+            <input id="car-model" type="text" formControlName="model">
+
+            <label for="car-color">Color: </label>
+            <input id="car-color" type="text" formControlName="color">
+        </div>
+
+    </div>
+
+    <pre>Form JSON: {{ applicationForm.value | json }}</pre>
+    <button type="submit" [disabled]="!applicationForm.valid">Submit</button>
+
+</form>
