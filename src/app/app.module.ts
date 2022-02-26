@@ -3,10 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
 import { OnboardingModule } from './auth/onboarding/onboarding.module';
 import { HireModule } from './hr/hire/hire.module';
-=======
 import { HomeComponent } from './pages/home/home.component';
 import { InfoComponent } from './pages/info/info.component';
 import { VisaComponent } from './pages/visa/visa.component';
@@ -25,15 +23,15 @@ import { HRNavigationComponent } from './HRpages/hr-navigation/hr-navigation.com
 
 const routes: Routes = [
   {
-    path : "home",
+    path: "home",
     component: HomeComponent
   },
   {
-    path : "info",
+    path: "info",
     component: InfoComponent
   },
   {
-    path : "visa",
+    path: "visa",
     component: VisaComponent
   },
   {
@@ -61,13 +59,10 @@ const routes: Routes = [
     component: HRVisaManagementComponent
   }
 ]
->>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< Updated upstream
-=======
     HomeComponent,
     InfoComponent,
     VisaComponent,
@@ -81,17 +76,13 @@ const routes: Routes = [
     HRHouseManagementComponent,
     HRLayoutComponent,
     HRNavigationComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< Updated upstream
     OnboardingModule,
-    HireModule
-=======
-    RouterModule.forRoot(routes, {useHash: true})
->>>>>>> Stashed changes
+    HireModule,
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
