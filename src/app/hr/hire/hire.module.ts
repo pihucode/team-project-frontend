@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenerateTokenComponent } from './generate-token/generate-token.component';
 import { HireComponent } from './hire.component';
 import { OnboardingApplicationsComponent } from './onboarding-applications/onboarding-applications.component';
-import { ApplicationModalComponent } from './onboarding-applications/application-modal/application-modal.component';
+import { ModalContainerComponent } from './onboarding-applications/modal-container/modal-container.component';
+import { ModalContentComponent } from './onboarding-applications/modal-content/modal-content.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ApplicationModalComponent } from './onboarding-applications/application
     GenerateTokenComponent,
     HireComponent,
     OnboardingApplicationsComponent,
-    ApplicationModalComponent
+    ModalContainerComponent,
+    ModalContentComponent
   ],
   imports: [
     CommonModule,

@@ -22,6 +22,7 @@ import { HRLayoutComponent } from './HRpages/hr-layout/hr-layout.component';
 import { HRNavigationComponent } from './HRpages/hr-navigation/hr-navigation.component';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
@@ -88,7 +89,8 @@ const routes: Routes = [
     HireModule,
     LoginModule,
     RegisterModule,
-    RouterModule.forRoot(routes, { useHash: false })
+    RouterModule.forRoot(routes, { useHash: false }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

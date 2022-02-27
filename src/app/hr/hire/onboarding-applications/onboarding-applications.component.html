@@ -1,6 +1,6 @@
 <div>
     <div *ngFor="let app of applications">
         {{app}}
-        <button>Details</button>
+        <app-modal-container [application]="app"></app-modal-container>
     </div>
 </div>
