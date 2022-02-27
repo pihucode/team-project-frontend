@@ -20,6 +20,7 @@ import { HRHireComponent } from './HRpages/hr-hire/hr-hire.component';
 import { HRHouseManagementComponent } from './HRpages/hr-house-management/hr-house-management.component';
 import { HRLayoutComponent } from './HRpages/hr-layout/hr-layout.component';
 import { HRNavigationComponent } from './HRpages/hr-navigation/hr-navigation.component';
+import { LoginModule } from './auth/login/login.module';
 
 
 const routes: Routes = [
@@ -84,6 +85,7 @@ const routes: Routes = [
     AppRoutingModule,
     OnboardingModule,
     HireModule,
+    LoginModule,
     RouterModule.forRoot(routes, { useHash: false })
   ],
   providers: [],
