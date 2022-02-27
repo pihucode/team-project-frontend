@@ -6,14 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OnboardingModule } from './auth/onboarding/onboarding.module';
 import { HireModule } from './hr/hire/hire.module';
-import { HomeComponent } from './pages/home/home.component';
 import { InfoComponent } from './pages/info/info.component';
 import { VisaComponent } from './pages/visa/visa.component';
 import { HouseComponent } from './pages/house/house.component';
 import { NavigationComponent } from './pages/navigation/navigation.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/layout/layout.component';
-import { HRHomeComponent } from './HRpages/hr-home/hr-home.component';
 import { HRPersonalProfileComponent } from './HRpages/hr-personal-profile/hr-personal-profile.component';
 import { HRVisaManagementComponent } from './HRpages/hr-visa-management/hr-visa-management.component';
 import { HRHireComponent } from './HRpages/hr-hire/hr-hire.component';
@@ -23,13 +21,11 @@ import { HRNavigationComponent } from './HRpages/hr-navigation/hr-navigation.com
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HrHomeModule } from './hr/home/home.module';
+import { EmployeeHomeModule } from './employee/home/home.module';
 
 
 const routes: Routes = [
-  {
-    path: "home",
-    component: HomeComponent
-  },
   {
     path: "info",
     component: InfoComponent
@@ -41,10 +37,6 @@ const routes: Routes = [
   {
     path: "house",
     component: HouseComponent
-  },
-  {
-    path: "hrhome",
-    component: HRHomeComponent
   },
   {
     path: "hrhire",
@@ -67,13 +59,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     InfoComponent,
     VisaComponent,
     HouseComponent,
     NavigationComponent,
     LayoutComponent,
-    HRHomeComponent,
     HRPersonalProfileComponent,
     HRVisaManagementComponent,
     HRHireComponent,
@@ -89,6 +79,8 @@ const routes: Routes = [
     HireModule,
     LoginModule,
     RegisterModule,
+    HrHomeModule,
+    EmployeeHomeModule,
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule
   ],
