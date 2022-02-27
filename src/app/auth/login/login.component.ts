@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/models/login';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Login } from 'src/app/models/login';
 export class LoginComponent implements OnInit {
   useEmail: boolean = false;
   login = new Login();
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit = () => {
     console.log(this.login);
+    this.loginService.attemptLogin(this.login);
     this.login = new Login();
   }
 }

@@ -7,19 +7,16 @@
             <button [disabled]="useEmail" (click)="changeLoginField()">Email</button>
             <br>
             <input *ngIf="useEmail === false" type="text" class="form-control" id="username" 
-                required 
-                [(ngModel)]="login.username" name="username">
-                <input *ngIf="useEmail === true" type="text" class="form-control" id="email" 
-                required 
-                [(ngModel)]="login.email" name="email">
+                required [(ngModel)]="login.username" name="username">
+            <input *ngIf="useEmail === true" type="text" class="form-control" id="email" 
+                required [(ngModel)]="login.email" name="email">
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
             <br>
             <input type="text" class="form-control" id="password"
-                required
-                [(ngModel)]="login.password" name="password">
+                required [(ngModel)]="login.password" name="password">
         </div>
     </div>
 

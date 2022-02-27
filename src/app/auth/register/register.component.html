@@ -1,0 +1,39 @@
+<h2>Register</h2>
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+
+    <div ngModelGroup="register" #registerInputs="ngModelGroup">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <br>
+            <input type="text" class="form-control" id="email" name="email" 
+                readonly value="{{register.email}}">
+        </div>
+
+        <div class="form-group">
+            <label for="registrationToken">Registration Token</label>
+            <br>
+            <input type="text" class="form-control" id="registrationToken" 
+                name="registrationToken" readonly value="{{register.registrationToken}}">
+        </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <br>
+            <input type="text" class="form-control" id="username" name="username" 
+                required [(ngModel)]="register.username">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <br>
+            <input type="text" class="form-control" id="password" name="password" 
+                required [(ngModel)]="register.password">
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="!registerForm.form.valid">Register</button>
+    <!-- By Chad, mainly for testing -->
+    <h4>Also Check console.log!</h4>
+    <pre>Form JSON: {{register | json}}</pre>
+</form>
+

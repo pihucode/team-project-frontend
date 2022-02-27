@@ -21,6 +21,7 @@ import { HRHouseManagementComponent } from './HRpages/hr-house-management/hr-hou
 import { HRLayoutComponent } from './HRpages/hr-layout/hr-layout.component';
 import { HRNavigationComponent } from './HRpages/hr-navigation/hr-navigation.component';
 import { LoginModule } from './auth/login/login.module';
+import { RegisterModule } from './auth/register/register.module';
 
 
 const routes: Routes = [
@@ -86,6 +87,7 @@ const routes: Routes = [
     OnboardingModule,
     HireModule,
     LoginModule,
+    RegisterModule,
     RouterModule.forRoot(routes, { useHash: false })
   ],
   providers: [],
