@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GenerateTokenComponent } from './generate-token/generate-token.component';
+import { HireComponent } from './hire.component';
 
 const routes: Routes = [
-  { path: 'hire', component: GenerateTokenComponent },
+  { path: 'hire', component: HireComponent },
 ];
 
 @NgModule({
