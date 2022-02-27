@@ -1,25 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Login } from '../models/login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   private endpoint = 'http://localhost:9999/api/login';
 
 
   attemptLogin = (login: Login) => {
-    return this.http.post(this.endpoint, login, {
+    this.http.post(this.endpoint, login, {
       responseType: 'text'
-      // remove entire .subscribe part and return type is observable, not safesubscriber
     }).subscribe(response => {
       console.log(response);
-      // can see 'hr', 'employee', 'invalid' response here
-      return response
+      if (response == "hr") {
+        this.router.navigate(['hr/home'])
+      } else if (response == "employee") {
+        this.router.navigate(['employee/home'])
+      }
     });
   }
+
 }
