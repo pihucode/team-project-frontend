@@ -9,7 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
   useEmail: boolean = false;
-  login = new Login();
+  login = new Login('');
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
 
   changeLoginField = () => {
     this.useEmail = !this.useEmail;
-    this.login = new Login();
+    this.login = new Login('');
   }
 
   onSubmit = () => {
     console.log(this.login);
     this.loginService.attemptLogin(this.login);
-    this.login = new Login();
+    this.login = new Login('');
   }
 }

@@ -9,7 +9,7 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   // TODO: Fill in endpoint
-  private endpoint = '';
+  private endpoint = 'http://localhost:4200/api/register';
   registerNewUser = (register: Register) => {
     this.http.post(this.endpoint, register, {
       responseType: 'text'
