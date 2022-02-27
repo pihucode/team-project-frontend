@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit = () => {
     console.log(this.login);
-    this.loginService.attemptLogin(this.login);
+    // printing return type!
+    console.log(this.loginService.attemptLogin(this.login));
     this.login = new Login('');
   }
 }
