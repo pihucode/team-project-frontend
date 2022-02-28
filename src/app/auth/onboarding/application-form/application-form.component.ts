@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { OnboardingRequest } from 'src/app/models/onboarding-models';
+import { OnboardingService } from 'src/app/services/onboarding.service';
 
 @Component({
 	selector: 'app-application-form',
@@ -27,12 +29,12 @@ export class ApplicationFormComponent implements OnInit {
 				year: ['']
 			}),
 			gender: [''],
-			residentType: ['', Validators.required],
-			workAuthorization: ['', Validators.required],
-			hasDriverLicense: [false, Validators.required],
+			residentType: [''],
+			workAuthorization: [''],
+			hasDriverLicense: [false],
 		}),
 		secondaryInfo: this.fb.group({
-			ceilPhone: ['', Validators.required],
+			cellPhone: ['', Validators.required],
 			workPhone: ['', Validators.required],
 			// currentAddress: this.fb.group({}),
 			carInfo: this.fb.group({
@@ -41,19 +43,19 @@ export class ApplicationFormComponent implements OnInit {
 				color: ['']
 			}),
 		}),
-		emergencyContactsInfo: this.fb.array([
-			this.fb.group({
-				firstName: ['', Validators.required],
-				lastName: ['', Validators.required],
-				middleName: [''],
-				phone: ['', Validators.required],
-				email: ['', Validators.required],
-				relationship: ['', Validators.required]
-			})
-		]),
+		// emergencyContactsInfo: this.fb.array([
+		// 	this.fb.group({
+		// 		firstName: ['', Validators.required],
+		// 		lastName: ['', Validators.required],
+		// 		middleName: [''],
+		// 		phone: ['', Validators.required],
+		// 		email: ['', Validators.required],
+		// 		relationship: ['', Validators.required]
+		// 	})
+		// ]),
 	})
 
-	constructor(private fb: FormBuilder) { }
+	constructor(private fb: FormBuilder, private onboardingService: OnboardingService) { }
 
 	ngOnInit(): void {
 	}
@@ -66,6 +68,18 @@ export class ApplicationFormComponent implements OnInit {
 
 	onSubmit(): void {
 		console.log(this.applicationForm.value);
+		let personalInfoData = this.applicationForm.value.personalInfo;
+		let secondaryInfoData = this.applicationForm.value.secondaryInfo;
+		let onboardingRequest = new OnboardingRequest(
+			personalInfoData.firstName,
+			personalInfoData.lastName,
+			this.email,
+			secondaryInfoData.cellPhone,
+			personalInfoData.gender,
+			personalInfoData.ssn
+		);
+		this.onboardingService.onboard(onboardingRequest);
+
 	}
 
 }

@@ -47,8 +47,8 @@
     <div class="form-group" formGroupName="secondaryInfo">
         <h3>Secondary Info</h3>
 
-        <label for="ceil-phone">Ceil Phone: </label>
-        <input id="ceil-phone" type="text" formControlName="ceilPhone">
+        <label for="cell-phone">Cell Phone: </label>
+        <input id="cell-phone" type="text" formControlName="cellPhone">
 
         <label for="work-phone">Work Phone: </label>
         <input id="work-phone" type="text" formControlName="workPhone">
@@ -68,6 +68,7 @@
     </div>
 
     <pre>Form JSON: {{ applicationForm.value | json }}</pre>
-    <button type="submit" [disabled]="!applicationForm.valid">Submit</button>
+    <!-- <button type="submit" [disabled]="!applicationForm.valid">Submit</button> -->
+    <button type="submit">Submit</button>
 
 </form>
