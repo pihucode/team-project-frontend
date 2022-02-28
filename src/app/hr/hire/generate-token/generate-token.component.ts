@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { EmailMessage } from 'src/app/models/EmailMessage';
 import { EmailService } from 'src/app/services/email.service';
 
 @Component({
@@ -24,10 +25,11 @@ export class GenerateTokenComponent implements OnInit {
 		let token: string = "";
 		let url: string = `http://localhost:4200/register?email=${email}&token=${token}`;
 
-		let to: string = this.generateTokenForm.value;
+		let to: string = this.generateTokenForm.value.email;
 		let subject: string = 'Generated Token';
 		let text: string = `Here is your generated token: ${url}`;
-		this.emailService.sendEmail(to, subject, text);
+		let emailMessage = new EmailMessage(to, subject, text);
+		this.emailService.sendEmail(emailMessage);
 	}
 
 }
