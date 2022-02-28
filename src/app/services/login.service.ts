@@ -7,11 +7,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-
-  constructor(private http: HttpClient, private router: Router) { }
-
   private endpoint = 'http://localhost:9999/api/login';
 
+  constructor(private http: HttpClient, private router: Router) { }
 
   attemptLogin = (account: Account) => {
     this.http.post(this.endpoint, account, {

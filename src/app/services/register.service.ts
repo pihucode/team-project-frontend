@@ -5,11 +5,10 @@ import { Account } from '../models/account';
   providedIn: 'root'
 })
 export class RegisterService {
+  private endpoint = 'http://localhost:9999/api/register';
 
   constructor(private http: HttpClient) { }
-
-  // TODO: Fill in endpoint
-  private endpoint = 'http://localhost:9999/api/register';
+  
   registerNewUser = (account: Account) => {
     this.http.post(this.endpoint, account, {
       responseType: 'text'
@@ -20,6 +19,6 @@ export class RegisterService {
       } else {
         console.log('Username already taken');
       }
-    })
+    });
   }
 }
