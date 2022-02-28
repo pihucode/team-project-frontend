@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./onboarding-applications.component.css']
 })
 export class OnboardingApplicationsComponent implements OnInit {
+	// TODO: applications will be some object
 	applications: string[] = ['apricot', 'banana', 'cucumber'];
 
 	constructor() { }

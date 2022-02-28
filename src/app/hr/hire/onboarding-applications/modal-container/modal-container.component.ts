@@ -16,7 +16,7 @@ export class ModalContainerComponent implements OnInit {
 	}
 
 	openModal() {
-		const modalRef = this.modalService.open(ModalContentComponent);
+		const modalRef = this.modalService.open(ModalContentComponent, {size: 'xl'});
 		modalRef.componentInstance.application = this.application;
 	}
 
