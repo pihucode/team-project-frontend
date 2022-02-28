@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Account } from 'src/app/models/account';
 import { RegisterService } from 'src/app/services/register.service';
 
@@ -13,18 +14,22 @@ export class RegisterComponent implements OnInit {
   email: string = '';
   displayUsernameTaken: boolean = false;
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // TODO: Set Email and Token by obtaining from somewhere 
-    this.registrationToken = 'som3t0k3n';
-    this.email = 'some@email.com';
     this.displayUsernameTaken = false;
+    this.activatedRoute.queryParams.subscribe(
+      (params) => {
+        this.email = params['email'];
+        this.registrationToken = params['token'];
+      }
+    )
   }
 
   onSubmit = () => {
     // console.log(this.register);
-    this.registerService.registerNewUser(this.register);
+    this.registerService.registerNewUser(this.register, this.email);
     this.register.clear()
     // If not redirected, display error msg of username taken
     this.displayUsernameTaken = true;
