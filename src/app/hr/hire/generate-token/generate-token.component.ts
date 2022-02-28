@@ -19,10 +19,14 @@ export class GenerateTokenComponent implements OnInit {
 	}
 
 	generateToken(): void {
+		let email: string = this.generateTokenForm.value.email;
+		//TODO - POST to endpoint to get token response: localhost:8080/api/generate-token
+		let token: string = "";
+		let url: string = `http://localhost:4200/register?email=${email}&token=${token}`;
 
 		let to: string = this.generateTokenForm.value;
 		let subject: string = 'Generated Token';
-		let text: string = 'Here is your generated token: TODO';
+		let text: string = `Here is your generated token: ${url}`;
 		this.emailService.sendEmail(to, subject, text);
 	}
 
