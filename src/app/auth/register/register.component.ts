@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit = () => {
     // console.log(this.register);
-    this.registerService.registerNewUser(this.register);
+    this.registerService.registerNewUser(this.register, this.email);
     this.register.clear()
     // If not redirected, display error msg of username taken
     this.displayUsernameTaken = true;

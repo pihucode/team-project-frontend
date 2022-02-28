@@ -5,29 +5,28 @@
         <div class="form-group">
             <label for="email">Email</label>
             <br>
-            <input type="text" class="form-control" id="email" name="email" 
-                readonly value="{{email}}">
+            <input type="text" class="form-control" id="email" name="email" readonly value="{{email}}">
         </div>
 
         <div class="form-group">
             <label for="registrationToken">Registration Token</label>
             <br>
-            <input type="text" class="form-control" id="registrationToken" 
-                name="registrationToken" readonly value="{{registrationToken}}">
+            <input type="text" class="form-control" id="registrationToken" name="registrationToken" readonly
+                value="{{registrationToken}}">
         </div>
 
         <div class="form-group">
             <label for="username">Username</label>
             <br>
-            <input type="text" class="form-control" id="username" name="username" 
-                required [(ngModel)]="register.username">
+            <input type="text" class="form-control" id="username" name="username" required
+                [(ngModel)]="register.username">
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
             <br>
-            <input type="text" class="form-control" id="password" name="password" 
-                required [(ngModel)]="register.password">
+            <input type="password" class="form-control" id="password" name="password" required
+                [(ngModel)]="register.password">
         </div>
     </div>
 
@@ -37,4 +36,3 @@
     <h4>Also Check console.log!</h4>
     <pre>Form JSON: {{register | json}}</pre>
 </form>
-

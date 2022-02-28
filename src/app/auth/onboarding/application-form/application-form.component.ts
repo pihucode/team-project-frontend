@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { OnboardingRequest } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
 
@@ -10,7 +11,7 @@ import { OnboardingService } from 'src/app/services/onboarding.service';
 })
 export class ApplicationFormComponent implements OnInit {
 	// TODO - pre populate email
-	email: string = "user@mail.com";
+	email: string;
 
 	isPermanentResident: boolean = false;
 
@@ -55,9 +56,16 @@ export class ApplicationFormComponent implements OnInit {
 		// ]),
 	})
 
-	constructor(private fb: FormBuilder, private onboardingService: OnboardingService) { }
+	constructor(private fb: FormBuilder,
+		private onboardingService: OnboardingService,
+		private activatedRoute: ActivatedRoute) { }
 
 	ngOnInit(): void {
+		this.activatedRoute.queryParams.subscribe(
+			(params) => {
+				this.email = params['email'];
+			}
+		)
 	}
 
 	onPermanentResidentChange(): void {
