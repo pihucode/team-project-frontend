@@ -6,14 +6,14 @@
             <label for="email">Email</label>
             <br>
             <input type="text" class="form-control" id="email" name="email" 
-                readonly value="{{register.email}}">
+                readonly value="{{email}}">
         </div>
 
         <div class="form-group">
             <label for="registrationToken">Registration Token</label>
             <br>
             <input type="text" class="form-control" id="registrationToken" 
-                name="registrationToken" readonly value="{{register.registrationToken}}">
+                name="registrationToken" readonly value="{{registrationToken}}">
         </div>
 
         <div class="form-group">
@@ -32,6 +32,7 @@
     </div>
 
     <button type="submit" [disabled]="!registerForm.form.valid">Register</button>
+    <p *ngIf="displayUsernameTaken">Username Already Taken!</p>
     <!-- By Chad, mainly for testing -->
     <h4>Also Check console.log!</h4>
     <pre>Form JSON: {{register | json}}</pre>

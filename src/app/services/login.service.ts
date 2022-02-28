@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Login } from '../models/login';
+import { Account } from '../models/account';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -13,8 +13,8 @@ export class LoginService {
   private endpoint = 'http://localhost:9999/api/login';
 
 
-  attemptLogin = (login: Login) => {
-    this.http.post(this.endpoint, login, {
+  attemptLogin = (account: Account) => {
+    this.http.post(this.endpoint, account, {
       responseType: 'text'
     }).subscribe(response => {
       console.log(response);
@@ -22,6 +22,9 @@ export class LoginService {
         this.router.navigate(['hr/home'])
       } else if (response == "employee") {
         this.router.navigate(['employee/home'])
+      } else {
+        // No redirection, login failed
+        console.log('Login Failed');
       }
     });
   }

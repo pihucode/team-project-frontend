@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Login } from 'src/app/models/login';
+import { Account } from 'src/app/models/account';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,7 +9,9 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
   useEmail: boolean = false;
-  login = new Login('');
+  login = new Account('', '', '');
+  displayBadLogin: boolean = false;
+
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -17,14 +19,14 @@ export class LoginComponent implements OnInit {
 
   changeLoginField = () => {
     this.useEmail = !this.useEmail;
-    this.login = new Login('');
+    this.login.clear();
   }
 
   onSubmit = () => {
-    console.log(this.login);
+    // console.log(this.login);
     this.loginService.attemptLogin(this.login);
-    // No redirection, login failed
-    console.log('Login Failed');
-    this.login = new Login('');
+    this.login.clear();
+    // No redirect, display login error message
+    this.displayBadLogin = true;
   }
 }
