@@ -24,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeHomeModule } from './employee/home/home.module';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
+import { EmployeePersonalInfoModalComponent } from './employee/employee-profile/employee-personal-info-modal/employee-personal-info-modal.component';
 
 
 const routes: Routes = [
@@ -71,7 +72,8 @@ const routes: Routes = [
     HRHouseManagementComponent,
     HRLayoutComponent,
     HRNavigationComponent,
-    EmployeeProfileComponent
+    EmployeeProfileComponent,
+    EmployeePersonalInfoModalComponent
   ],
   imports: [
     BrowserModule,

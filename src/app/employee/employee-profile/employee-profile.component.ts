@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeePersonalInfoModalComponent } from './employee-personal-info-modal/employee-personal-info-modal.component';
 
 @Component({
   selector: 'app-employee-profile',
@@ -7,18 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeProfileComponent implements OnInit {
   personalInfo = {
+    id: 123, //personId
     firstname: "john",
     lastname: "doe"
   }
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
     // todo - fetch data from backend (later)
   }
 
-  editPersonalInfo = (): void => {
-    console.log('editPersonalInfo called!');
+  openPersonalInfoModal = (): void => {
+    const modalRef = this.modalService.open(EmployeePersonalInfoModalComponent);
+    modalRef.componentInstance.personalInfo = this.personalInfo;
   }
 
 }
