@@ -6,12 +6,13 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./onboarding-applications.component.css']
 })
 export class OnboardingApplicationsComponent implements OnInit {
-	// TODO: applications will be some object
+	// TODO - [Quest - OPEN] Render list of applications
 	applications: string[] = ['apricot', 'banana', 'cucumber'];
 
 	constructor() { }
 
 	ngOnInit(): void {
+		//fetch data from backend
 	}
 
 }
