@@ -1,4 +1,8 @@
-<h2>Register</h2>
+<div *ngIf="data=='false'">
+    <p>Token has expired</p>
+</div>
+<div *ngIf="data=='true'">
+    <h2>Register</h2>
 <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 
     <div ngModelGroup="register" #registerInputs="ngModelGroup">
@@ -36,3 +40,4 @@
     <h4>Also Check console.log!</h4>
     <pre>Form JSON: {{register | json}}</pre>
 </form>
+</div>

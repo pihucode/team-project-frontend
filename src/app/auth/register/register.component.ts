@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
 import { RegisterService } from 'src/app/services/register.service';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -13,11 +14,13 @@ export class RegisterComponent implements OnInit {
   registrationToken: string = '';
   email: string = '';
   displayUsernameTaken: boolean = false;
+  data:any = []
 
   constructor(private registerService: RegisterService,
-    private activatedRoute: ActivatedRoute, private router: Router) { }
+    private activatedRoute: ActivatedRoute, private router: Router,private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getData();
     this.displayUsernameTaken = false;
     this.activatedRoute.queryParams.subscribe(
       (params) => {
@@ -44,5 +47,13 @@ export class RegisterComponent implements OnInit {
       }
     });
     this.register.clear()
+  }
+
+  getData(){
+    const url ='http://localhost:8080/api/is-token-valid?email=bob@gmail.com'
+    this.http.get(url).subscribe((res)=>{
+      this.data = res
+      console.log(this.data)
+    })
   }
 }
