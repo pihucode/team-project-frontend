@@ -30,7 +30,8 @@ import { EmployeeContactInfoModalComponent } from './employee/employee-profile/e
 import { EmployeeAddressInfoModalComponent } from './employee/employee-profile/employee-address-info-modal/employee-address-info-modal.component';
 import { EmployeeEmergencyContactInfoModalComponent } from './employee/employee-profile/employee-emergency-contact-info-modal/employee-emergency-contact-info-modal.component';
 import { EmployeeDocumentInfoModalComponent } from './employee/employee-profile/employee-document-info-modal/employee-document-info-modal.component';
-import { EmploymentInfoModalComponent } from './employee/employee-profile/employment-info-modal/employment-info-modal.component';
+import { ModalContentComponent } from './employee/employee-profile/employee-personal-info-modal/modal-content/modal-content.component';
+import { EmployeeEmploymentInfoModalComponent } from './employee/employee-profile/employee-employment-info-modal/employee-employment-info-modal.component';
 
 
 const routes: Routes = [
@@ -84,7 +85,8 @@ const routes: Routes = [
     EmployeeAddressInfoModalComponent,
     EmployeeEmergencyContactInfoModalComponent,
     EmployeeDocumentInfoModalComponent,
-    EmploymentInfoModalComponent
+    ModalContentComponent,
+    EmployeeEmploymentInfoModalComponent
   ],
   imports: [
     BrowserModule,
