@@ -23,6 +23,7 @@ import { RegisterModule } from './auth/register/register.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeHomeModule } from './employee/home/home.module';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
 
 const routes: Routes = [
@@ -69,7 +70,8 @@ const routes: Routes = [
     HRHireComponent,
     HRHouseManagementComponent,
     HRLayoutComponent,
-    HRNavigationComponent
+    HRNavigationComponent,
+    EmployeeProfileComponent
   ],
   imports: [
     BrowserModule,
