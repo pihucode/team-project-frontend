@@ -89,7 +89,7 @@ export class ApplicationFormComponent implements OnInit {
 			personalInfoData.ssn
 		);
 		let visa: Visa = new Visa(
-			personalInfoData.residentType, //todo
+			personalInfoData.workAuthorization, //todo
 			personalInfoData.workDateStart,
 			personalInfoData.workDateEnd
 		);
