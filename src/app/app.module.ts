@@ -26,6 +26,11 @@ import { EmployeeHomeModule } from './employee/home/home.module';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { EmployeePersonalInfoModalComponent } from './employee/employee-profile/employee-personal-info-modal/employee-personal-info-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeContactInfoModalComponent } from './employee/employee-profile/employee-contact-info-modal/employee-contact-info-modal.component';
+import { EmployeeAddressInfoModalComponent } from './employee/employee-profile/employee-address-info-modal/employee-address-info-modal.component';
+import { EmployeeEmergencyContactInfoModalComponent } from './employee/employee-profile/employee-emergency-contact-info-modal/employee-emergency-contact-info-modal.component';
+import { EmployeeDocumentInfoModalComponent } from './employee/employee-profile/employee-document-info-modal/employee-document-info-modal.component';
+import { EmploymentInfoModalComponent } from './employee/employee-profile/employment-info-modal/employment-info-modal.component';
 
 
 const routes: Routes = [
@@ -74,7 +79,12 @@ const routes: Routes = [
     HRLayoutComponent,
     HRNavigationComponent,
     EmployeeProfileComponent,
-    EmployeePersonalInfoModalComponent
+    EmployeePersonalInfoModalComponent,
+    EmployeeContactInfoModalComponent,
+    EmployeeAddressInfoModalComponent,
+    EmployeeEmergencyContactInfoModalComponent,
+    EmployeeDocumentInfoModalComponent,
+    EmploymentInfoModalComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,10 @@ export class EmployeeProfileComponent implements OnInit {
   personalInfo = {
     id: 123, //personId
     firstname: "john",
-    lastname: "doe"
+    lastname: "doe",
+    age: 25,
+    SSN: 1111111,
+    DateofBirth: "1996-06-01"
   }
 
   constructor(private modalService: NgbModal) { }
