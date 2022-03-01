@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
 import { RegisterService } from 'src/app/services/register.service';
 
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   displayUsernameTaken: boolean = false;
 
   constructor(private registerService: RegisterService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.displayUsernameTaken = false;
@@ -28,10 +28,21 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit = () => {
-    // console.log(this.register);
-    this.registerService.registerNewUser(this.register, this.email);
+    this.registerService.registerNewUser(this.register, this.email).subscribe(response => {
+      if (response === 'true') {
+        console.log('Account Registered');
+        // redirect to onboarding page
+        this.router.navigate(
+          ['/onboarding'],
+          { queryParams: { email: this.email } }
+        );
+        this.displayUsernameTaken = false;
+      } else {
+        console.log('Username already taken');
+        // If not redirected, display error msg of username taken
+        this.displayUsernameTaken = true;
+      }
+    });
     this.register.clear()
-    // If not redirected, display error msg of username taken
-    this.displayUsernameTaken = true;
   }
 }

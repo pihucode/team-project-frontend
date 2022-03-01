@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Token } from '../models/token';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
-  private endpoint = 'http://localhost:8080/api/email';
+  private endpoint = 'http://localhost:8080/api/generate-token?email=';
 
   constructor(private http: HttpClient) { }
 
-  generateToken = (email: string) => {
-    this.http.post(this.endpoint, email, {
+
+  generateToken = (email: string): Observable<Token> => {
+    return this.http.post<Token>(this.endpoint + email, {
       responseType: 'json'
-    }).subscribe(response => {
-      console.log(response);
     });
   }
 }
