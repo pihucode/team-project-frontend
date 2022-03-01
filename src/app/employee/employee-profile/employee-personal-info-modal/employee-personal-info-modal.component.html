@@ -1,1 +1,8 @@
-<p>employee-personal-info-modal works!</p>
+<div>
+    <p>Personal Info</p>
+    <p>Full name: {{personalInfo.firstname}} {{personalInfo.lastname}}</p>
+    <p>Age:{{personalInfo.age}} </p>
+    <P>SSN #: {{personalInfo.SSN}}</P>
+    <P>Date of Birth: {{personalInfo.DateofBirth}}</P>
+    <button (click)="openPersonalInfoModal()">Edit</button>
+</div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-employee-personal-info-modal',
@@ -8,9 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EmployeePersonalInfoModalComponent implements OnInit {
   @Input() personalInfo;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+  }
+
+  openPersonalInfoModal = (): void => {
+    const modalRef = this.modalService.open(EmployeePersonalInfoModalComponent);
+    modalRef.componentInstance.personalInfo = this.personalInfo;
   }
 
 }
