@@ -25,6 +25,7 @@ import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeHomeModule } from './employee/home/home.module';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { EmployeePersonalInfoModalComponent } from './employee/employee-profile/employee-personal-info-modal/employee-personal-info-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
@@ -86,7 +87,8 @@ const routes: Routes = [
     HrHomeModule,
     EmployeeHomeModule,
     RouterModule.forRoot(routes, { useHash: false }),
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { OnboardingRequest } from 'src/app/models/onboarding-models';
+import { OnboardingRequest, Person, Visa } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
 
 @Component({
@@ -32,6 +32,8 @@ export class ApplicationFormComponent implements OnInit {
 			gender: [''],
 			residentType: [''],
 			workAuthorization: [''],
+			workDateStart: [''],
+			workDateEnd: [''],
 			hasDriverLicense: [false],
 		}),
 		secondaryInfo: this.fb.group({
@@ -78,7 +80,7 @@ export class ApplicationFormComponent implements OnInit {
 		console.log(this.applicationForm.value);
 		let personalInfoData = this.applicationForm.value.personalInfo;
 		let secondaryInfoData = this.applicationForm.value.secondaryInfo;
-		let onboardingRequest = new OnboardingRequest(
+		let person: Person = new Person(
 			personalInfoData.firstName,
 			personalInfoData.lastName,
 			this.email,
@@ -86,8 +88,16 @@ export class ApplicationFormComponent implements OnInit {
 			personalInfoData.gender,
 			personalInfoData.ssn
 		);
+		let visa: Visa = new Visa(
+			personalInfoData.residentType, //todo
+			personalInfoData.workDateStart,
+			personalInfoData.workDateEnd
+		);
+		let onboardingRequest = new OnboardingRequest(
+			person,
+			visa
+		);
 		this.onboardingService.onboard(onboardingRequest);
-
 	}
 
 }

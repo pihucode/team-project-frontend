@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Account } from '../models/account';
 import { OnboardingRequest } from '../models/onboarding-models';
 import { Router } from '@angular/router';
 @Injectable({
@@ -14,6 +13,7 @@ export class OnboardingService {
     private endpoint = 'http://localhost:8080/api/onboard';
 
     onboard = (req: OnboardingRequest) => {
+        console.log(req);
         this.http.post(this.endpoint, req, {
             responseType: 'text'
         }).subscribe(response => {

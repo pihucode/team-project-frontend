@@ -42,6 +42,26 @@
                 <option *ngFor="let workAuth of workAuthorizationTypes" [value]="workAuth">{{workAuth}}</option>
             </select>
         </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <label for="work-start-date">Work Authorization Start Date:</label>
+                <input id="work-start-date" formControlName="workDateStart" matInput
+                    [matDatepicker]="workStartDatePicker">
+                <mat-datepicker-toggle matSuffix [for]="workStartDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #workStartDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <label for="work-end-date">Work Authorization End Date:</label>
+                <input id="work-end-date" formControlName="workDateEnd" matInput [matDatepicker]="workEndDatePicker">
+                <mat-datepicker-toggle matSuffix [for]="workEndDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #workEndDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
     </div>
 
     <div class="form-group" formGroupName="secondaryInfo">
