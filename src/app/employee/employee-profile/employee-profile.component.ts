@@ -10,9 +10,9 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class EmployeeProfileComponent implements OnInit {
 	personalInfo: PersonalInfo;
-	contactInfo: ContactInfo; //todo
-	addressInfo: AddressInfo; //todo
-	employmentInfo: EmploymentInfo; //todo
+	contactInfo: ContactInfo;
+	addressInfo: AddressInfo;
+	employmentInfo: EmploymentInfo;
 
 	emergencyContactInfo = {
 		relationship: "Mother",
@@ -31,12 +31,18 @@ export class EmployeeProfileComponent implements OnInit {
 		private profileService: ProfileService) { }
 
 	ngOnInit(): void {
-		// todo - fetch data from backend
+		// fetch data from backend
 		this.profileService.getPersonalInfo().subscribe((data: PersonalInfo) => {
 			this.personalInfo = data;
 		});
 		this.profileService.getAddressInfo().subscribe((data: AddressInfo) => {
 			this.addressInfo = data;
+		});
+		this.profileService.getContactInfo().subscribe((data: ContactInfo) => {
+			this.contactInfo = data;
+		});
+		this.profileService.getEmploymentInfo().subscribe((data: EmploymentInfo) => {
+			this.employmentInfo = data;
 		});
 	}
 

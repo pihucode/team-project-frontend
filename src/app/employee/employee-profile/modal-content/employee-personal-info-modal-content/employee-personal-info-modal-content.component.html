@@ -20,14 +20,9 @@
             </div>
 
             <div class="form-group">
-                <label for="preferredname">Last Name: </label>
+                <label for="preferredname">Preferred Name: </label>
                 <input type="text" class="form-control" id="preferredname" name="preferredname"
                     [ngModel]="personalInfo.preferredname">
-            </div>
-
-            <div class="form-group">
-                <label for="age">Age: </label>
-                <input type="text" class="form-control" id="age" name="age" [ngModel]="personalInfo.age">
             </div>
 
             <div class="form-group">
@@ -35,10 +30,6 @@
                 <input type="text" class="form-control" id="ssn" name="ssn" [ngModel]="personalInfo.ssn">
             </div>
 
-            <!-- <div class="form-group">
-                <label for="dob">Date of Birth: </label>
-                <input type="text" class="form-control" id="dob" name="dob" [ngModel]="personalInfo.dob">
-            </div> -->
         </div>
         <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
         <button type="button" (click)="displayCancel()">Cancel</button>
