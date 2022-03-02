@@ -35,6 +35,9 @@ export class EmployeeProfileComponent implements OnInit {
 		this.profileService.getPersonalInfo().subscribe((data: PersonalInfo) => {
 			this.personalInfo = data;
 		});
+		this.profileService.getAddressInfo().subscribe((data: AddressInfo) => {
+			this.addressInfo = data;
+		});
 	}
 
 }

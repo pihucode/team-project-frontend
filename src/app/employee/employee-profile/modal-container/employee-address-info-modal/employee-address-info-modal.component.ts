@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddressInfo } from 'src/app/models/profile-models';
 import { EmployeeAddressInfoModalContentComponent } from '../../modal-content/employee-address-info-modal-content/employee-address-info-modal-content.component';
 
 @Component({
@@ -9,7 +10,7 @@ import { EmployeeAddressInfoModalContentComponent } from '../../modal-content/em
 })
 export class EmployeeAddressInfoModalComponent implements OnInit {
   @Input()
-  addressInfo
+  addressInfo: AddressInfo;
 
   constructor(private modalService: NgbModal) { }
 
