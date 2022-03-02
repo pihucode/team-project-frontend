@@ -32,6 +32,10 @@ export class GenerateTokenComponent implements OnInit {
 			let text: string = `Here is your generated token: ${url}`;
 			let emailMessage = new EmailMessage(to, subject, text);
 			this.emailService.sendEmail(emailMessage);
+			alert('Token has been generated and sent!');
+		}, err => {
+			console.log('Error with with token generation.')
+			console.log(err);
 		});
 	}
 

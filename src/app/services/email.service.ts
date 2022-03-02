@@ -21,6 +21,9 @@ export class EmailService {
       responseType: 'text'
     }).subscribe(response => {
       console.log(response);
+    }, err => {
+      console.log('Error with sending email.');
+      console.log(err);
     });
   }
 

@@ -16,6 +16,9 @@ export class OnboardingApplicationsComponent implements OnInit {
 		//fetch data from backend
 		this.applicationsService.getApplications().subscribe(result => {
 			this.applications = result as Applications[];
+		}, err => {
+			console.log('Error fetching applications.')
+			console.log(err);
 		})
 	}
 
