@@ -6,7 +6,7 @@ import { AddressInfo, ContactInfo, PersonalInfo } from '../models/profile-models
 	providedIn: 'root'
 })
 export class ProfileService {
-	private email = 'test1@mail.com'; //todo get from auth cookie
+	private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
 
 	constructor(private http: HttpClient) { }
 
