@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { OnboardingRequest, Person, Visa } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
@@ -21,8 +21,7 @@ export class ApplicationFormComponent implements OnInit {
 		personalInfo: this.fb.group({
 			firstName: ['', Validators.required],
 			lastName: ['', Validators.required],
-			middleName: [''],
-			nickName: [''],
+			preferredName: [''],
 			ssn: ['', Validators.required],
 			birthdate: this.fb.group({
 				day: [''],
@@ -30,33 +29,51 @@ export class ApplicationFormComponent implements OnInit {
 				year: ['']
 			}),
 			gender: [''],
-			residentType: [''],
-			workAuthorization: [''],
-			workDateStart: [''],
-			workDateEnd: [''],
 			hasDriverLicense: [false],
 		}),
-		secondaryInfo: this.fb.group({
+		addressInfo: this.fb.group({
+			street: [''],
+			city: [''],
+			state: [''],
+			zip: ['']
+		}),
+		contactInfo: this.fb.group({
+			personalEmail: [''],
+			workEmail: [''],
 			cellPhone: ['', Validators.required],
 			workPhone: ['', Validators.required],
-			// currentAddress: this.fb.group({}),
-			carInfo: this.fb.group({
-				maker: [''],
-				model: [''],
-				color: ['']
-			}),
 		}),
-		// emergencyContactsInfo: this.fb.array([
-		// 	this.fb.group({
-		// 		firstName: ['', Validators.required],
-		// 		lastName: ['', Validators.required],
-		// 		middleName: [''],
-		// 		phone: ['', Validators.required],
-		// 		email: ['', Validators.required],
-		// 		relationship: ['', Validators.required]
-		// 	})
-		// ]),
-	})
+		visaInfo: this.fb.group({
+			// residentType: [''],
+			// workAuthorization: [''],
+			type: [''],
+			workDateStart: [''],
+			workDateEnd: [''],
+		}),
+		carInfo: this.fb.group({
+			maker: [''],
+			model: [''],
+			color: ['']
+		}),
+		emergencyContactsArray: this.fb.array([
+			this.fb.group({
+				firstName: ['', Validators.required],
+				lastName: ['', Validators.required],
+				phone: ['', Validators.required],
+				email: ['', Validators.required],
+				relationship: ['', Validators.required]
+			}),
+			this.fb.group({
+				firstName: ['', Validators.required],
+				lastName: ['', Validators.required],
+				phone: ['', Validators.required],
+				email: ['', Validators.required],
+				relationship: ['', Validators.required]
+			})
+		])
+	});
+	// form1: FormGroup;
+	// formArray1: FormArray;
 
 	constructor(private fb: FormBuilder,
 		private onboardingService: OnboardingService,
@@ -70,34 +87,50 @@ export class ApplicationFormComponent implements OnInit {
 		)
 	}
 
+	get emergencyContactsArray(): FormArray {
+		return this.applicationForm.get('emergencyContactsArray') as FormArray;
+	}
+
+	addEmergencyContact(): void {
+		this.applicationForm.value.emergencyContactsArray.push(
+			this.fb.group({
+				firstName: ['', Validators.required],
+				lastName: ['', Validators.required],
+				phone: ['', Validators.required],
+				email: ['', Validators.required],
+				relationship: ['', Validators.required]
+			})
+		);
+	}
+
 	onPermanentResidentChange(): void {
 		this.isPermanentResident = !this.isPermanentResident;
-		if (this.isPermanentResident) this.applicationForm.value.personalInfo.workAuthorization = '';
-		else this.applicationForm.value.personalInfo.residentType = '';
+		// if (this.isPermanentResident) this.applicationForm.value.visaInfo.workAuthorization = '';
+		// else this.applicationForm.value.visaInfo.residentType = '';
 	}
 
 	onSubmit(): void {
 		console.log(this.applicationForm.value);
-		let personalInfoData = this.applicationForm.value.personalInfo;
-		let secondaryInfoData = this.applicationForm.value.secondaryInfo;
-		let person: Person = new Person(
-			personalInfoData.firstName,
-			personalInfoData.lastName,
-			this.email,
-			secondaryInfoData.cellPhone,
-			personalInfoData.gender,
-			personalInfoData.ssn
-		);
-		let visa: Visa = new Visa(
-			personalInfoData.workAuthorization, //todo
-			personalInfoData.workDateStart,
-			personalInfoData.workDateEnd
-		);
-		let onboardingRequest = new OnboardingRequest(
-			person,
-			visa
-		);
-		this.onboardingService.onboard(onboardingRequest);
+		// let personalInfoData = this.applicationForm.value.personalInfo;
+		// let secondaryInfoData = this.applicationForm.value.secondaryInfo;
+		// let person: Person = new Person(
+		// 	personalInfoData.firstName,
+		// 	personalInfoData.lastName,
+		// 	this.email,
+		// 	secondaryInfoData.cellPhone,
+		// 	personalInfoData.gender,
+		// 	personalInfoData.ssn
+		// );
+		// let visa: Visa = new Visa(
+		// 	personalInfoData.workAuthorization, //todo
+		// 	personalInfoData.workDateStart,
+		// 	personalInfoData.workDateEnd
+		// );
+		// let onboardingRequest = new OnboardingRequest(
+		// 	person,
+		// 	visa
+		// );
+		// this.onboardingService.onboard(onboardingRequest);
 	}
 
 }
