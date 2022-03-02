@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { User } from 'src/app/models/auth-models';
 import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo } from 'src/app/models/profile-models';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
