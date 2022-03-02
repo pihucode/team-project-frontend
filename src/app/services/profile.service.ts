@@ -21,4 +21,8 @@ export class ProfileService {
 		const url = `http://localhost:8080/api/employee/profile/contact-info?email=${this.email}`
 		return this.http.get(url);
 	}
+	getEmploymentInfo() {
+		const url = `http://localhost:8080/api/employee/profile/employment-info?email=${this.email}`
+		return this.http.get(url);
+	}
 }

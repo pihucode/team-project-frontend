@@ -24,5 +24,12 @@ export class AddressInfo {
         public state: string,
         public zip: number
     ) { }
+}
 
+export class EmploymentInfo {
+    constructor(
+        public workAuth: string,
+        public authStart: string,
+        public authEnd: string
+    ) { }
 }

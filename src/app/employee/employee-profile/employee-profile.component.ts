@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddressInfo, ContactInfo, PersonalInfo } from 'src/app/models/profile-models';
+import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo } from 'src/app/models/profile-models';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
@@ -12,20 +12,13 @@ export class EmployeeProfileComponent implements OnInit {
 	personalInfo: PersonalInfo;
 	contactInfo: ContactInfo; //todo
 	addressInfo: AddressInfo; //todo
+	employmentInfo: EmploymentInfo; //todo
 
 	emergencyContactInfo = {
 		relationship: "Mother",
 		fullname: "Your Mom",
 		phone: "1113337777",
 		address: "123 Your Moms House"
-	}
-
-	employmentInfo = {
-		workAuth: "H4",
-		authStart: "2021-12-26",
-		authEnd: "2022-12-29",
-		employmentStart: "2020-03-29",
-		employmentEnd: "2021-03-29"
 	}
 
 	documentInfo = {
