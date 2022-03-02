@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
       (params) => {
         this.email = params['email'];
         this.registrationToken = params['token'];
+        this.register.email = this.email;
       }
     );
     this.getTokenValidity();
