@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,7 +7,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./employee-document-info-modal-content.component.css']
 })
 export class EmployeeDocumentInfoModalContentComponent implements OnInit {
-
+  @Input()
+  documentInfo
+  
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {

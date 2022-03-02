@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeEmploymentInfoModalContentComponent } from '../../modal-content/employee-employment-info-modal-content/employee-employment-info-modal-content.component';
 
@@ -8,7 +8,8 @@ import { EmployeeEmploymentInfoModalContentComponent } from '../../modal-content
   styleUrls: ['./employee-employment-info-modal.component.css']
 })
 export class EmployeeEmploymentInfoModalComponent implements OnInit {
-  EmploymentInfo = {}
+  @Input()
+  employmentInfo
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -16,6 +17,6 @@ export class EmployeeEmploymentInfoModalComponent implements OnInit {
 
   openEmploymentInfoModal = (): void => {
     const modalRef = this.modalService.open(EmployeeEmploymentInfoModalContentComponent, { centered: true });
-    modalRef.componentInstance.personalInfo = this.EmploymentInfo;
+    modalRef.componentInstance.employmentInfo = this.employmentInfo;
   }
 }

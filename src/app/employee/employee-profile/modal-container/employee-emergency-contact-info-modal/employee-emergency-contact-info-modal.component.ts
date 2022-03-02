@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeEmergencyContactInfoModalContentComponent } from '../../modal-content/employee-emergency-contact-info-modal-content/employee-emergency-contact-info-modal-content.component';
 
@@ -8,8 +8,8 @@ import { EmployeeEmergencyContactInfoModalContentComponent } from '../../modal-c
   styleUrls: ['./employee-emergency-contact-info-modal.component.css']
 })
 export class EmployeeEmergencyContactInfoModalComponent implements OnInit {
-
-  EmgencyContactInfo={}
+  @Input()
+  emergencyContactInfo
 
   constructor(private modalService: NgbModal) { }
 
@@ -18,6 +18,6 @@ export class EmployeeEmergencyContactInfoModalComponent implements OnInit {
 
   openEmgencyContactInfoModal = (): void => {
     const modalRef = this.modalService.open(EmployeeEmergencyContactInfoModalContentComponent, { centered: true });
-    modalRef.componentInstance.personalInfo = this.EmgencyContactInfo;
+    modalRef.componentInstance.emergencyContactInfo = this.emergencyContactInfo;
   }
 }
