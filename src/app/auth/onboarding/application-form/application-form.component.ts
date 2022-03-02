@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { OnboardingRequest, Person, Visa } from 'src/app/models/onboarding-models';
+import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Person, Visa } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
 
 @Component({
@@ -111,26 +111,51 @@ export class ApplicationFormComponent implements OnInit {
 
 	onSubmit(): void {
 		console.log(this.applicationForm.value);
-		// let personalInfoData = this.applicationForm.value.personalInfo;
-		// let secondaryInfoData = this.applicationForm.value.secondaryInfo;
-		// let person: Person = new Person(
-		// 	personalInfoData.firstName,
-		// 	personalInfoData.lastName,
-		// 	this.email,
-		// 	secondaryInfoData.cellPhone,
-		// 	personalInfoData.gender,
-		// 	personalInfoData.ssn
-		// );
-		// let visa: Visa = new Visa(
-		// 	personalInfoData.workAuthorization, //todo
-		// 	personalInfoData.workDateStart,
-		// 	personalInfoData.workDateEnd
-		// );
-		// let onboardingRequest = new OnboardingRequest(
-		// 	person,
-		// 	visa
-		// );
-		// this.onboardingService.onboard(onboardingRequest);
+		console.log(this.email);
+		let personalInfoData = this.applicationForm.value.personalInfo;
+		let addressInfo = this.applicationForm.value.addressInfo;
+		let contactInfo = this.applicationForm.value.contactInfo;
+		let visaInfo = this.applicationForm.value.visaInfo;
+		let emergencyContactsArray = this.applicationForm.value.emergencyContactsArray;
+
+		let person: Person = new Person(
+			personalInfoData.firstName,
+			personalInfoData.lastName,
+			personalInfoData.preferredName,
+			this.email,
+			contactInfo.personalEmail,
+			contactInfo.workEmail,
+			contactInfo.cellPhone,
+			personalInfoData.gender,
+			personalInfoData.ssn
+		);
+		let visa: Visa = new Visa(
+			visaInfo.type, //todo
+			visaInfo.workDateStart,
+			visaInfo.workDateEnd
+		);
+		let address: Address = new Address(
+			addressInfo.street,
+			addressInfo.city,
+			addressInfo.state,
+			addressInfo.zip
+		);
+		// todo
+		let emergencyContacts: EmergencyContact[] = [];
+		console.log(emergencyContactsArray);
+		for (let contact of emergencyContactsArray) {
+			console.log(contact);
+		}
+		let emergencyContactList: EmergencyContactList = new EmergencyContactList(
+			emergencyContacts
+		);
+		let onboardingRequest = new OnboardingRequest(
+			person,
+			visa,
+			address,
+			emergencyContactList
+		);
+		this.onboardingService.onboard(onboardingRequest);
 	}
 
 }
