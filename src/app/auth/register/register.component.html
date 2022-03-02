@@ -1,42 +1,42 @@
-<div *ngIf="data=='false'">
+<div *ngIf="!isTokenValid">
     <p>Token has expired</p>
 </div>
-<div *ngIf="data=='true'">
+<div *ngIf="isTokenValid">
     <h2>Register</h2>
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 
-    <div ngModelGroup="register" #registerInputs="ngModelGroup">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <br>
-            <input type="text" class="form-control" id="email" name="email" readonly value="{{email}}">
+        <div ngModelGroup="register" #registerInputs="ngModelGroup">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <br>
+                <input type="text" class="form-control" id="email" name="email" readonly value="{{email}}">
+            </div>
+
+            <div class="form-group">
+                <label for="registrationToken">Registration Token</label>
+                <br>
+                <input type="text" class="form-control" id="registrationToken" name="registrationToken" readonly
+                    value="{{registrationToken}}">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <br>
+                <input type="text" class="form-control" id="username" name="username" required
+                    [(ngModel)]="register.username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <br>
+                <input type="password" class="form-control" id="password" name="password" required
+                    [(ngModel)]="register.password">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="registrationToken">Registration Token</label>
-            <br>
-            <input type="text" class="form-control" id="registrationToken" name="registrationToken" readonly
-                value="{{registrationToken}}">
-        </div>
-
-        <div class="form-group">
-            <label for="username">Username</label>
-            <br>
-            <input type="text" class="form-control" id="username" name="username" required
-                [(ngModel)]="register.username">
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <br>
-            <input type="password" class="form-control" id="password" name="password" required
-                [(ngModel)]="register.password">
-        </div>
-    </div>
-
-    <button type="submit" [disabled]="!registerForm.form.valid">Register</button>
-    <p *ngIf="displayUsernameTaken">Username Already Taken!</p>
-    <!-- By Chad, mainly for testing -->
-    <pre>Form JSON: {{register | json}}</pre>
-</form>
+        <button type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        <p *ngIf="displayUsernameTaken">Username Already Taken!</p>
+        <!-- By Chad, mainly for testing -->
+        <pre>Form JSON: {{register | json}}</pre>
+    </form>
 </div>

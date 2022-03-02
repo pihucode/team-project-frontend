@@ -14,20 +14,20 @@ export class RegisterComponent implements OnInit {
   registrationToken: string = '';
   email: string = '';
   displayUsernameTaken: boolean = false;
-  data:any = []
+  isTokenValid: boolean = false;
 
   constructor(private registerService: RegisterService,
-    private activatedRoute: ActivatedRoute, private router: Router,private http: HttpClient) { }
+    private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getData();
     this.displayUsernameTaken = false;
     this.activatedRoute.queryParams.subscribe(
       (params) => {
         this.email = params['email'];
         this.registrationToken = params['token'];
       }
-    )
+    );
+    this.getTokenValidity();
   }
 
   onSubmit = () => {
@@ -49,11 +49,10 @@ export class RegisterComponent implements OnInit {
     this.register.clear()
   }
 
-  getData(){
-    const url ='http://localhost:8080/api/is-token-valid?email=bob@gmail.com'
-    this.http.get(url).subscribe((res)=>{
-      this.data = res
-      console.log(this.data)
+  getTokenValidity() {
+    const url = `http://localhost:8080/api/is-token-valid?email=${this.email}`;
+    this.http.get(url).subscribe((res: boolean) => {
+      this.isTokenValid = res;
     })
   }
 }
