@@ -122,17 +122,20 @@
                     <input type="text" formControlName="lastName">
 
                     <label>Phone: </label>
-                    <input type="text" formControlName="firstName">
+                    <input type="number" formControlName="firstName">
 
                     <label>Email: </label>
+                    <input type="email" formControlName="email">
+
+                    <label>Relationship: </label>
                     <input type="text" formControlName="relationship">
                 </div>
             </div>
         </div>
     </div>
 
-    <pre>Form JSON: {{ applicationForm.value | json }}</pre>
     <!-- <button type="submit" [disabled]="!applicationForm.valid">Submit</button> -->
     <button type="submit">Submit</button>
+    <pre>Form JSON: {{ applicationForm.value | json }}</pre>
 
 </form>

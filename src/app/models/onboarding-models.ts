@@ -40,7 +40,7 @@ export class Address {
 
 export class EmergencyContactList {
     constructor(
-        public emergencyContacts: EmergencyContact[]
+        public contacts: EmergencyContact[]
     ) { }
 }
 

@@ -13,12 +13,9 @@ export class OnboardingService {
     private endpoint = 'http://localhost:8080/api/onboard';
 
     onboard = (req: OnboardingRequest) => {
-        console.log(req);
         this.http.post(this.endpoint, req, {
             responseType: 'text'
         }).subscribe(response => {
-            console.log('onboard form submitted!');
-            console.log(response);
             this.router.navigate(['employee/home'])
         })
     }

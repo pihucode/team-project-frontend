@@ -110,8 +110,6 @@ export class ApplicationFormComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		console.log(this.applicationForm.value);
-		console.log(this.email);
 		let personalInfoData = this.applicationForm.value.personalInfo;
 		let addressInfo = this.applicationForm.value.addressInfo;
 		let contactInfo = this.applicationForm.value.contactInfo;
@@ -141,13 +139,19 @@ export class ApplicationFormComponent implements OnInit {
 			addressInfo.zip
 		);
 		// todo
-		let emergencyContacts: EmergencyContact[] = [];
-		console.log(emergencyContactsArray);
+		let contacts: EmergencyContact[] = [];
 		for (let contact of emergencyContactsArray) {
-			console.log(contact);
+			let newContact = new EmergencyContact(
+				contact.firstName,
+				contact.lastName,
+				contact.email,
+				contact.phone,
+				contact.relationship
+			)
+			contacts.push(newContact);
 		}
 		let emergencyContactList: EmergencyContactList = new EmergencyContactList(
-			emergencyContacts
+			contacts
 		);
 		let onboardingRequest = new OnboardingRequest(
 			person,
