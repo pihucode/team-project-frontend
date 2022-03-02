@@ -23,7 +23,7 @@ export class EmployeeEmergencyContactInfoModalContentComponent implements OnInit
   }
 
   displayCancel = () => {
-    if (confirm("Cancel changes?")) {
+    if (confirm("Discard changes?")) {
       this.activeModal.dismiss();
     }
   }

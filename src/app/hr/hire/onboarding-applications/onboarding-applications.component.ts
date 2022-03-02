@@ -8,16 +8,14 @@ import { ApplicationsService } from 'src/app/services/applications.service';
 	styleUrls: ['./onboarding-applications.component.css']
 })
 export class OnboardingApplicationsComponent implements OnInit {
-	public applications: Applications[];
+	applications: Applications[] = [];
 
 	constructor(private applicationsService: ApplicationsService) { }
 
 	ngOnInit(): void {
 		//fetch data from backend
 		this.applicationsService.getApplications().subscribe(result => {
-			console.log(result);
 			this.applications = result as Applications[];
-			console.log(this.applications);
 		})
 	}
 
