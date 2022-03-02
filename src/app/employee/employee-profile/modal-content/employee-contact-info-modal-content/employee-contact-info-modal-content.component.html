@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Contact Info</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit(editEmployeeContactInfoForm)" #editEmployeeContactInfoForm="ngForm">
+        <div ngModelGroup="employeeContactInfo" #employeeContactInfoInputs="ngModelGroup">
+            <div class="form-group">
+                <label for="personal-email">Personal Email: </label>
+                <input type="text" class="form-control" id="personal-email" name="personal-email" [ngModel]="contactInfo.personalEmail">
+            </div>
+    
+            <div class="form-group">
+                <label for="work-email">Work Email: </label>
+                <input type="text" class="form-control" id="work-email" name="work-email" [ngModel]="contactInfo.workEmail">
+            </div>
+    
+            <div class="form-group">
+                <label for="cellphone">Cell Phone: </label>
+                <input type="text" class="form-control" id="cellphone" name="cellphone" [ngModel]="contactInfo.cellphone">
+            </div>
+    
+            <div class="form-group">
+                <label for="workphone">Work Phone: </label>
+                <input type="text" class="form-control" id="workphone" name="workphone" [ngModel]="contactInfo.workphone">
+            </div>
+        </div>
+        <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
+        <button type="button" (click)="displayCancel()" >Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
+</div>

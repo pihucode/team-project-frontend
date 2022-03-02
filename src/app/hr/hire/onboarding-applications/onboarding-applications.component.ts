@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Applications } from 'src/app/models/applications';
+import { ApplicationsService } from 'src/app/services/applications.service';
 
 @Component({
 	selector: 'app-onboarding-applications',
@@ -6,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./onboarding-applications.component.css']
 })
 export class OnboardingApplicationsComponent implements OnInit {
-	// TODO - [Quest - OPEN] Render list of applications
-	applications: string[] = ['apricot', 'banana', 'cucumber'];
+	applications: Applications[] = [];
 
-	constructor() { }
+	constructor(private applicationsService: ApplicationsService) { }
 
 	ngOnInit(): void {
 		//fetch data from backend
+		this.applicationsService.getApplications().subscribe(result => {
+			this.applications = result as Applications[];
+		})
 	}
 
 }

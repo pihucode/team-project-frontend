@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EmployeePersonalInfoModalComponent } from './employee-personal-info-modal/employee-personal-info-modal.component';
+// import { PersonalInfo } from 'src/app/models/personal-info';
 
 @Component({
   selector: 'app-employee-profile',
@@ -8,24 +8,55 @@ import { EmployeePersonalInfoModalComponent } from './employee-personal-info-mod
   styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent implements OnInit {
+  // personalInfo = new PersonalInfo(123, "john", "doe", 25, 1111111, "1996-06-01");
   personalInfo = {
     id: 123, //personId
     firstname: "john",
     lastname: "doe",
     age: 25,
-    SSN: 1111111,
-    DateofBirth: "1996-06-01"
+    ssn: 1111111,
+    dob: "1996-06-01"
+  }
+
+  contactInfo = {
+    personalEmail: "personal@gmail.com",
+    workEmail: "work@gmail.com",
+    cellphone: "1234567890",
+    workphone: "0987654321"
+  }
+
+  addressInfo = {
+    addressLine1: "1 Address Line",
+    addressLine2: "2 Address Line",
+    city: "City",
+    state: "State"
+  }
+
+  emergencyContactInfo = {
+    relationship: "Mother",
+    fullname: "Your Mom",
+    phone: "1113337777",
+    address: "123 Your Moms House"
+  }
+
+  employmentInfo = {
+    workAuth: "H4",
+    authStart: "2021-12-26",
+    authEnd: "2022-12-29",
+    employmentStart: "2020-03-29",
+    employmentEnd: "2021-03-29"
+  }
+
+  documentInfo = {
+    document1: "SomeDoc1",
+    document2: "SomeDoc2",
+    document3: "SomeDoc3",
   }
 
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
     // todo - fetch data from backend (later)
-  }
-
-  openPersonalInfoModal = (): void => {
-    const modalRef = this.modalService.open(EmployeePersonalInfoModalComponent);
-    modalRef.componentInstance.personalInfo = this.personalInfo;
   }
 
 }

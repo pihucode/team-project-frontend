@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Personal Info</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit(editPersonalInfoForm)" #editPersonalInfoForm="ngForm">
+        <div ngModelGroup="personalInfo" #personalInfoInputs="ngModelGroup">
+            <div class="form-group">
+                <label for="firstname">First Name: </label>
+                <input type="text" class="form-control" id="firstname" name="firstname" [ngModel]="personalInfo.firstname">
+            </div>
+    
+            <div class="form-group">
+                <label for="lastname">Last Name: </label>
+                <input type="text" class="form-control" id="lastname" name="lastname" [ngModel]="personalInfo.lastname">
+            </div>
+    
+            <div class="form-group">
+                <label for="age">Age: </label>
+                <input type="text" class="form-control" id="age" name="age" [ngModel]="personalInfo.age">
+            </div>
+    
+            <div class="form-group">
+                <label for="ssn">SSN: </label>
+                <input type="text" class="form-control" id="ssn" name="ssn" [ngModel]="personalInfo.ssn">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth: </label>
+                <input type="text" class="form-control" id="dob" name="dob" [ngModel]="personalInfo.dob">
+            </div>
+        </div>
+        <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
+        <button type="button" (click)="displayCancel()" >Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
+</div>

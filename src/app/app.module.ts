@@ -23,16 +23,8 @@ import { RegisterModule } from './auth/register/register.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeHomeModule } from './employee/home/home.module';
-import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
-import { EmployeePersonalInfoModalComponent } from './employee/employee-profile/employee-personal-info-modal/employee-personal-info-modal.component';
+import { EmployeeProfileModule } from './employee/employee-profile/employee-profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EmployeeContactInfoModalComponent } from './employee/employee-profile/employee-contact-info-modal/employee-contact-info-modal.component';
-import { EmployeeAddressInfoModalComponent } from './employee/employee-profile/employee-address-info-modal/employee-address-info-modal.component';
-import { EmployeeEmergencyContactInfoModalComponent } from './employee/employee-profile/employee-emergency-contact-info-modal/employee-emergency-contact-info-modal.component';
-import { EmployeeDocumentInfoModalComponent } from './employee/employee-profile/employee-document-info-modal/employee-document-info-modal.component';
-import { ModalContentComponent } from './employee/employee-profile/employee-personal-info-modal/modal-content/modal-content.component';
-import { EmployeeEmploymentInfoModalComponent } from './employee/employee-profile/employee-employment-info-modal/employee-employment-info-modal.component';
-
 
 const routes: Routes = [
   {
@@ -78,15 +70,7 @@ const routes: Routes = [
     HRHireComponent,
     HRHouseManagementComponent,
     HRLayoutComponent,
-    HRNavigationComponent,
-    EmployeeProfileComponent,
-    EmployeePersonalInfoModalComponent,
-    EmployeeContactInfoModalComponent,
-    EmployeeAddressInfoModalComponent,
-    EmployeeEmergencyContactInfoModalComponent,
-    EmployeeDocumentInfoModalComponent,
-    ModalContentComponent,
-    EmployeeEmploymentInfoModalComponent
+    HRNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +84,8 @@ const routes: Routes = [
     EmployeeHomeModule,
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    EmployeeProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
