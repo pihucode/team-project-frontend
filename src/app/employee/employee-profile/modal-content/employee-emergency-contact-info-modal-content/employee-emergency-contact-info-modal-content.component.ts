@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -12,6 +13,19 @@ export class EmployeeEmergencyContactInfoModalContentComponent implements OnInit
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit = (form: NgForm) => {
+    console.log(this.emergencyContactInfo);
+    this.activeModal.close(this.emergencyContactInfo);
+    // form.value sends json of edited values, need to save into backend
+    console.log(form.value);
+  }
+
+  displayCancel = () => {
+    if (confirm("Cancel changes?")) {
+      this.activeModal.dismiss();
+    }
   }
 
 }

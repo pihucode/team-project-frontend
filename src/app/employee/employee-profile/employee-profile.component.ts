@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EmployeePersonalInfoModalComponent } from './modal-container/employee-personal-info-modal/employee-personal-info-modal.component';
+// import { PersonalInfo } from 'src/app/models/personal-info';
 
 @Component({
   selector: 'app-employee-profile',
@@ -8,6 +8,7 @@ import { EmployeePersonalInfoModalComponent } from './modal-container/employee-p
   styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent implements OnInit {
+  // personalInfo = new PersonalInfo(123, "john", "doe", 25, 1111111, "1996-06-01");
   personalInfo = {
     id: 123, //personId
     firstname: "john",

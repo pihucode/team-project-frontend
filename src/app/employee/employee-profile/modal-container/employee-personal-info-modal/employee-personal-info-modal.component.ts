@@ -8,7 +8,7 @@ import { EmployeePersonalInfoModalContentComponent } from '../../modal-content/e
   styleUrls: ['./employee-personal-info-modal.component.css']
 })
 export class EmployeePersonalInfoModalComponent implements OnInit {
-  @Input() 
+  @Input()
   personalInfo;
 
   constructor(private modalService: NgbModal) { }

@@ -6,7 +6,25 @@
 </div>
 
 <div class="modal-body">
-    <p>{{documentInfo.document1}} <a href="/employee/profile">Download</a></p>
-    <p>{{documentInfo.document2}} <a href="/employee/profile">Download</a></p>
-    <p>{{documentInfo.document3}} <a href="/employee/profile">Download</a></p>
+    <form (ngSubmit)="onSubmit(editDocumentInfoForm)" #editDocumentInfoForm="ngForm">
+        <div ngModelGroup="documentInfo" #documentInfoInputs="ngModelGroup">
+            <div class="form-group">
+                <label for="document1">Document1: </label>
+                <input type="text" class="form-control" id="document1" name="document1" [ngModel]="documentInfo.document1">
+            </div>
+    
+            <div class="form-group">
+                <label for="document2">Document2: </label>
+                <input type="text" class="form-control" id="document2" name="document2" [ngModel]="documentInfo.document2">
+            </div>
+
+            <div class="form-group">
+                <label for="document3">Document3: </label>
+                <input type="text" class="form-control" id="document3" name="document3" [ngModel]="documentInfo.document3">
+            </div>
+        </div>
+        <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
+        <button type="button" (click)="displayCancel()" >Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
 </div>

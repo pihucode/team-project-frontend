@@ -6,9 +6,35 @@
 </div>
 
 <div class="modal-body">
-    <p>Work Auth: {{employmentInfo.workAuth}}</p>
-    <p>Authorization Start Date: {{employmentInfo.authStart}}</p>
-    <p>Authorization End Date: {{employmentInfo.authEnd}}</p>
-    <p>Employment Start Date: {{employmentInfo.employmentStart}}</p>
-    <p>Employment End Date: {{employmentInfo.employmentEnd}}</p>
+    <form (ngSubmit)="onSubmit(editEmploymentInfoForm)" #editEmploymentInfoForm="ngForm">
+        <div ngModelGroup="employmentInfo" #employmentInfoInputs="ngModelGroup">
+            <div class="form-group">
+                <label for="work-auth">Work Auth: </label>
+                <input type="text" class="form-control" id="work-auth" name="work-auth" [ngModel]="employmentInfo.workAuth">
+            </div>
+    
+            <div class="form-group">
+                <label for="auth-start">Authorization Start Date: </label>
+                <input type="text" class="form-control" id="auth-start" name="auth-start" [ngModel]="employmentInfo.authStart">
+            </div>
+    
+            <div class="form-group">
+                <label for="auth-end">Authorization End Date: </label>
+                <input type="text" class="form-control" id="auth-end" name="auth-end" [ngModel]="employmentInfo.authEnd">
+            </div>
+    
+            <div class="form-group">
+                <label for="employment-start">Employment Start Date: </label>
+                <input type="text" class="form-control" id="employment-start" name="employment-start" [ngModel]="employmentInfo.employmentStart">
+            </div>
+
+            <div class="form-group">
+                <label for="employment-end">Employment End Date: </label>
+                <input type="text" class="form-control" id="employment-end" name="employment-end" [ngModel]="employmentInfo.employmentEnd">
+            </div>
+        </div>
+        <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
+        <button type="button" (click)="displayCancel()" >Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
 </div>
