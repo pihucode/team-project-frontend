@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EmailMessage } from '../models/EmailMessage';
+import { EmailMessage } from '../models/email-message';
 
 @Injectable({
   providedIn: 'root'

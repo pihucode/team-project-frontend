@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { EmailMessage } from 'src/app/models/EmailMessage';
+import { EmailMessage } from 'src/app/models/email-message';
 import { Token } from 'src/app/models/token';
 import { EmailService } from 'src/app/services/email.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -16,7 +16,7 @@ export class GenerateTokenComponent implements OnInit {
 		email: ['', Validators.required]
 	});
 
-	constructor(private fb: FormBuilder, private http: HttpClient, private emailService: EmailService, 
+	constructor(private fb: FormBuilder, private http: HttpClient, private emailService: EmailService,
 		private tokenService: TokenService) { }
 
 	ngOnInit(): void {
