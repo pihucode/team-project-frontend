@@ -10,31 +10,38 @@
         <div ngModelGroup="personalInfo" #personalInfoInputs="ngModelGroup">
             <div class="form-group">
                 <label for="firstname">First Name: </label>
-                <input type="text" class="form-control" id="firstname" name="firstname" [ngModel]="personalInfo.firstname">
+                <input type="text" class="form-control" id="firstname" name="firstname"
+                    [ngModel]="personalInfo.firstname">
             </div>
-    
+
             <div class="form-group">
                 <label for="lastname">Last Name: </label>
                 <input type="text" class="form-control" id="lastname" name="lastname" [ngModel]="personalInfo.lastname">
             </div>
-    
+
+            <div class="form-group">
+                <label for="preferredname">Last Name: </label>
+                <input type="text" class="form-control" id="preferredname" name="preferredname"
+                    [ngModel]="personalInfo.preferredname">
+            </div>
+
             <div class="form-group">
                 <label for="age">Age: </label>
                 <input type="text" class="form-control" id="age" name="age" [ngModel]="personalInfo.age">
             </div>
-    
+
             <div class="form-group">
                 <label for="ssn">SSN: </label>
                 <input type="text" class="form-control" id="ssn" name="ssn" [ngModel]="personalInfo.ssn">
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="dob">Date of Birth: </label>
                 <input type="text" class="form-control" id="dob" name="dob" [ngModel]="personalInfo.dob">
-            </div>
+            </div> -->
         </div>
         <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
-        <button type="button" (click)="displayCancel()" >Cancel</button>
+        <button type="button" (click)="displayCancel()">Cancel</button>
         <button type="submit">Submit</button>
     </form>
 </div>

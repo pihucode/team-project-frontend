@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { PersonalInfo } from 'src/app/models/profile-models';
 
 @Component({
   selector: 'app-employee-personal-info-modal-content',
@@ -9,7 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EmployeePersonalInfoModalContentComponent implements OnInit {
   @Input()
-  public personalInfo;
+  public personalInfo: PersonalInfo;
 
   constructor(public activeModal: NgbActiveModal) { }
 

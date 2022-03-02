@@ -1,62 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-// import { PersonalInfo } from 'src/app/models/personal-info';
+import { AddressInfo, ContactInfo, PersonalInfo } from 'src/app/models/profile-models';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
-  selector: 'app-employee-profile',
-  templateUrl: './employee-profile.component.html',
-  styleUrls: ['./employee-profile.component.css']
+	selector: 'app-employee-profile',
+	templateUrl: './employee-profile.component.html',
+	styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent implements OnInit {
-  // personalInfo = new PersonalInfo(123, "john", "doe", 25, 1111111, "1996-06-01");
-  personalInfo = {
-    id: 123, //personId
-    firstname: "john",
-    lastname: "doe",
-    age: 25,
-    ssn: 1111111,
-    dob: "1996-06-01"
-  }
+	personalInfo: PersonalInfo;
+	contactInfo: ContactInfo; //todo
+	addressInfo: AddressInfo; //todo
 
-  contactInfo = {
-    personalEmail: "personal@gmail.com",
-    workEmail: "work@gmail.com",
-    cellphone: "1234567890",
-    workphone: "0987654321"
-  }
+	emergencyContactInfo = {
+		relationship: "Mother",
+		fullname: "Your Mom",
+		phone: "1113337777",
+		address: "123 Your Moms House"
+	}
 
-  addressInfo = {
-    addressLine1: "1 Address Line",
-    addressLine2: "2 Address Line",
-    city: "City",
-    state: "State"
-  }
+	employmentInfo = {
+		workAuth: "H4",
+		authStart: "2021-12-26",
+		authEnd: "2022-12-29",
+		employmentStart: "2020-03-29",
+		employmentEnd: "2021-03-29"
+	}
 
-  emergencyContactInfo = {
-    relationship: "Mother",
-    fullname: "Your Mom",
-    phone: "1113337777",
-    address: "123 Your Moms House"
-  }
+	documentInfo = {
+		document1: "SomeDoc1",
+		document2: "SomeDoc2",
+		document3: "SomeDoc3",
+	}
 
-  employmentInfo = {
-    workAuth: "H4",
-    authStart: "2021-12-26",
-    authEnd: "2022-12-29",
-    employmentStart: "2020-03-29",
-    employmentEnd: "2021-03-29"
-  }
+	constructor(private modalService: NgbModal,
+		private profileService: ProfileService) { }
 
-  documentInfo = {
-    document1: "SomeDoc1",
-    document2: "SomeDoc2",
-    document3: "SomeDoc3",
-  }
-
-  constructor(private modalService: NgbModal) { }
-
-  ngOnInit(): void {
-    // todo - fetch data from backend (later)
-  }
+	ngOnInit(): void {
+		// todo - fetch data from backend
+		this.profileService.getPersonalInfo().subscribe((data: PersonalInfo) => {
+			this.personalInfo = data;
+		});
+	}
 
 }
