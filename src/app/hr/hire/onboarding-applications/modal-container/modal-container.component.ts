@@ -8,7 +8,8 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 	styleUrls: ['./modal-container.component.css']
 })
 export class ModalContainerComponent implements OnInit {
-	@Input() application: string = '';
+	@Input() 
+	application: string = '';
 
 	constructor(private modalService: NgbModal) { }
 

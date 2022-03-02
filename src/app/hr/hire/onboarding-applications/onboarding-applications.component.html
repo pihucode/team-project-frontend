@@ -1,9 +1,32 @@
 <div>
     <h2>Onboarding Applications</h2>
-    <!-- TODO: Angular Material Table -->
-    <!-- application.number, .firstname, .lastname, .visatype, .visastartdata, .visaenddate, .applicationstatus -->
-    <div *ngFor="let app of applications">
-        {{app}}
-        <app-modal-container [application]="app"></app-modal-container>
-    </div>
+    <table class="table" *ngIf="applications.length > 0">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Email</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Visa Type</th>
+                <th scope="col">Visa Start Date</th>
+                <th scope="col">Visa End Date</th>
+                <th scope="col">Application Status</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let app of applications; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{app.email}}</td>
+                <td>{{app.firstname}}</td>
+                <td>{{app.lastname}}</td>
+                <td>{{app.visaType}}</td>
+                <td>{{app.visaStartDate}}</td>
+                <td>{{app.visaEndDate}}</td>
+                <td>{{app.status}}</td>
+                <td>TODO</td>
+                <!-- <td><app-modal-container [applicationId]="{{i+1}}"></app-modal-container><td></td> -->
+            </tr>
+        </tbody>
+    </table>
 </div>
