@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EmployeePersonalInfoModalComponent } from './employee-personal-info-modal/employee-personal-info-modal.component';
+import { EmployeePersonalInfoModalComponent } from './modal-container/employee-personal-info-modal/employee-personal-info-modal.component';
 
 @Component({
   selector: 'app-employee-profile',

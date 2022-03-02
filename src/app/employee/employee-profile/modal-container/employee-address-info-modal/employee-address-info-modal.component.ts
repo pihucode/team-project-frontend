@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalContentComponent } from './modal-content/modal-content.component';
+import { EmployeeAddressInfoModalContentComponent } from '../../modal-content/employee-address-info-modal-content/employee-address-info-modal-content.component';
 
 @Component({
   selector: 'app-employee-address-info-modal',
@@ -17,7 +17,7 @@ export class EmployeeAddressInfoModalComponent implements OnInit {
   }
 
   openAddressInfoModal = (): void => {
-    const modalRef = this.modalService.open(ModalContentComponent, { centered: true });
+    const modalRef = this.modalService.open(EmployeeAddressInfoModalContentComponent, { centered: true });
     modalRef.componentInstance.personalInfo = this.AddressInfo;
   }
 
