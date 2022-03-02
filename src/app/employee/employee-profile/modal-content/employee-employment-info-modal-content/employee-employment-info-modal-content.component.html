@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Employment Info</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit(editEmploymentInfoForm)" #editEmploymentInfoForm="ngForm">
+        <div ngModelGroup="employmentInfo" #employmentInfoInputs="ngModelGroup">
+            <div class="form-group">
+                <label for="work-auth">Work Auth: </label>
+                <input type="text" class="form-control" id="work-auth" name="work-auth" [ngModel]="employmentInfo.workAuth">
+            </div>
+    
+            <div class="form-group">
+                <label for="auth-start">Authorization Start Date: </label>
+                <input type="text" class="form-control" id="auth-start" name="auth-start" [ngModel]="employmentInfo.authStart">
+            </div>
+    
+            <div class="form-group">
+                <label for="auth-end">Authorization End Date: </label>
+                <input type="text" class="form-control" id="auth-end" name="auth-end" [ngModel]="employmentInfo.authEnd">
+            </div>
+    
+            <div class="form-group">
+                <label for="employment-start">Employment Start Date: </label>
+                <input type="text" class="form-control" id="employment-start" name="employment-start" [ngModel]="employmentInfo.employmentStart">
+            </div>
+
+            <div class="form-group">
+                <label for="employment-end">Employment End Date: </label>
+                <input type="text" class="form-control" id="employment-end" name="employment-end" [ngModel]="employmentInfo.employmentEnd">
+            </div>
+        </div>
+        <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
+        <button type="button" (click)="displayCancel()" >Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
+</div>
