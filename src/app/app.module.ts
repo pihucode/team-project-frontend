@@ -24,6 +24,8 @@ import { EmployeeProfileModule } from './employee/employee-profile/employee-prof
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VisaModule } from './hr/visa/visa.module';
 import { HrHomeModule } from './hr/home/home.module';
+import { EmployeeListComponent } from './hr/employee-list/employee-list.component';
+import { EmployeeListModule } from './hr/employee-list/employee-list.module';
 
 const routes: Routes = []
 
@@ -38,7 +40,8 @@ const routes: Routes = []
     HRHireComponent,
     HRHouseManagementComponent,
     HRLayoutComponent,
-    HRNavigationComponent
+    HRNavigationComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ const routes: Routes = []
     EmployeeHomeModule,
     HrHomeModule,
     VisaModule,
+    EmployeeListModule,
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule,
     BrowserAnimationsModule,
