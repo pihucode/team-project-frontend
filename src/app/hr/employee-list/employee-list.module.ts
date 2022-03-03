@@ -7,12 +7,14 @@ import { EmployeeListComponent } from './employee-list.component';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 
 @NgModule({
   declarations: [
     ProfileTableComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     CommonModule,

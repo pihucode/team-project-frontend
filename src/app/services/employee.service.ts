@@ -5,12 +5,16 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 export class EmployeeService {
-	// private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
 
 	constructor(private http: HttpClient) { }
 
 	getEmployeeList() {
-		const url = `http://localhost:8080/api/employee/profile/employment-visa-info`
+		const url = `http://localhost:8080/api/employee/profile/employment-visa-info`;
+		return this.http.get(url);
+	}
+
+	getEmployeeDetailById(id: number) {
+		const url = `http://localhost:8080/api/employee/detail/${id}`;
 		return this.http.get(url);
 	}
 }

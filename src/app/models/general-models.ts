@@ -1,5 +1,3 @@
-
-
 export class EmployeeProfile {
     constructor(
         public name: string,

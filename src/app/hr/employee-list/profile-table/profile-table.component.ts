@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { EmployeeProfile } from 'src/app/models/general-models';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -13,7 +14,8 @@ export class ProfileTableComponent {
 	element_data: EmployeeProfile[] = [];
 	dataSource: MatTableDataSource<EmployeeProfile>;
 
-	constructor(private employeeService: EmployeeService) { }
+	constructor(private employeeService: EmployeeService,
+		private router: Router) { }
 
 	ngOnInit(): void {
 		// TODO: Fetch data from backend
@@ -35,5 +37,10 @@ export class ProfileTableComponent {
 	applyFilter(event: Event) {
 		const filterValue = (event.target as HTMLInputElement).value;
 		this.dataSource.filter = filterValue.trim().toLowerCase();
+	}
+
+	goToEmployeeDetail(id: number) {
+		console.log(id);
+		this.router.navigate([`hr/employee-detail/${id}`]);
 	}
 }
