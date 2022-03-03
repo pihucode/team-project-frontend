@@ -7,3 +7,13 @@ export class EmployeeProfile {
         public position: number
     ) { }
 }
+
+export class VisaInfo {
+    constructor(
+        public fullname: string,
+        public workauth: string,
+        public expdate: string,
+        public daysleft: number
+        // public documents: string,
+    ) { }
+}

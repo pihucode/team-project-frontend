@@ -17,4 +17,9 @@ export class EmployeeService {
 		const url = `http://localhost:8080/api/employee/detail/${id}`;
 		return this.http.get(url);
 	}
+
+	getVisaList() {
+		const url = `http://localhost:8080/api/visas`;
+		return this.http.get(url);
+	}
 }

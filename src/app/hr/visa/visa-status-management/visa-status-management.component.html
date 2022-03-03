@@ -1,6 +1,4 @@
-<table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
-       class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>
     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
@@ -9,31 +7,29 @@
   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
   <ng-container matColumnDef="expandedDetail">
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-      <div class="example-element-detail"
-           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="editInfo">
-            <label>Legal Name</label>
-            <input [(ngModel)]="element.fullname">
-            <label>Type</label>
-            <input [(ngModel)]="element.workauth">
-            <label>Start Date</label>
-            <input value="2022-02-22">
-            <label>End Date</label>
-            <input [(ngModel)]="element.expdate">
-            This is stuff for the form to be edited.
+          <label>Legal Name</label>
+          <input [(ngModel)]="element.fullname">
+          <label>Type</label>
+          <input [(ngModel)]="element.workauth">
+          <label>Start Date</label>
+          <input value="2022-02-22">
+          <label>End Date</label>
+          <input [(ngModel)]="element.expdate">
+          This is stuff for the form to be edited.
         </div>
         <div>
-            This is stuff for documents.
+          This is stuff for documents.
         </div>
       </div>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
