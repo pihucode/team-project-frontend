@@ -18,7 +18,7 @@ export class ProfileTableComponent {
 		private router: Router) { }
 
 	ngOnInit(): void {
-		// TODO: Fetch data from backend
+		// fetch data from backend
 		this.employeeService.getEmployeeList().subscribe((data: EmployeeProfile[]) => {
 			for (let item of data) {
 				let row: EmployeeProfile = new EmployeeProfile(
