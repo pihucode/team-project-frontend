@@ -25,12 +25,12 @@ export class EmployeeEmploymentInfoModalContentComponent implements OnInit {
   }
 
   onSubmit = (form: NgForm) => {
-    console.log(form.value);
     let formData = form.value.employmentInfo;
     let formEmploymentInfo = new EmploymentInfo(
       formData.workAuth,
       formData.authStart,
-      formData.authEnd);
+      formData.authEnd
+    );
     this.profileService.updateEmploymentInfo(formEmploymentInfo);
     this.profileInfoService.setEmploymentInfo(formEmploymentInfo);
     this.activeModal.close(this.employmentInfo);
