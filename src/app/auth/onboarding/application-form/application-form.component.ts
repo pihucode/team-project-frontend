@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Person, Visa } from 'src/app/models/onboarding-models';
+import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Person, Visa, Document, DocumentList } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
 
 @Component({
@@ -55,24 +55,8 @@ export class ApplicationFormComponent implements OnInit {
 			model: [''],
 			color: ['']
 		}),
-		// emergencyContactsArray: this.fb.array([
-		// 	this.fb.group({
-		// 		firstName: ['', Validators.required],
-		// 		lastName: ['', Validators.required],
-		// 		phone: ['', Validators.required],
-		// 		email: ['', Validators.required],
-		// 		relationship: ['', Validators.required]
-		// 	}),
-		// 	this.fb.group({
-		// 		firstName: ['', Validators.required],
-		// 		lastName: ['', Validators.required],
-		// 		phone: ['', Validators.required],
-		// 		email: ['', Validators.required],
-		// 		relationship: ['', Validators.required]
-		// 	})
-		// ]),
 		emergencyContacts: this.fb.array([]),
-		lessons: this.fb.array([])
+		documents: this.fb.array([])
 	});
 
 	constructor(private fb: FormBuilder,
@@ -87,23 +71,7 @@ export class ApplicationFormComponent implements OnInit {
 		)
 	}
 
-	// get emergencyContactsArray(): FormArray {
-	// 	return this.applicationForm.get('emergencyContactsArray') as FormArray;
-	// }
-
-	// addEmergencyContact(): void {
-	// 	this.applicationForm.value.emergencyContactsArray.push(
-	// 		this.fb.group({
-	// 			firstName: ['', Validators.required],
-	// 			lastName: ['', Validators.required],
-	// 			phone: ['', Validators.required],
-	// 			email: ['', Validators.required],
-	// 			relationship: ['', Validators.required]
-	// 		})
-	// 	);
-	// }
-
-	// =============== EMERGENCY CONTACT FORM ARRAY =======================
+	// =============== EMERGENCY CONTACT FORM ARRAY ==================
 	get emergencyContacts() {
 		return this.applicationForm.controls["emergencyContacts"] as FormArray;
 	}
@@ -120,22 +88,19 @@ export class ApplicationFormComponent implements OnInit {
 	deleteEmergencyContact(i: number) {
 		this.emergencyContacts.removeAt(i);
 	}
-	// =====================================================
 
-	// TEST FORM ARRAY =====================================
-	get lessons() {
-		return this.applicationForm.controls["lessons"] as FormArray;
+	// =============== DOCUMENT FORM ARRAY ==================
+	get documents() {
+		return this.applicationForm.controls["documents"] as FormArray;
 	}
-	addLesson() {
-		const lessonForm = this.fb.group({
-			title: [''],
-			level: ['']
+	addDocument() {
+		const documentGroup = this.fb.group({
+			file: [undefined]
 		});
-
-		this.lessons.push(lessonForm);
+		this.documents.push(documentGroup);
 	}
-	deleteLesson(lessonIndex: number) {
-		this.lessons.removeAt(lessonIndex);
+	deleteDocument(i: number) {
+		this.documents.removeAt(i);
 	}
 	// =====================================================
 
@@ -150,7 +115,8 @@ export class ApplicationFormComponent implements OnInit {
 		let addressInfo = this.applicationForm.value.addressInfo;
 		let contactInfo = this.applicationForm.value.contactInfo;
 		let visaInfo = this.applicationForm.value.visaInfo;
-		let emergencyContactsArray = this.applicationForm.value.emergencyContactsArray;
+		let emergencyContactsArray = this.applicationForm.value.emergencyContacts;
+		let documentsArray = this.applicationForm.value.documents;
 
 		let person: Person = new Person(
 			personalInfoData.firstName,
@@ -174,7 +140,7 @@ export class ApplicationFormComponent implements OnInit {
 			addressInfo.state,
 			addressInfo.zip
 		);
-		// todo
+		// emergency contacts
 		let contacts: EmergencyContact[] = [];
 		for (let contact of emergencyContactsArray) {
 			let newContact = new EmergencyContact(
@@ -183,17 +149,26 @@ export class ApplicationFormComponent implements OnInit {
 				contact.email,
 				contact.phone,
 				contact.relationship
-			)
+			);
 			contacts.push(newContact);
 		}
-		let emergencyContactList: EmergencyContactList = new EmergencyContactList(
-			contacts
-		);
+		let emergencyContactList: EmergencyContactList = new EmergencyContactList(contacts);
+
+		// documents
+		let documents: Document[] = [];
+		for (let doc of documentsArray) {
+			let newDoc = new Document(doc.file);
+			documents.push(newDoc);
+		}
+		let documentList: DocumentList = new DocumentList(documents);
+
+		// onboarding request
 		let onboardingRequest = new OnboardingRequest(
 			person,
 			visa,
 			address,
-			emergencyContactList
+			emergencyContactList,
+			documentList
 		);
 		this.onboardingService.onboard(onboardingRequest);
 	}

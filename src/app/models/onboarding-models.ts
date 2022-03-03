@@ -3,7 +3,8 @@ export class OnboardingRequest {
         public person: Person,
         public visa: Visa,
         public address: Address,
-        public emergencyContactList: EmergencyContactList
+        public emergencyContactList: EmergencyContactList,
+        public documentList: DocumentList
     ) { }
 }
 
@@ -51,5 +52,17 @@ export class EmergencyContact {
         public email: string,
         public phone: number,
         public relationship: string
+    ) { }
+}
+
+export class DocumentList {
+    constructor(
+        public documents: Document[]
+    ) { }
+}
+
+export class Document {
+    constructor(
+        public file: File
     ) { }
 }
