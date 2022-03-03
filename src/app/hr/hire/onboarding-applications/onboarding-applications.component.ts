@@ -8,14 +8,17 @@ import { ApplicationsService } from 'src/app/services/applications.service';
 	styleUrls: ['./onboarding-applications.component.css']
 })
 export class OnboardingApplicationsComponent implements OnInit {
-	applications: Applications[] = [];
+	applications: Applications[];
 
 	constructor(private applicationsService: ApplicationsService) { }
 
 	ngOnInit(): void {
 		//fetch data from backend
 		this.applicationsService.getApplications().subscribe(result => {
-			this.applications = result as Applications[];
+			this.applicationsService.setApplicationsObservable(result as Applications[]);
+			this.applicationsService.getApplicationsObservable().subscribe(applications => {
+				this.applications = applications;
+			});
 		}, err => {
 			console.log('Error fetching applications.')
 			console.log(err);

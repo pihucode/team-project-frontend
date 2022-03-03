@@ -127,9 +127,10 @@
                         <label for="alternative-phone">Alternative Phone</label>
                     </div> -->
                     
+                    <!-- [disabled]="applicationInfo.status !== 'open'" -->
                     <button type="submit" (click)="setApprove()">Approve</button>
                     <button type="submit" (click)="setReject()">Reject</button>
-                    <button (click)="displayCancel()">Cancel</button>
+                    <button type="button" (click)="displayCancel()">Cancel</button>
                 </form>
             </div>
         <!-- </mat-tab> -->

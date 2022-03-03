@@ -29,7 +29,7 @@ export class ProfileService {
 	updatePersonalInfo(req: PersonalInfo) {
 		const url = `http://localhost:8080/api/employee/profile/personal-info/${this.email}`;
 		this.http.post(url, req).subscribe(response => {
-			console.log('setAddressInfo called!');
+			console.log('updatePersonalInfo called!');
 		})
 	}
 	updateAddressInfo(req: AddressInfo) {
