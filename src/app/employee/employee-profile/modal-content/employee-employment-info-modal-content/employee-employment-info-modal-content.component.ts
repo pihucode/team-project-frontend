@@ -19,7 +19,7 @@ export class EmployeeEmploymentInfoModalContentComponent implements OnInit {
     private profileInfoService: ProfileInfoService) { }
 
   ngOnInit(): void {
-    this.profileInfoService.getAddressInfo().subscribe(employmentInfo => {
+    this.profileInfoService.getEmploymentInfo().subscribe(employmentInfo => {
       this.employmentInfo = employmentInfo;
     });
   }
