@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Person, Visa, Document, DocumentList } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
 	selector: 'app-application-form',
@@ -61,7 +62,8 @@ export class ApplicationFormComponent implements OnInit {
 
 	constructor(private fb: FormBuilder,
 		private onboardingService: OnboardingService,
-		private activatedRoute: ActivatedRoute) { }
+		private activatedRoute: ActivatedRoute,
+		private datePipe: DatePipe) { }
 
 	ngOnInit(): void {
 		this.activatedRoute.queryParams.subscribe(
@@ -131,8 +133,8 @@ export class ApplicationFormComponent implements OnInit {
 		);
 		let visa: Visa = new Visa(
 			visaInfo.type, //todo
-			visaInfo.workDateStart,
-			visaInfo.workDateEnd
+			visaInfo.workDateStart = this.datePipe.transform(visaInfo.workDateStart, "MM/dd/yyyy"),
+			visaInfo.workDateEnd = this.datePipe.transform(visaInfo.workDateEnd, "MM/dd/yyyy")
 		);
 		let address: Address = new Address(
 			addressInfo.street,

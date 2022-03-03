@@ -33,3 +33,7 @@ export class EmploymentInfo {
         public authEnd: string
     ) { }
 }
+
+// TODO: EmergencyContactInfo
+
+// TODO: Document Info?

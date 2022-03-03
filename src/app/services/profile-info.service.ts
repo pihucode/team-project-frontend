@@ -10,6 +10,8 @@ export class ProfileInfoService {
 	private addressInfo: BehaviorSubject<AddressInfo> = new BehaviorSubject(new AddressInfo('', '', '', undefined));
 	private contactInfo: BehaviorSubject<ContactInfo> = new BehaviorSubject(new ContactInfo('', '', 0, 0));
 	private employmentInfo: BehaviorSubject<EmploymentInfo> = new BehaviorSubject(new EmploymentInfo('', '', ''));
+	// TODO: emergencyContactInfo
+	// TODO: documentInfo
 
 	constructor() { }
 

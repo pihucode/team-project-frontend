@@ -25,8 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VisaModule } from './hr/visa/visa.module';
 import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeListModule } from './hr/employee-list/employee-list.module';
-import { EmployeeVisaComponent } from './employee/employee-visa/employee-visa.component';
 import { EmployeeVisaModule } from './employee/employee-visa/employee-visa.module';
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = []
 
@@ -41,8 +41,7 @@ const routes: Routes = []
     HRHireComponent,
     HRHouseManagementComponent,
     HRLayoutComponent,
-    HRNavigationComponent,
-    EmployeeVisaComponent
+    HRNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +61,7 @@ const routes: Routes = []
     BrowserAnimationsModule,
     EmployeeProfileModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
