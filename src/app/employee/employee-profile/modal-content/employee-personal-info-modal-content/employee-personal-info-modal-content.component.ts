@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PersonalInfo } from 'src/app/models/profile-models';
+import { PersonalInfoService } from 'src/app/services/personal-info.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-employee-personal-info-modal-content',
@@ -9,19 +11,28 @@ import { PersonalInfo } from 'src/app/models/profile-models';
   styleUrls: ['./employee-personal-info-modal-content.component.css']
 })
 export class EmployeePersonalInfoModalContentComponent implements OnInit {
-  @Input()
-  public personalInfo: PersonalInfo;
+  personalInfo: PersonalInfo;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(public activeModal: NgbActiveModal, private personalInfoService: PersonalInfoService, 
+    private profileService: ProfileService) { }
 
   ngOnInit(): void {
+    this.personalInfoService.getPersonalInfo().subscribe(personalInfo => {
+      this.personalInfo = personalInfo;
+    });
   }
 
   onSubmit = (form: NgForm) => {
-    console.log(this.personalInfo);
+    let formData = form.value.personalInfo;
+    let formPersonalInfo = new PersonalInfo(
+      formData.firstname,
+      formData.lastname,
+      formData.preferredname,
+      this.personalInfo.age,
+      formData.ssn);
+    this.profileService.updatePersonalInfo(formPersonalInfo);
+    this.personalInfoService.setPersonalInfo(formPersonalInfo);
     this.activeModal.close(this.personalInfo);
-    // form.value sends json of edited values, need to save into backend
-    console.log(form.value);
   }
 
   displayCancel = () => {

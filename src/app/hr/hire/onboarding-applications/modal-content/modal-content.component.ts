@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApplicationInfo } from 'src/app/models/application-info';
+import { Applications } from 'src/app/models/applications';
 import { ApplicationsService } from 'src/app/services/applications.service';
 
 // TODO: Import Angular Material 
@@ -21,7 +22,9 @@ export class ModalContentComponent implements OnInit {
 	email: string;
 
 	@Input()
-	applicationId: number = -1;
+	applicationId: number;
+
+	applications: Applications[];
 
 	status: string = '';
 
@@ -42,6 +45,11 @@ export class ModalContentComponent implements OnInit {
 		private fb: FormBuilder) { }
 
 	ngOnInit(): void {
+		this.applicationsService.getApplicationsObservable().subscribe(applications => {
+			this.applications = applications;
+			console.log(this.applicationId);
+			this.status = this.applications[this.applicationId - 1].status;
+		});
 	}
 
 	displayCancel = () => {
@@ -51,19 +59,23 @@ export class ModalContentComponent implements OnInit {
 	}
 
 	setApprove = () => {
-		this.status = 'approved'
+		this.status = 'approved';
 	}
 
 	setReject = () => {
-		this.status = 'rejected'
+		this.status = 'rejected';
 	}
 
 	onSubmit = () => {
-		console.log('status is=' + this.status);
 		this.applicationsService.setApplicationStatus(this.applicationId, this.status).subscribe(response => {
-			console.log(response);
+			console.log('Set application status response: '+ response);
+			this.applications[this.applicationId - 1].status = this.status;
+		}, err => {
+			console.log('Error setting application status.')
+			console.log(err);
 		});
 		this.activeModal.dismiss();
+		// TODO: Send Form Of Comments
 		console.log(this.personalInfoForm.value);
 	}
 }
