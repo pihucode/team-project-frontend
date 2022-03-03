@@ -1,1 +1,39 @@
-<p>status-tracking-table works!</p>
+<table mat-table [dataSource]="data" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="visa-type">
+      <th mat-header-cell *matHeaderCellDef> Visa Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.visatype}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="exp-date">
+      <th mat-header-cell *matHeaderCellDef> Expiration Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.expdate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="days-left">
+        <th mat-header-cell *matHeaderCellDef> Days Left </th>
+        <td mat-cell *matCellDef="let element"> {{element.daysleft}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="next-step">
+        <th mat-header-cell *matHeaderCellDef> Next Step </th>
+        <td mat-cell *matCellDef="let element"> {{element.nextstep}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element"> {{element.action}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>

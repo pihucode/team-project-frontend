@@ -5,6 +5,7 @@ import { HrHomeRoutingModule } from './home-routing.module';
 import { HrHomeComponent } from './home.component';
 import { StatusTrackingTableComponent } from './status-tracking-table/status-tracking-table.component';
 
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { StatusTrackingTableComponent } from './status-tracking-table/status-tra
   ],
   imports: [
     CommonModule,
-    HrHomeRoutingModule
+    HrHomeRoutingModule,
+    MatTableModule
   ]
 })
 export class HrHomeModule { }
