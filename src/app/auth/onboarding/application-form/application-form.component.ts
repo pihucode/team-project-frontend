@@ -55,25 +55,25 @@ export class ApplicationFormComponent implements OnInit {
 			model: [''],
 			color: ['']
 		}),
-		emergencyContactsArray: this.fb.array([
-			this.fb.group({
-				firstName: ['', Validators.required],
-				lastName: ['', Validators.required],
-				phone: ['', Validators.required],
-				email: ['', Validators.required],
-				relationship: ['', Validators.required]
-			}),
-			this.fb.group({
-				firstName: ['', Validators.required],
-				lastName: ['', Validators.required],
-				phone: ['', Validators.required],
-				email: ['', Validators.required],
-				relationship: ['', Validators.required]
-			})
-		])
+		// emergencyContactsArray: this.fb.array([
+		// 	this.fb.group({
+		// 		firstName: ['', Validators.required],
+		// 		lastName: ['', Validators.required],
+		// 		phone: ['', Validators.required],
+		// 		email: ['', Validators.required],
+		// 		relationship: ['', Validators.required]
+		// 	}),
+		// 	this.fb.group({
+		// 		firstName: ['', Validators.required],
+		// 		lastName: ['', Validators.required],
+		// 		phone: ['', Validators.required],
+		// 		email: ['', Validators.required],
+		// 		relationship: ['', Validators.required]
+		// 	})
+		// ]),
+		emergencyContacts: this.fb.array([]),
+		lessons: this.fb.array([])
 	});
-	// form1: FormGroup;
-	// formArray1: FormArray;
 
 	constructor(private fb: FormBuilder,
 		private onboardingService: OnboardingService,
@@ -87,21 +87,57 @@ export class ApplicationFormComponent implements OnInit {
 		)
 	}
 
-	get emergencyContactsArray(): FormArray {
-		return this.applicationForm.get('emergencyContactsArray') as FormArray;
-	}
+	// get emergencyContactsArray(): FormArray {
+	// 	return this.applicationForm.get('emergencyContactsArray') as FormArray;
+	// }
 
-	addEmergencyContact(): void {
-		this.applicationForm.value.emergencyContactsArray.push(
-			this.fb.group({
-				firstName: ['', Validators.required],
-				lastName: ['', Validators.required],
-				phone: ['', Validators.required],
-				email: ['', Validators.required],
-				relationship: ['', Validators.required]
-			})
-		);
+	// addEmergencyContact(): void {
+	// 	this.applicationForm.value.emergencyContactsArray.push(
+	// 		this.fb.group({
+	// 			firstName: ['', Validators.required],
+	// 			lastName: ['', Validators.required],
+	// 			phone: ['', Validators.required],
+	// 			email: ['', Validators.required],
+	// 			relationship: ['', Validators.required]
+	// 		})
+	// 	);
+	// }
+
+	// =============== EMERGENCY CONTACT FORM ARRAY =======================
+	get emergencyContacts() {
+		return this.applicationForm.controls["emergencyContacts"] as FormArray;
 	}
+	addEmergencyContact() {
+		const emergencyContactGroup = this.fb.group({
+			firstName: ['', Validators.required],
+			lastName: ['', Validators.required],
+			phone: ['', Validators.required],
+			email: ['', Validators.required],
+			relationship: ['', Validators.required]
+		});
+		this.emergencyContacts.push(emergencyContactGroup);
+	}
+	deleteEmergencyContact(i: number) {
+		this.emergencyContacts.removeAt(i);
+	}
+	// =====================================================
+
+	// TEST FORM ARRAY =====================================
+	get lessons() {
+		return this.applicationForm.controls["lessons"] as FormArray;
+	}
+	addLesson() {
+		const lessonForm = this.fb.group({
+			title: [''],
+			level: ['']
+		});
+
+		this.lessons.push(lessonForm);
+	}
+	deleteLesson(lessonIndex: number) {
+		this.lessons.removeAt(lessonIndex);
+	}
+	// =====================================================
 
 	onPermanentResidentChange(): void {
 		this.isPermanentResident = !this.isPermanentResident;

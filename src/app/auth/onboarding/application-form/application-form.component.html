@@ -107,7 +107,7 @@
         <input id="car-color" type="text" formControlName="color">
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <h4>Emergency Contacts</h4>
         <button (click)="addEmergencyContact()" type="button">Add an Emergency Contact</button>
 
@@ -130,6 +130,57 @@
                     <label>Relationship: </label>
                     <input type="text" formControlName="relationship">
                 </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="form-group">
+        <h4>Emergency Contacts</h4>
+        <button (click)="addEmergencyContact()" type="button">Add Emergency Contact</button>
+
+        <div formArrayName="emergencyContacts">
+            <div *ngFor="let emergencyContactGroup of emergencyContacts.controls; let i = index">
+
+                <div [formGroupName]="i" class="form-group">
+                    <label>First Name: </label>
+                    <input type="text" formControlName="firstName">
+
+                    <label>Last Name: </label>
+                    <input type="text" formControlName="lastName">
+
+                    <label>Phone: </label>
+                    <input type="number" formControlName="firstName">
+
+                    <label>Email: </label>
+                    <input type="email" formControlName="email">
+
+                    <label>Relationship: </label>
+                    <input type="text" formControlName="relationship">
+
+                    <button (click)="deleteEmergencyContact(i)" type="button">Remove</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h4>Lessons</h4>
+        <button (click)="addLesson()" type="button">Add Lesson</button>
+
+        <div formArrayName="lessons">
+            <div *ngFor="let lessonForm of lessons.controls; let i = index">
+
+                <div [formGroupName]="i" class="form-group">
+                    <label>title: </label>
+                    <input type="text" formControlName="title">
+
+                    <label>level: </label>
+                    <input type="text" formControlName="level">
+
+                    <button (click)="deleteLesson(i)" type="button">Remove</button>
+                </div>
+
             </div>
         </div>
     </div>
