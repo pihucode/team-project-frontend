@@ -1,0 +1,32 @@
+<div class="card w-75">
+    <div class="card-body">
+        <div class="fw-bold fs-4">Name</div>
+        <br>
+        <div class="text-muted">Email</div>
+        <br>
+        <div class="text-muted">Work Authorization</div>
+        <div>H4</div>
+
+        <div class="text-muted">Authorization Days Left</div>
+        <div>307</div>
+
+        <div class="text-muted">Authorization Start Date</div>
+        <div>2021-12-26</div>
+
+        <div class="text-muted">Authorization End Date</div>
+        <div>2022-12-29</div>
+        <br>
+        <div class="fw-bold fs-5">Document Uploaded:</div>
+        <div *ngFor="let document of documents">
+            <div>
+                ICON
+            </div>
+            <div>
+                {{document.documentName}}
+            </div>
+            <div>
+                download
+            </div>
+        </div>
+    </div>
+</div>
