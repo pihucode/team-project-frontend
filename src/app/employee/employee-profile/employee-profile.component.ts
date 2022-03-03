@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo } from 'src/app/models/profile-models';
-import { AddressInfoService } from 'src/app/services/address-info.service';
-import { PersonalInfoService } from 'src/app/services/personal-info.service';
+import { ProfileInfoService } from 'src/app/services/profile-info.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
@@ -28,22 +27,22 @@ export class EmployeeProfileComponent implements OnInit {
 	}
 
 	constructor(private modalService: NgbModal,
-		private profileService: ProfileService, private addressInfoService: AddressInfoService, 
-		private personalInfoService: PersonalInfoService) { }
+		private profileService: ProfileService,
+		private profileInfoService: ProfileInfoService) { }
 
 	ngOnInit(): void {
 		// fetch data from backend
 		this.profileService.getPersonalInfo().subscribe((data: PersonalInfo) => {
-			this.personalInfoService.setPersonalInfo(data);
+			this.profileInfoService.setPersonalInfo(data);
 		});
 		this.profileService.getAddressInfo().subscribe((data: AddressInfo) => {
-			this.addressInfoService.setAddressInfo(data);
+			this.profileInfoService.setAddressInfo(data);
 		});
 		this.profileService.getContactInfo().subscribe((data: ContactInfo) => {
-			this.contactInfo = data;
+			this.profileInfoService.setContactInfo(data);
 		});
 		this.profileService.getEmploymentInfo().subscribe((data: EmploymentInfo) => {
-			this.employmentInfo = data;
+			this.profileInfoService.setEmploymentInfo(data);
 		});
 	}
 

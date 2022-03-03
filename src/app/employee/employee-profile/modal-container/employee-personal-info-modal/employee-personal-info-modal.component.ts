@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PersonalInfo } from 'src/app/models/profile-models';
-import { PersonalInfoService } from 'src/app/services/personal-info.service';
+import { ProfileInfoService } from 'src/app/services/profile-info.service';
 import { EmployeePersonalInfoModalContentComponent } from '../../modal-content/employee-personal-info-modal-content/employee-personal-info-modal-content.component';
 
 @Component({
@@ -12,7 +12,7 @@ import { EmployeePersonalInfoModalContentComponent } from '../../modal-content/e
 export class EmployeePersonalInfoModalComponent implements OnInit {
   personalInfo: PersonalInfo;
 
-  constructor(private modalService: NgbModal, private personalInfoService: PersonalInfoService) { }
+  constructor(private modalService: NgbModal, private personalInfoService: ProfileInfoService) { }
 
   ngOnInit(): void {
     this.personalInfoService.getPersonalInfo().subscribe(personalInfo => {

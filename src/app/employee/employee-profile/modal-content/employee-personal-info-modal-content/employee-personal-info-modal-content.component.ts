@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PersonalInfo } from 'src/app/models/profile-models';
-import { PersonalInfoService } from 'src/app/services/personal-info.service';
+import { ProfileInfoService } from 'src/app/services/profile-info.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class EmployeePersonalInfoModalContentComponent implements OnInit {
   personalInfo: PersonalInfo;
 
-  constructor(public activeModal: NgbActiveModal, private personalInfoService: PersonalInfoService, 
+  constructor(public activeModal: NgbActiveModal, private personalInfoService: ProfileInfoService,
     private profileService: ProfileService) { }
 
   ngOnInit(): void {

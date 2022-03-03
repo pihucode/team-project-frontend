@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddressInfo, ContactInfo, PersonalInfo } from '../models/profile-models';
+import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo } from '../models/profile-models';
 
 @Injectable({
 	providedIn: 'root'
@@ -42,6 +42,12 @@ export class ProfileService {
 		const url = `http://localhost:8080/api/employee/profile/contact-info/${this.email}`;
 		this.http.post(url, req).subscribe(response => {
 			console.log('updateContactInfo called!');
+		})
+	}
+	updateEmploymentInfo(req: EmploymentInfo) {
+		const url = `http://localhost:8080/api/employee/profile/employment-info/${this.email}`;
+		this.http.post(url, req).subscribe(response => {
+			console.log('updateEmploymentInfo called!');
 		})
 	}
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressInfo } from 'src/app/models/profile-models';
-import { AddressInfoService } from 'src/app/services/address-info.service';
+import { ProfileInfoService } from 'src/app/services/profile-info.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class EmployeeAddressInfoModalContentComponent implements OnInit {
   addressInfo: AddressInfo;
 
   constructor(public activeModal: NgbActiveModal,
-    private profileService: ProfileService, private addressInfoService: AddressInfoService) { }
+    private profileService: ProfileService,
+    private addressInfoService: ProfileInfoService) { }
 
   ngOnInit(): void {
     this.addressInfoService.getAddressInfo().subscribe(addressInfo => {

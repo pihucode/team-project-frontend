@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileInfoService } from 'src/app/services/profile-info.service';
 import { EmployeeContactInfoModalContentComponent } from '../../modal-content/employee-contact-info-modal-content/employee-contact-info-modal-content.component';
 
 @Component({
@@ -11,9 +12,13 @@ export class EmployeeContactInfoModalComponent implements OnInit {
   @Input()
   contactInfo
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private profileInfoService: ProfileInfoService) { }
 
   ngOnInit(): void {
+
+    this.profileInfoService.getContactInfo().subscribe(contactInfo => {
+      this.contactInfo = contactInfo;
+    });
   }
 
   openContactInfoModal = (): void => {
