@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { HrHomeRoutingModule } from './home-routing.module';
 import { HrHomeComponent } from './home.component';
+import { StatusTrackingTableComponent } from './status-tracking-table/status-tracking-table.component';
 
 
 @NgModule({
   declarations: [
-    HrHomeComponent
+    HrHomeComponent,
+    StatusTrackingTableComponent
   ],
   imports: [
     CommonModule,
