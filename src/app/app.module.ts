@@ -23,6 +23,7 @@ import { EmployeeHomeModule } from './employee/home/home.module';
 import { EmployeeProfileModule } from './employee/employee-profile/employee-profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VisaModule } from './hr/visa/visa.module';
+import { HrHomeModule } from './hr/home/home.module';
 
 const routes: Routes = []
 
@@ -48,6 +49,7 @@ const routes: Routes = []
     LoginModule,
     RegisterModule,
     EmployeeHomeModule,
+    HrHomeModule,
     VisaModule,
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule,
