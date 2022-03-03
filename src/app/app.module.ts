@@ -26,6 +26,8 @@ import { VisaModule } from './hr/visa/visa.module';
 import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeListComponent } from './hr/employee-list/employee-list.component';
 import { EmployeeListModule } from './hr/employee-list/employee-list.module';
+import { EmployeeVisaComponent } from './employee/employee-visa/employee-visa.component';
+import { EmployeeVisaModule } from './employee/employee-visa/employee-visa.module';
 
 const routes: Routes = []
 
@@ -41,7 +43,8 @@ const routes: Routes = []
     HRHouseManagementComponent,
     HRLayoutComponent,
     HRNavigationComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeVisaComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ const routes: Routes = []
     LoginModule,
     RegisterModule,
     EmployeeHomeModule,
+    EmployeeVisaModule,
     HrHomeModule,
     VisaModule,
     EmployeeListModule,
