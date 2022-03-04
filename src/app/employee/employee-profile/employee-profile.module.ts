@@ -18,6 +18,11 @@ import { EmployeeDocumentInfoModalComponent } from './modal-container/employee-d
 import { EmployeeContactInfoModalComponent } from './modal-container/employee-contact-info-modal/employee-contact-info-modal.component';
 import { EmployeeAddressInfoModalComponent } from './modal-container/employee-address-info-modal/employee-address-info-modal.component';
 
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +44,11 @@ import { EmployeeAddressInfoModalComponent } from './modal-container/employee-ad
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: [
     EmployeePersonalInfoModalContentComponent

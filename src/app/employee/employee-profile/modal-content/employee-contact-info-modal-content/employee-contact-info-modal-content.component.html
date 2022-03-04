@@ -10,30 +10,30 @@
         <div ngModelGroup="employeeContactInfo" #employeeContactInfoInputs="ngModelGroup">
             <div class="form-group">
                 <label for="personal-email">Personal Email: </label>
-                <input type="text" class="form-control" id="personal-email" name="personalEmail"
-                    [ngModel]="contactInfo.personalEmail">
+                <input type="email" class="form-control" id="personal-email" name="personalEmail"
+                    [ngModel]="contactInfo.personalEmail" ngModel email>
             </div>
 
             <div class="form-group">
                 <label for="work-email">Work Email: </label>
-                <input type="text" class="form-control" id="work-email" name="workEmail"
-                    [ngModel]="contactInfo.workEmail">
+                <input type="email" class="form-control" id="work-email" name="workEmail"
+                    [ngModel]="contactInfo.workEmail" ngModel email>
             </div>
 
             <div class="form-group">
                 <label for="cellphone">Cell Phone: </label>
-                <input type="text" class="form-control" id="cellphone" name="cellphone"
+                <input type="number" class="form-control" id="cellphone" name="cellphone"
                     [ngModel]="contactInfo.cellphone">
             </div>
 
             <div class="form-group">
                 <label for="workphone">Work Phone: </label>
-                <input type="text" class="form-control" id="workphone" name="workphone"
+                <input type="number" class="form-control" id="workphone" name="workphone"
                     [ngModel]="contactInfo.workphone">
             </div>
         </div>
         <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
         <button type="button" (click)="displayCancel()">Cancel</button>
-        <button type="submit">Submit</button>
+        <button type="submit" [disabled]="!editEmployeeContactInfoForm.form.valid">Submit</button>
     </form>
 </div>

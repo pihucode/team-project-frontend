@@ -27,12 +27,12 @@
 
             <div class="form-group">
                 <label for="ssn">SSN: </label>
-                <input type="text" class="form-control" id="ssn" name="ssn" [ngModel]="personalInfo.ssn">
+                <input type="number" class="form-control" id="ssn" name="ssn" [ngModel]="personalInfo.ssn">
             </div>
 
         </div>
         <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
         <button type="button" (click)="displayCancel()">Cancel</button>
-        <button type="submit">Submit</button>
+        <button type="submit" [disabled]="!editPersonalInfoForm.form.valid">Submit</button>
     </form>
 </div>

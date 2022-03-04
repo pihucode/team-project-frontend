@@ -21,7 +21,6 @@ export class EmployeeContactInfoModalContentComponent implements OnInit {
   }
 
   onSubmit = (form: NgForm) => {
-    console.log("form");
     let formData = form.value.employeeContactInfo;
     console.log(formData);
     let formContactInfo = new ContactInfo(

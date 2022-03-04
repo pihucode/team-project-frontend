@@ -16,13 +16,13 @@
 
             <div class="form-group">
                 <label for="auth-start">Authorization Start Date: </label>
-                <input type="text" class="form-control" id="auth-start" name="authStart"
+                <input type="date" class="form-control" id="auth-start" name="authStart"
                     [ngModel]="employmentInfo.authStart">
             </div>
 
             <div class="form-group">
                 <label for="auth-end">Authorization End Date: </label>
-                <input type="text" class="form-control" id="auth-end" name="authEnd" [ngModel]="employmentInfo.authEnd">
+                <input type="date" class="form-control" id="auth-end" name="authEnd" [ngModel]="employmentInfo.authEnd">
             </div>
 
             <!-- <div class="form-group">
@@ -37,6 +37,6 @@
         </div>
         <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
         <button type="button" (click)="displayCancel()">Cancel</button>
-        <button type="submit">Submit</button>
+        <button type="submit" [disabled]="!editEmploymentInfoForm.form.valid">Submit</button>
     </form>
 </div>
