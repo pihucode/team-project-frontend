@@ -10,13 +10,8 @@ export class EmailService {
 
   constructor(private http: HttpClient) { }
 
-  // sendEmail(to: string, subject: string, text: string): void {
-  //   console.log("sending mail to endpoint");
-  //   this.http.post(this.endpoint, { to, subject, text });
-  // }
-
   sendEmail = (msg: EmailMessage) => {
-    console.log(msg);
+    // console.log(msg);
     this.http.post(this.endpoint, msg, {
       responseType: 'text'
     }).subscribe(response => {

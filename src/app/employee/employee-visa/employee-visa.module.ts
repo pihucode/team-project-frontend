@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EmployeeVisaRoutingModule } from './employee-visa-routing.module';
 import { VisaManagementComponent } from './visa-management/visa-management.component';
 import { EmployeeVisaComponent } from './employee-visa.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { EmployeeVisaComponent } from './employee-visa.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     EmployeeVisaRoutingModule
   ]
 })

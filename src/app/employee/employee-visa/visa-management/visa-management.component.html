@@ -1,3 +1,9 @@
+<p>{{message}}</p>
+<form [formGroup]="fileForm" (ngSubmit)="uploadDoc()">
+    <input type="file" formControlName="file">
+    <button type="submit">Submit</button>
+</form>
+
 <div class="card w-75">
     <div class="card-body">
         <div class="fw-bold fs-4">Name</div>
@@ -30,3 +36,4 @@
         </div>
     </div>
 </div>
+<pre>{{visa | json}}</pre>

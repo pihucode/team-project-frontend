@@ -17,3 +17,21 @@ export class VisaInfo {
         // public documents: string,
     ) { }
 }
+
+export class EmployeeVisaInfo {
+    constructor(
+        public fullname: string,
+        public workAuth: string,
+        public email: string,
+        public daysLeft: number,
+        public startDate: string,
+        public endDate: string
+    ) { }
+}
+
+export class Document {
+    constructor(
+        public file: File,
+        public type: string
+    ) { }
+}
