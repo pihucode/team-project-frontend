@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getTokenValidity() {
-    const url = `http://localhost:8080/api/is-token-valid?email=${this.email}`;
+    const url = `http://localhost:8080/api/is-token-valid/${this.email}/${this.registrationToken}`;
     this.http.get(url).subscribe((res: boolean) => {
       this.isTokenValid = res;
     })
