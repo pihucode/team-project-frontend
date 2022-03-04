@@ -27,6 +27,7 @@ export class VisaStatusManagementComponent implements OnInit {
 	selectedFiles?: FileList;
 	isEdit: boolean = false;
 	editBtn: string = "Edit";
+	workAuthorizationTypes: string[] = ['H1-B', 'L2', 'F1 (CPT/OPT)', 'H4', 'Other'];
 
 	constructor(private visaService: VisaService,
 		private fileService: FileService) { }

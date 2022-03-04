@@ -7,6 +7,10 @@ import { VisaComponent } from './visa.component';
 import { VisaStatusManagementComponent } from './visa-status-management/visa-status-management.component';
 
 import {MatTableModule} from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import {MatTableModule} from '@angular/material/table';
     CommonModule,
     VisaRoutingModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
   ]
 })
 export class VisaModule { }
