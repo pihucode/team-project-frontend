@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { EmailMessage } from 'src/app/models/email-message';
 import { Token } from 'src/app/models/token';
 import { EmailService } from 'src/app/services/email.service';
@@ -13,7 +13,10 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class GenerateTokenComponent implements OnInit {
 	generateTokenForm = this.fb.group({
-		email: ['', Validators.required]
+		email: new FormControl('', Validators.compose([
+			Validators.required,
+			Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+		]))
 	});
 
 	constructor(private fb: FormBuilder, private http: HttpClient, private emailService: EmailService,
