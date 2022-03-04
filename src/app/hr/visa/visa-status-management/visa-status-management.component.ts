@@ -18,11 +18,6 @@ import { VisaService } from 'src/app/services/visa.service';
 })
 export class VisaStatusManagementComponent implements OnInit {
 
-  // data: SomeData[] = [
-  //   {fullname: 'name1', workauth: 'L2', expdate: '2022-09-23', daysleft: 210, documents: 'someDoc'},
-  //   {fullname: 'name2', workauth: 'other', expdate: '2022-12-20', daysleft: 298, documents: 'someDoc'},
-  //   {fullname: 'name3', workauth: 'H4', expdate: '2022-12-29', daysleft: 307, documents: 'someDoc'}
-  // ]
   data: VisaInfo[] = [];
 
   dataSource: VisaInfo[];

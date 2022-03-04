@@ -13,7 +13,8 @@ export class VisaInfo {
         public fullname: string,
         public workauth: string,
         public expdate: string,
-        public daysleft: number
+        public daysleft: number,
+        public nextStep: string,
         // public documents: string,
     ) { }
 }

@@ -21,20 +21,7 @@ export class VisaService {
 	}
 
 	getOptStage() {
-		const url = `http://localhost:8080/api/visa/opt-stage/${this.email}/1`;
+		const url = `http://localhost:8080/api/visa/opt-stage/${this.email}`;
 		return this.http.get(url);
 	}
-
-	// uploadDoc(doc: Document) {
-	// 	const url = `http://localhost:8080/api/document/${this.email}`;
-	// 	this.http.post(url, doc).subscribe(response => {
-	// 		console.log('uploadDoc called!');
-	// 		console.log(doc);
-	// 	});
-	// }
-
-	// getEmployeeDetailById(id: number) {
-	// 	const url = `http://localhost:8080/api/employee/detail/${id}`;
-	// 	return this.http.get(url);
-	// }
 }
