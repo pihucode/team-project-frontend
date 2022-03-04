@@ -15,7 +15,7 @@ export class VisaManagementComponent implements OnInit {
 		{ documentName: 'document2' },
 		{ documentName: 'document3' }
 	];
-	visa: EmployeeVisaInfo;
+	visa = new EmployeeVisaInfo('','','',undefined,'','');
 	message: string;
 	docType: string;
 	stage: number;

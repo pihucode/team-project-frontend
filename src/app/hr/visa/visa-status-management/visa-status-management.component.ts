@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { VisaInfo } from 'src/app/models/general-models';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { VisaService } from 'src/app/services/visa.service';
 
 @Component({
   selector: 'app-visa-status-management',
@@ -28,11 +29,11 @@ export class VisaStatusManagementComponent implements OnInit {
   columnsToDisplay = ['fullname', 'workauth', 'expdate', 'daysleft'];
   expandedElement: VisaInfo | null;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private visaService: VisaService) { }
 
   ngOnInit(): void {
     // fetch data from backend
-    this.employeeService.getVisaList().subscribe((res: VisaInfo[]) => {
+    this.visaService.getVisaList().subscribe((res: VisaInfo[]) => {
       for (let item of res) {
         this.data.push(item);
       }

@@ -10,6 +10,11 @@ export class VisaService {
 
 	constructor(private http: HttpClient) { }
 
+	getVisaList() {
+		const url = `http://localhost:8080/api/visas`;
+		return this.http.get(url);
+	}
+
 	getVisaInfo() {
 		const url = `http://localhost:8080/api/visa/${this.email}`;
 		return this.http.get(url);
