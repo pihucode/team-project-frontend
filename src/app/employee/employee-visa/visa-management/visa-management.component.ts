@@ -24,7 +24,8 @@ export class VisaManagementComponent implements OnInit {
 	selectedFiles?: FileList;
 	filenames: string[] = [];
 
-	constructor(private visaService: VisaService,
+	constructor(
+		private visaService: VisaService,
 		private fileService: FileService) { }
 
 	ngOnInit(): void {
@@ -58,15 +59,25 @@ export class VisaManagementComponent implements OnInit {
 				// let doc: DocumentFile = new DocumentFile(
 				// 	this.formData, this.docType
 				// );
-				this.fileService.uploadDoc(this.formData, this.docType);
+				this.fileService.uploadDoc(this.formData, this.docType).subscribe(res => {
+					console.log('uploadDoc called!')
+					this.stage++;
+					this.selectedFiles = undefined;
+					this.setupStatus();
+					this.populateDocs();
+				}, err => {
+					console.log('Error with uploading document.')
+					console.log(err);
+				});
 			}
 		}
 
-		this.stage++;
-		this.selectedFiles = undefined;
-		this.setupStatus();
+		// this.stage++;
+		// this.selectedFiles = undefined;
+		// this.setupStatus();
 		// this.populateDocs(); //doesn't work because backend lags behind
 		// todo - maybe force a page reload?
+
 	}
 
 	handleDocDownload(filename: string) {

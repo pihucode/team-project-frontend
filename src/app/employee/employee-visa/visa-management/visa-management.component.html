@@ -1,8 +1,7 @@
 <p>{{message}}</p>
-<div>
+<div *ngIf="docType != ''">
     <input type="file" (change)="selectFile($event)" />
-    <button class="btn btn-success btn-sm" (click)="handleDocUpload()" [disabled]="!selectedFiles"
-        [hidden]="docType == ''">
+    <button class="btn btn-success btn-sm" (click)="handleDocUpload()" [disabled]="!selectedFiles">
         Upload file
     </button>
 </div>
@@ -28,7 +27,7 @@
         <br>
         <div class="fw-bold fs-5">Documents Uploaded:</div>
         <div *ngFor="let filename of filenames">
-            <button (click)="handleDocDownload(filename)">{{filename}}</button>
+            <button class="btn btn-link btn-sm" (click)="handleDocDownload(filename)">{{filename}}</button>
         </div>
     </div>
 </div>

@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class FileService {
+
 	private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
 
 	constructor(private http: HttpClient) { }
@@ -15,8 +17,13 @@ export class FileService {
 		// 	'Content-Type': 'multipart/form-data'
 		// });
 		// let options = { headers: headers };
+		return this.http.post(url, data);
+	}
+
+	uploadDocToEmail(data: FormData, type: string, email: string) {
+		const url = `http://localhost:8080/api/document/${email}/${type}`;
 		this.http.post(url, data).subscribe(response => {
-			console.log('uploadDoc called!');
+			console.log('uploadDocToEmail called!');
 		});
 	}
 
@@ -27,6 +34,11 @@ export class FileService {
 
 	getOptDocs() {
 		const url = `http://localhost:8080/api/documents/opt/${this.email}`;
+		return this.http.get(url);
+	}
+
+	getOptDocsByEmail(email: string) {
+		const url = `http://localhost:8080/api/documents/opt/${email}`;
 		return this.http.get(url);
 	}
 
