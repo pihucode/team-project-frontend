@@ -30,6 +30,11 @@ export class FileService {
 		return this.http.get(url);
 	}
 
+	getOptDocsByEmail(email: string) {
+		const url = `http://localhost:8080/api/documents/opt/${email}`;
+		return this.http.get(url);
+	}
+
 	getFileName(email: string, type: string) {
 		const url = `http://localhost:8080/api/documents/opt/${email}/${type}`;
 		return this.http.get(url);

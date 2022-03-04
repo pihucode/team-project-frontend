@@ -24,7 +24,8 @@ export class VisaManagementComponent implements OnInit {
 	selectedFiles?: FileList;
 	filenames: string[] = [];
 
-	constructor(private visaService: VisaService,
+	constructor(
+		private visaService: VisaService,
 		private fileService: FileService) { }
 
 	ngOnInit(): void {
@@ -92,7 +93,7 @@ export class VisaManagementComponent implements OnInit {
 			}
 			case 4: {
 				this.message = "Waiting for HR to approve and sign I-983";
-				this.docType = "";
+				this.docType = "I-983_signed";
 				break;
 			}
 			case 5: {
