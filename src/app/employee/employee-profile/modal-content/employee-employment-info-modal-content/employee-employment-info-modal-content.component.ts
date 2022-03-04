@@ -14,6 +14,8 @@ export class EmployeeEmploymentInfoModalContentComponent implements OnInit {
   @Input()
   employmentInfo
 
+  workAuthorizationTypes: string[] = ['H1-B', 'L2', 'F1 (CPT/OPT)', 'H4', 'Other'];
+
   constructor(public activeModal: NgbActiveModal,
     private profileService: ProfileService,
     private profileInfoService: ProfileInfoService) { }
@@ -26,6 +28,9 @@ export class EmployeeEmploymentInfoModalContentComponent implements OnInit {
 
   onSubmit = (form: NgForm) => {
     let formData = form.value.employmentInfo;
+    console.log(formData.workAuth);
+    console.log(formData.authStart);
+    console.log(formData.authEnd);
     let formEmploymentInfo = new EmploymentInfo(
       formData.workAuth,
       formData.authStart,

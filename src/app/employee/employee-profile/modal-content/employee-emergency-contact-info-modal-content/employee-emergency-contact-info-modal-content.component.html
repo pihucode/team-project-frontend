@@ -28,7 +28,6 @@
                 <input type="text" class="form-control" id="address" name="address" [ngModel]="emergencyContactInfo.address">
             </div>
         </div>
-        <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
         <button type="button" (click)="displayCancel()" >Cancel</button>
         <button type="submit" [disabled]="!editEmergencyContactInfoForm.form.valid">Submit</button>
     </form>

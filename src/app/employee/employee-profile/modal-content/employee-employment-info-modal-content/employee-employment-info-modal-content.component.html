@@ -10,8 +10,11 @@
         <div ngModelGroup="employmentInfo" #employmentInfoInputs="ngModelGroup">
             <div class="form-group">
                 <label for="work-auth">Work Auth: </label>
-                <input type="text" class="form-control" id="work-auth" name="workAuth"
-                    [ngModel]="employmentInfo.workAuth">
+                <select class="form-select" id="work-auth" name="workAuth" [ngModel]="employmentInfo.workAuth">
+                    <option *ngFor="let workAuth of workAuthorizationTypes" value="{{workAuth}}">{{workAuth}}</option>
+                </select>
+                <!-- <input type="text" class="form-control" id="work-auth" name="workAuth"
+                    [ngModel]="employmentInfo.workAuth"> -->
             </div>
 
             <div class="form-group">
