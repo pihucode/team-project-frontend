@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,13 +9,15 @@ export class FileService {
 
 	constructor(private http: HttpClient) { }
 
-	uploadFile() {
-		// const url = `http://localhost:8080/api/visa/${this.email}`;
-		// return this.http.get(url);
+	uploadDoc3(data: FormData, type: string) {
+		const url = `http://localhost:8080/api/document/${this.email}/${type}`;
+		// let headers = new HttpHeaders({
+		// 	'Content-Type': 'multipart/form-data'
+		// });
+		// let options = { headers: headers };
+		this.http.post(url, data).subscribe(response => {
+			console.log('uploadDoc called!');
+		});
 	}
 
-	// getEmployeeDetailById(id: number) {
-	// 	const url = `http://localhost:8080/api/employee/detail/${id}`;
-	// 	return this.http.get(url);
-	// }
 }

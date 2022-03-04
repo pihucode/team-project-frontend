@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { EmployeeVisaInfo } from 'src/app/models/general-models';
 import { VisaService } from 'src/app/services/visa.service';
-import { Document } from 'src/app/models/general-models';
+import { DocumentFile } from 'src/app/models/general-models';
+import { FileService } from 'src/app/services/file-service';
 
 @Component({
 	selector: 'app-visa-management',
@@ -15,16 +16,15 @@ export class VisaManagementComponent implements OnInit {
 		{ documentName: 'document2' },
 		{ documentName: 'document3' }
 	];
-	visa = new EmployeeVisaInfo('','','',undefined,'','');
+	visa = new EmployeeVisaInfo('', '', '', undefined, '', '');
 	message: string;
 	docType: string;
 	stage: number;
-	fileForm = this.fb.group({
-		file: [undefined],
-	});
+	formData: FormData = new FormData();
+	selectedFiles?: FileList;
 
 	constructor(private visaService: VisaService,
-		private fb: FormBuilder) { }
+		private fileService: FileService) { }
 
 	ngOnInit(): void {
 		// get data from backend
@@ -33,33 +33,46 @@ export class VisaManagementComponent implements OnInit {
 		});
 		this.visaService.getOptStage().subscribe((data: number) => {
 			this.stage = data;
-			this.setupStatus(data);
+			this.setupStatus();
 		});
 	}
 
-	uploadDoc() {
-		let doc: Document = new Document(
-			this.fileForm.value.file, this.docType
-		);
-		this.visaService.uploadDoc(doc);
-
+	selectFile(event: any): void {
+		this.selectedFiles = event.target.files;
 	}
 
-	setupStatus(stage: number) {
-		switch (stage) {
+	handleDocUpload() {
+		if (this.selectedFiles) {
+			const file: File | null = this.selectedFiles.item(0);
+			if (file) {
+				this.formData.set('file', file as File);
+				// let doc: DocumentFile = new DocumentFile(
+				// 	this.formData, this.docType
+				// );
+				this.fileService.uploadDoc3(this.formData, this.docType);
+			}
+		}
+
+		this.stage++;
+		this.selectedFiles = undefined;
+		this.setupStatus();
+	}
+
+	setupStatus() {
+		switch (this.stage) {
 			case 1: {
 				this.message = "Please upload a copy of your OPT Receipt";
-				this.docType = "OPT Receipt";
+				this.docType = "OPT_Receipt";
 				break;
 			}
 			case 2: {
 				this.message = "Please upload a copy of your OPT EAD";
-				this.docType = "OPT EAD";
+				this.docType = "OPT_EAD";
 				break;
 			}
 			case 3: {
 				this.message = "Please download and fill your I-983 form";
-				this.docType = "I-983 form";
+				this.docType = "I-983_form";
 				break;
 			}
 			case 4: {
@@ -74,12 +87,12 @@ export class VisaManagementComponent implements OnInit {
 			}
 			case 6: {
 				this.message = "Please upload your OPT STEM Receipt";
-				this.docType = "OPT STEM Receipt";
+				this.docType = "OPT_STEM_Receipt";
 				break;
 			}
 			case 7: {
 				this.message = "Please upload your OPT STEM EAD";
-				this.docType = "OPT STEM EAD";
+				this.docType = "OPT_STEM_EAD";
 				break;
 			}
 			default: {

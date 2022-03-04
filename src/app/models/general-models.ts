@@ -29,9 +29,15 @@ export class EmployeeVisaInfo {
     ) { }
 }
 
-export class Document {
+export class DocumentFile {
     constructor(
-        public file: File,
+        public file: FormData | File,
         public type: string
+    ) { }
+}
+
+export class TestData {
+    constructor(
+        public data: string
     ) { }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Document } from '../models/general-models';
+import { DocumentFile } from '../models/general-models';
 
 @Injectable({
 	providedIn: 'root'
@@ -25,13 +25,13 @@ export class VisaService {
 		return this.http.get(url);
 	}
 
-	uploadDoc(doc: Document) {
-		const url = `http://localhost:8080/api/document/${this.email}`;
-		this.http.post(url, doc).subscribe(response => {
-			console.log('uploadDoc called!');
-			console.log(doc);
-		});
-	}
+	// uploadDoc(doc: Document) {
+	// 	const url = `http://localhost:8080/api/document/${this.email}`;
+	// 	this.http.post(url, doc).subscribe(response => {
+	// 		console.log('uploadDoc called!');
+	// 		console.log(doc);
+	// 	});
+	// }
 
 	// getEmployeeDetailById(id: number) {
 	// 	const url = `http://localhost:8080/api/employee/detail/${id}`;
