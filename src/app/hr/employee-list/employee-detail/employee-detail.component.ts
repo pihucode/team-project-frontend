@@ -10,7 +10,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class EmployeeDetailComponent implements OnInit {
 	employeeId: number;
-	employeeProfile: EmployeeProfile;
+	employeeProfile = new EmployeeProfile('',undefined,'','',undefined);
 
 	constructor(
 		private employeeService: EmployeeService,
