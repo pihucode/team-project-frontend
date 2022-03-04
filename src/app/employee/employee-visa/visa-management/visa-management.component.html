@@ -1,8 +1,7 @@
 <p>{{message}}</p>
-<div>
+<div *ngIf="docType != ''">
     <input type="file" (change)="selectFile($event)" />
-    <button class="btn btn-success btn-sm" (click)="handleDocUpload()" [disabled]="!selectedFiles"
-        [hidden]="docType == ''">
+    <button class="btn btn-success btn-sm" (click)="handleDocUpload()" [disabled]="!selectedFiles">
         Upload file
     </button>
 </div>

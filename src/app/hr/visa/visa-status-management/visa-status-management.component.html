@@ -18,11 +18,19 @@
 					<label>End Date</label>
 					<input [(ngModel)]="element.expdate">
 					This is stuff for the form to be edited.
+					<button (click)="toggleIsEdit()">{{editBtn}}</button>
 				</div>
 				<div>
 					<!-- DOCUMENTS -->
 					<div *ngFor="let filename of element.filenames">
 						<button (click)="handleDocDownload(filename)">{{filename}}</button>
+					</div>
+					<div *ngIf="isEdit">
+						<input type="file" (change)="selectFile($event)" />
+						<button class="btn btn-success btn-sm" (click)="handleDocUpload(element.email)"
+							[disabled]="!selectedFiles">
+							Upload file
+						</button>
 					</div>
 					<!-- NEXT STEP -->
 					<p>Next step: {{element.nextStep}}</p>

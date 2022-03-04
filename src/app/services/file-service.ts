@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 export class FileService {
+
 	private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
 
 	constructor(private http: HttpClient) { }
@@ -17,6 +18,13 @@ export class FileService {
 		// let options = { headers: headers };
 		this.http.post(url, data).subscribe(response => {
 			console.log('uploadDoc called!');
+		});
+	}
+
+	uploadDocToEmail(data: FormData, type: string, email: string) {
+		const url = `http://localhost:8080/api/document/${email}/${type}`;
+		this.http.post(url, data).subscribe(response => {
+			console.log('uploadDocToEmail called!');
 		});
 	}
 

@@ -23,6 +23,10 @@ export class VisaStatusManagementComponent implements OnInit {
 	dataSource: VisaInfo[];
 	columnsToDisplay = ['fullname', 'workauth', 'expdate', 'daysleft'];
 	expandedElement: VisaInfo | null;
+	formData: FormData = new FormData();
+	selectedFiles?: FileList;
+	isEdit: boolean = false;
+	editBtn: string = "Edit";
 
 	constructor(private visaService: VisaService,
 		private fileService: FileService) { }
@@ -37,16 +41,30 @@ export class VisaStatusManagementComponent implements OnInit {
 		});
 	}
 
-	// getFilenames(email: string): string[] {
-	// 	let filenames: string[] = [];
-	// 	this.fileService.getOptDocsByEmail(email).subscribe((data: string[]) => {
-	// 		filenames = data;
-	// 	});
-	// 	return filenames;
-	// }
+	toggleIsEdit() {
+		this.isEdit = !this.isEdit;
+		if (this.isEdit) this.editBtn = "Save";
+		else this.editBtn = "Edit";
+	}
+
+	selectFile(event: any): void {
+		this.selectedFiles = event.target.files;
+	}
 
 	handleDocDownload(filename: string) {
 		this.fileService.downloadDoc(filename);
+	}
+
+	handleDocUpload(email: string) {
+		if (this.selectedFiles) {
+			const file: File | null = this.selectedFiles.item(0);
+			if (file) {
+				this.formData.set('file', file as File);
+				this.fileService.uploadDocToEmail(this.formData, 'I-983_signed', email);
+			}
+		}
+
+		this.selectedFiles = undefined;
 	}
 
 }

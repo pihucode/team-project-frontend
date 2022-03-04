@@ -93,7 +93,7 @@ export class VisaManagementComponent implements OnInit {
 			}
 			case 4: {
 				this.message = "Waiting for HR to approve and sign I-983";
-				this.docType = "I-983_signed";
+				this.docType = "";
 				break;
 			}
 			case 5: {
