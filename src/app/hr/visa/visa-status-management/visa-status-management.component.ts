@@ -19,7 +19,6 @@ import { VisaService } from 'src/app/services/visa.service';
 export class VisaStatusManagementComponent implements OnInit {
 
   data: VisaInfo[] = [];
-
   dataSource: VisaInfo[];
   columnsToDisplay = ['fullname', 'workauth', 'expdate', 'daysleft'];
   expandedElement: VisaInfo | null;

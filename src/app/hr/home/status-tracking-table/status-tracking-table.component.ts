@@ -1,22 +1,50 @@
 import { Component, OnInit } from '@angular/core';
+import { VisaInfo } from 'src/app/models/general-models';
+import { FileService } from 'src/app/services/file-service';
+import { VisaService } from 'src/app/services/visa.service';
 
 @Component({
-  selector: 'app-status-tracking-table',
-  templateUrl: './status-tracking-table.component.html',
-  styleUrls: ['./status-tracking-table.component.css']
+	selector: 'app-status-tracking-table',
+	templateUrl: './status-tracking-table.component.html',
+	styleUrls: ['./status-tracking-table.component.css']
 })
 export class StatusTrackingTableComponent implements OnInit {
-  columnsToDisplay: string[] = ['id', 'name', 'visa-type', 'exp-date', 'days-left', 'next-step', 'action'];
+	columnsToDisplay: string[] = ['fullname', 'visa-type', 'exp-date', 'days-left', 'next-step', 'action', 'manage'];
 
-  data = [
-    {id: 1, name: 'name1', visatype: 'visa1', expdate: '2022-09-23', daysleft: 210, nextstep: 'I-20', action: 'notify'},
-    {id: 8844, name: 'name2', visatype: 'other', expdate: '2022-12-20', daysleft: 298, nextstep: 'SOME SIGN', action: 'preview download'},
-    {id: 271, name: 'name3', visatype: 'H4', expdate: '2022-12-29', daysleft: 307, nextstep: 'I--983 NEED TO BE SIGNED', action: 'preview download'},
-  ]
-  constructor() { }
+	// data = [
+	//   {id: 1, name: 'name1', visatype: 'visa1', expdate: '2022-09-23', daysleft: 210, nextstep: 'I-20', action: 'notify'},
+	//   {id: 8844, name: 'name2', visatype: 'other', expdate: '2022-12-20', daysleft: 298, nextstep: 'SOME SIGN', action: 'preview download'},
+	//   {id: 271, name: 'name3', visatype: 'H4', expdate: '2022-12-29', daysleft: 307, nextstep: 'I--983 NEED TO BE SIGNED', action: 'preview download'},
+	// ]
+	dataSource: VisaInfo[];
 
-  ngOnInit(): void {
-    // TODO: Fetch data from backend
-  }
+	constructor(private visaService: VisaService,
+		private fileService: FileService) { }
+
+	ngOnInit(): void {
+		// fetch data from backend
+		let lst: VisaInfo[] = [];
+		this.visaService.getVisaList().subscribe((res: VisaInfo[]) => {
+			// console.log(res);
+			for (let item of res) {
+				lst.push(item);
+			}
+			this.dataSource = lst;
+		});
+	}
+
+	notify(email: string) {
+		console.log("notify: " + email);
+	}
+
+	handleDocDownload(email: string) {
+		this.fileService.getFileName(email, "I-983_form").subscribe((filename: string) => {
+			this.fileService.downloadDoc(filename);
+		});
+	}
+
+	handleDocPreview(email: string) {
+		console.log("handleDocPreview: " + email);
+	}
 
 }

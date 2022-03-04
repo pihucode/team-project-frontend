@@ -15,6 +15,7 @@ export class VisaInfo {
         public expdate: string,
         public daysleft: number,
         public nextStep: string,
+        public email: string
         // public documents: string,
     ) { }
 }
