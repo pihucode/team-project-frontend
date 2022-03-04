@@ -26,17 +26,9 @@
         <div class="text-muted">Authorization End Date</div>
         <div>{{visa.endDate}}</div>
         <br>
-        <div class="fw-bold fs-5">Document Uploaded:</div>
-        <div *ngFor="let document of documents">
-            <div>
-                ICON
-            </div>
-            <div>
-                {{document.documentName}}
-            </div>
-            <div>
-                download
-            </div>
+        <div class="fw-bold fs-5">Documents Uploaded:</div>
+        <div *ngFor="let filename of filenames">
+            <button (click)="handleDocDownload(filename)">{{filename}}</button>
         </div>
     </div>
 </div>

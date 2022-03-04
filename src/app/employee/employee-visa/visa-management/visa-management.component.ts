@@ -22,6 +22,7 @@ export class VisaManagementComponent implements OnInit {
 	stage: number;
 	formData: FormData = new FormData();
 	selectedFiles?: FileList;
+	filenames: string[] = [];
 
 	constructor(private visaService: VisaService,
 		private fileService: FileService) { }
@@ -34,6 +35,14 @@ export class VisaManagementComponent implements OnInit {
 		this.visaService.getOptStage().subscribe((data: number) => {
 			this.stage = data;
 			this.setupStatus();
+		});
+		this.populateDocs();
+	}
+
+	populateDocs() {
+		this.fileService.getOptDocs().subscribe((data: string[]) => {
+			this.filenames = data;
+			console.log(this.filenames);
 		});
 	}
 
@@ -49,13 +58,19 @@ export class VisaManagementComponent implements OnInit {
 				// let doc: DocumentFile = new DocumentFile(
 				// 	this.formData, this.docType
 				// );
-				this.fileService.uploadDoc3(this.formData, this.docType);
+				this.fileService.uploadDoc(this.formData, this.docType);
 			}
 		}
 
 		this.stage++;
 		this.selectedFiles = undefined;
 		this.setupStatus();
+		// this.populateDocs(); //doesn't work because backend lags behind
+		// todo - maybe force a page reload?
+	}
+
+	handleDocDownload(filename: string) {
+		this.fileService.downloadDoc(filename);
 	}
 
 	setupStatus() {

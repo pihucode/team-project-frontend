@@ -9,7 +9,7 @@ export class FileService {
 
 	constructor(private http: HttpClient) { }
 
-	uploadDoc3(data: FormData, type: string) {
+	uploadDoc(data: FormData, type: string) {
 		const url = `http://localhost:8080/api/document/${this.email}/${type}`;
 		// let headers = new HttpHeaders({
 		// 	'Content-Type': 'multipart/form-data'
@@ -18,6 +18,16 @@ export class FileService {
 		this.http.post(url, data).subscribe(response => {
 			console.log('uploadDoc called!');
 		});
+	}
+
+	downloadDoc(filename: string) {
+		const url = `http://localhost:8080/api/file/download/${filename}`;
+		window.open(url, "_blank");
+	}
+
+	getOptDocs() {
+		const url = `http://localhost:8080/api/documents/opt/${this.email}`;
+		return this.http.get(url);
 	}
 
 }
