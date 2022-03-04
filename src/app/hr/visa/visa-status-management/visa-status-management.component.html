@@ -10,13 +10,17 @@
 			<div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
 				<div class="editInfo">
 					<label>Legal Name</label>
-					<input [(ngModel)]="element.fullname">
+					<input [disabled]="!isEdit" [(ngModel)]="element.fullname">
 					<label>Type</label>
-					<input [(ngModel)]="element.workauth">
+					<!-- <input [disabled]="!isEdit" [(ngModel)]="element.workauth"> -->
+					<select [disabled]="!isEdit" id="workAuth" name="workAuth" [(ngModel)]="element.workAuth">
+						<option *ngFor="let workAuth of workAuthorizationTypes" value="{{workAuth}}">{{workAuth}}</option>
+					</select>
 					<label>Start Date</label>
-					<input value="2022-02-22">
+					<input type="date" [disabled]="!isEdit" value="2022-02-22">
+					<br>
 					<label>End Date</label>
-					<input [(ngModel)]="element.expdate">
+					<input type="date" [disabled]="!isEdit" [(ngModel)]="element.expdate">
 					This is stuff for the form to be edited.
 					<button (click)="toggleIsEdit()">{{editBtn}}</button>
 				</div>
