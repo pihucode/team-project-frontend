@@ -27,7 +27,7 @@
         <br>
         <div class="fw-bold fs-5">Documents Uploaded:</div>
         <div *ngFor="let filename of filenames">
-            <button (click)="handleDocDownload(filename)">{{filename}}</button>
+            <button class="btn btn-link btn-sm" (click)="handleDocDownload(filename)">{{filename}}</button>
         </div>
     </div>
 </div>
