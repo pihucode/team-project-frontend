@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HRAuthGuardGuard implements CanActivate, CanActivateChild {
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
   isAdmin: boolean = true;
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.isAdmin){
+    if (this.isAdmin) {
       return true;
-    }else{
+    } else {
       return this.router.createUrlTree(["/login"]);
     }
   }
@@ -22,5 +22,5 @@ export class HRAuthGuardGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return true;
   }
-  
+
 }
