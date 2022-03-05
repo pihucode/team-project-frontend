@@ -22,6 +22,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { EmployeeRefInfoModalContentComponent } from './modal-content/employee-ref-info-modal-content/employee-ref-info-modal-content.component';
+import { EmployeeRefInfoModalComponent } from './modal-container/employee-ref-info-modal/employee-ref-info-modal.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     EmployeeContactInfoModalComponent,
     EmployeeAddressInfoModalComponent,
 
-    EmployeeProfileComponent
+    EmployeeProfileComponent,
+      EmployeeRefInfoModalContentComponent,
+      EmployeeRefInfoModalComponent
   ],
   imports: [
     CommonModule,

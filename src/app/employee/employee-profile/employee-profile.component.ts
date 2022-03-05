@@ -15,20 +15,13 @@ export class EmployeeProfileComponent implements OnInit {
 	emergencyContacts: UniqueContact[];
 	references: UniqueContact[];
 
-	// emergencyContactInfo = {
-	// 	relationship: "Mother",
-	// 	fullname: "Your Mom",
-	// 	phone: "1113337777",
-	// 	address: "123 Your Moms House"
-	// }
-
 	documentInfo = {
 		document1: "SomeDoc1",
 		document2: "SomeDoc2",
 		document3: "SomeDoc3",
 	}
 
-	constructor(private modalService: NgbModal,
+	constructor(
 		private profileService: ProfileService,
 		private profileInfoService: ProfileInfoService) { }
 
