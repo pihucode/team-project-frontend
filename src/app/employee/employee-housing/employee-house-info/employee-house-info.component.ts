@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HousingInfo } from 'src/app/models/housing-models';
+import { HousingService } from 'src/app/services/housing.service';
 
 @Component({
   selector: 'app-employee-house-info',
@@ -12,16 +13,27 @@ export class EmployeeHouseInfoComponent implements OnInit {
     {name: 'Ted', phone: 1293128344}, // email, car?
     {name: 'Fred', phone: 2139129933} 
   ];
-  constructor() { }
+  email: string = 'some@email.com';
+  constructor(private housingService: HousingService) { }
 
   ngOnInit(): void {
-    // TODO: get employee house info from backend
+    // TODO: get employee email
+    // this.email = 
+
+    // GET employee house info from backend
+    this.housingService.getHouseByEmail(this.email).subscribe(house => {
+      console.log('Received house information!')
+      // this.house = house;
+    }, err => {
+      console.log('Error receiving house info.');
+      console.log(err);
+    });
+
+    // TODO: Delete this after receiving from backend
     this.house = {
       address: '34 Valley View Drive', 
       landlord: 'LZDHR', phone: 6094011666, 
       email: 'some@email.com', 
       personCount: 100};
-
-    // TODO: get employee roommate info
   }
 }
