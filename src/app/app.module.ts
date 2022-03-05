@@ -27,6 +27,7 @@ import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeListModule } from './hr/employee-list/employee-list.module';
 import { EmployeeVisaModule } from './employee/employee-visa/employee-visa.module';
 import { DatePipe } from '@angular/common';
+import { HrHousingModule } from './hr/hr-housing/hr-housing.module';
 
 const routes: Routes = []
 
@@ -59,7 +60,8 @@ const routes: Routes = []
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule,
     BrowserAnimationsModule,
-    EmployeeProfileModule
+    EmployeeProfileModule,
+    HrHousingModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
