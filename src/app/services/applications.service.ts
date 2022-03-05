@@ -32,4 +32,8 @@ export class ApplicationsService {
   setApplicationStatus = (id: number, status: string) => {
     return this.http.post(this.endpoint + '-status?applicationId=' + id + '&status=' + status, null);
   }
+
+  setApplicationComments = (comment) => {
+    return this.http.post(this.endpoint + '-comment', comment);
+  }
 }
