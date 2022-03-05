@@ -3,8 +3,9 @@ export class OnboardingRequest {
         public person: Person,
         public visa: Visa,
         public address: Address,
+        public referenceList: ReferenceList,
         public emergencyContactList: EmergencyContactList,
-        public documentList: DocumentList
+        // public documentList: DocumentList
     ) { }
 }
 
@@ -36,6 +37,22 @@ export class Address {
         public city: string,
         public state: string,
         public zip: number
+    ) { }
+}
+
+export class ReferenceList {
+    constructor(
+        public references: Reference[]
+    ) { }
+}
+
+export class Reference {
+    constructor(
+        public firstname: string,
+        public lastname: string,
+        public email: string,
+        public phone: number,
+        public relationship: string
     ) { }
 }
 

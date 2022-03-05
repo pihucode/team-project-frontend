@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Person, Visa, Document, DocumentList } from 'src/app/models/onboarding-models';
+import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Person, Visa, Document, DocumentList, ReferenceList, Reference } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
 import { DatePipe } from '@angular/common';
 
@@ -56,6 +56,7 @@ export class ApplicationFormComponent implements OnInit {
 			model: [''],
 			color: ['']
 		}),
+		references: this.fb.array([]),
 		emergencyContacts: this.fb.array([]),
 		documents: this.fb.array([])
 	});
@@ -71,6 +72,24 @@ export class ApplicationFormComponent implements OnInit {
 				this.email = params['email'];
 			}
 		)
+	}
+
+	// =============== REFERENCE FORM ARRAY ==================
+	get references() {
+		return this.applicationForm.controls["references"] as FormArray;
+	}
+	addReference() {
+		const refGroup = this.fb.group({
+			firstName: ['', Validators.required],
+			lastName: ['', Validators.required],
+			phone: ['', Validators.required],
+			email: ['', Validators.required],
+			relationship: ['', Validators.required]
+		});
+		this.references.push(refGroup);
+	}
+	deleteReference(i: number) {
+		this.references.removeAt(i);
 	}
 
 	// =============== EMERGENCY CONTACT FORM ARRAY ==================
@@ -117,6 +136,7 @@ export class ApplicationFormComponent implements OnInit {
 		let addressInfo = this.applicationForm.value.addressInfo;
 		let contactInfo = this.applicationForm.value.contactInfo;
 		let visaInfo = this.applicationForm.value.visaInfo;
+		let refArray = this.applicationForm.value.references;
 		let emergencyContactsArray = this.applicationForm.value.emergencyContacts;
 		let documentsArray = this.applicationForm.value.documents;
 
@@ -142,6 +162,20 @@ export class ApplicationFormComponent implements OnInit {
 			addressInfo.state,
 			addressInfo.zip
 		);
+		// refs
+		let refs: Reference[] = [];
+		for (let contact of refArray) {
+			let newContact = new Reference(
+				contact.firstName,
+				contact.lastName,
+				contact.email,
+				contact.phone,
+				contact.relationship
+			);
+			refs.push(newContact);
+		}
+		let refList: ReferenceList = new ReferenceList(refs);
+
 		// emergency contacts
 		let contacts: EmergencyContact[] = [];
 		for (let contact of emergencyContactsArray) {
@@ -169,8 +203,9 @@ export class ApplicationFormComponent implements OnInit {
 			person,
 			visa,
 			address,
+			refList,
 			emergencyContactList,
-			documentList
+			// documentList
 		);
 		this.onboardingService.onboard(onboardingRequest);
 	}
