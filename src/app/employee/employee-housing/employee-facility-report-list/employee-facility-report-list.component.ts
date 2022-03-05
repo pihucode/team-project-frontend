@@ -15,6 +15,9 @@ export class EmployeeFacilityReportListComponent implements OnInit {
   constructor(private housingService: HousingService) { }
 
   ngOnInit(): void {
+    // TOGO: get employee email
+    // this.email = 
+    
     // GET Report List from backend
     this.housingService.getAllReports().subscribe(reportList => {
       console.log('Got report List');
@@ -24,8 +27,6 @@ export class EmployeeFacilityReportListComponent implements OnInit {
       console.log(err);
     });
 
-    // TOGO: get employee email
-    // this.email = 
     this.report.status = 'Open';
     this.reportList.push(new FacilityReport('title1','desc2','some1','2022-09-12','In Progress'));
     this.reportList.push(new FacilityReport('title2','desc2','some2','2022-12-12','Closed'));
