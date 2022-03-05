@@ -1,1 +1,12 @@
-<p>hr-house-list works!</p>
+<!-- ../hr-housing/detail/{id} ?? endpoint TBD -->
+<div class="container">
+    <div *ngFor="let house of housingInfo; let i = index" class="box">
+        <h2>{{house.address}}</h2>
+        <img src="https://cdn.vox-cdn.com/thumbor/6itLJS9BZ-B5gXPjM1AB_z-ZKVI=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/65890203/iStock_1067331614.7.jpg">
+        <p class="fw-bold">Landlord: <span class="fw-normal">{{house.landlord}}</span></p>
+        <p class="fw-bold">Phone: <span class="fw-normal">{{house.phone}}</span></p>
+        <p class="fw-bold">Number of People: <span class="fw-normal">{{house.personCount}}</span></p>
+        <p class="fw-bold">Email: <span class="fw-normal">{{house.email}}</span></p>
+        <button (click)="getDetails(i)" type="button" class="btn btn-primary btn-sm">Details</button>
+    </div>
+</div>

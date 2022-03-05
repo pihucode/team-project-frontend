@@ -61,7 +61,8 @@ const routes: Routes = []
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule,
     BrowserAnimationsModule,
-    EmployeeProfileModule
+    EmployeeProfileModule,
+    HrHousingModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

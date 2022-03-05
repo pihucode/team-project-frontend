@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HrHouseDetailComponent } from './hr-house-detail/hr-house-detail.component';
-import { HrHouseListComponent } from './hr-house-list/hr-house-list.component';
+import { HrHousingComponent } from './hr-housing.component';
 
 const routes: Routes = [
-  { path: 'hr/housing', component: HrHouseListComponent },
-  { path: 'hr/house/:id', component: HrHouseDetailComponent }
+  { path: 'hr/housing', component: HrHousingComponent}
 ];
 
 @NgModule({
