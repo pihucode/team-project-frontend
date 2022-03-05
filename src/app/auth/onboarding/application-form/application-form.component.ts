@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Person, Visa, Document, DocumentList, ReferenceList, Reference } from 'src/app/models/onboarding-models';
 import { OnboardingService } from 'src/app/services/onboarding.service';
 import { DatePipe } from '@angular/common';
+import { FormGroup, FormControl } from '@angular/forms';
+import {CustomValidators} from 'ng2-validation';
 
 @Component({
 	selector: 'app-application-form',
@@ -20,10 +22,20 @@ export class ApplicationFormComponent implements OnInit {
 
 	applicationForm = this.fb.group({
 		personalInfo: this.fb.group({
-			firstName: ['', Validators.required],
-			lastName: ['', Validators.required],
+			firstName: new FormControl('', [
+				Validators.required,
+				Validators.minLength(2)
+			  ]),
+			lastName: new FormControl('', [
+				Validators.required,
+				Validators.minLength(4)
+			  ]),
 			preferredName: [''],
-			ssn: ['', Validators.required],
+			ssn: new FormControl('', [
+				Validators.required,
+				Validators.min(10000000),
+				Validators.max(100000000)
+			  ]),
 			birthdate: this.fb.group({
 				day: [''],
 				month: [''],
@@ -33,23 +45,35 @@ export class ApplicationFormComponent implements OnInit {
 			hasDriverLicense: [false],
 		}),
 		addressInfo: this.fb.group({
-			street: [''],
-			city: [''],
-			state: [''],
-			zip: ['']
+			street: ['', Validators.required],
+			city: ['', Validators.required],
+			state: ['', Validators.required],
+			zip: ['', Validators.required]
 		}),
 		contactInfo: this.fb.group({
-			personalEmail: [''],
-			workEmail: [''],
-			cellPhone: ['', Validators.required],
-			workPhone: ['', Validators.required],
+			personalEmail: new FormControl('', [
+				Validators.required,
+				Validators.email
+			  ]),
+			workEmail: new FormControl('', [
+				Validators.email
+			  ]),
+			cellPhone: new FormControl('', [
+				Validators.required,
+				Validators.min(1000000000),
+				Validators.max(10000000000)
+			  ]),
+			workPhone: new FormControl('', [
+				Validators.min(1000000000),
+				Validators.max(10000000000)
+			  ]),
 		}),
 		visaInfo: this.fb.group({
 			// residentType: [''],
 			// workAuthorization: [''],
-			type: [''],
-			workDateStart: [''],
-			workDateEnd: [''],
+			type: ['', Validators.required],
+			workDateStart: ['', Validators.required],
+			workDateEnd: ['', Validators.required],
 		}),
 		carInfo: this.fb.group({
 			maker: [''],
@@ -72,6 +96,7 @@ export class ApplicationFormComponent implements OnInit {
 				this.email = params['email'];
 			}
 		)
+		console.log(this.applicationForm.valid);
 	}
 
 	// =============== REFERENCE FORM ARRAY ==================

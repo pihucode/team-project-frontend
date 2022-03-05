@@ -76,6 +76,11 @@ export class ModalContentComponent implements OnInit {
 		});
 		this.activeModal.dismiss();
 		// TODO: Send Form Of Comments
-		console.log(this.personalInfoForm.value);
+		this.applicationsService.setApplicationComments(this.personalInfoForm.value).subscribe(res => {
+			console.log('Successful post of comments to endpoint.')
+		}, err => {
+			console.log('Error posting comments.');
+			console.log(err);
+		});
 	}
 }
