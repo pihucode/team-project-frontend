@@ -12,4 +12,9 @@ export class HousingService {
     const url = `http://localhost:8080/api/facility-report/${email}`;
     return this.http.post(url, report, {responseType: 'text'});
   }
+
+  getAllReports = () => {
+    const url = `http://localhost:8080/api/facility-reports`;
+    return this.http.get(url);
+  }
 }

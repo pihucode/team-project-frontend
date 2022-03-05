@@ -15,7 +15,15 @@ export class EmployeeFacilityReportListComponent implements OnInit {
   constructor(private housingService: HousingService) { }
 
   ngOnInit(): void {
-    // TODO: get Report List from backend
+    // GET Report List from backend
+    this.housingService.getAllReports().subscribe(reportList => {
+      console.log('Got report List');
+      // this.reportList = reportList;
+    }, err => {
+      console.log('Error receiving report list.');
+      console.log(err);
+    });
+
     // TOGO: get employee email
     // this.email = 
     this.report.status = 'Open';
