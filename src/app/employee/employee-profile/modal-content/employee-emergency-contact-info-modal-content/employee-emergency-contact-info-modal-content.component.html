@@ -5,8 +5,6 @@
     </button>
 </div>
 
-<pre>{{emergencyContactInfo | json}}</pre>
-
 <div class="modal-body">
     <form (ngSubmit)="onSubmit(editEmergencyContactInfoForm)" #editEmergencyContactInfoForm="ngForm">
         <div ngModelGroup="emergencyContactInfo" #emergencyContactInfoInputs="ngModelGroup">

@@ -1,0 +1,10 @@
+<div>
+    <h2>References</h2>
+    <div *ngFor="let refInfo of refs">
+        <p>Full Name: {{refInfo.firstname}} {{refInfo.lastname}}</p>
+        <p>Phone: {{refInfo.phone}}</p>
+        <p>Email: {{refInfo.email}}</p>
+        <p>Relationship: {{refInfo.relationship}}</p>
+        <button (click)="openRefInfoModal(refInfo)">Edit</button>
+    </div>
+</div>

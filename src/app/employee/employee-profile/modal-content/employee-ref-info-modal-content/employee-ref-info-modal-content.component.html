@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Reference Info</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit(editRefInfoForm)" #editRefInfoForm="ngForm">
+        <div ngModelGroup="refInfo" #editRefInfoInputs="ngModelGroup">
+
+            <div class="form-group">
+                <label for="firstname">First Name: </label>
+                <input type="text" class="form-control" id="firstname" name="firstname" [ngModel]="refInfo.firstname">
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last Name: </label>
+                <input type="text" class="form-control" id="lastname" name="lastname" [ngModel]="refInfo.lastname">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone: </label>
+                <input type="number" class="form-control" id="phone" name="phone" [ngModel]="refInfo.phone">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="email" class="form-control" id="email" name="email" [ngModel]="refInfo.email">
+            </div>
+
+            <div class="form-group">
+                <label for="relationship">Relationship: </label>
+                <input type="text" class="form-control" id="relationship" name="relationship"
+                    [ngModel]="refInfo.relationship">
+            </div>
+        </div>
+        <button type="button" (click)="displayCancel()">Cancel</button>
+        <button type="submit" [disabled]="!editRefInfoForm.form.valid">Submit</button>
+    </form>
+</div>
