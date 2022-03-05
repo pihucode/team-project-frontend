@@ -16,7 +16,8 @@ import { HrHousingComponent } from './hr-housing.component';
   ],
   imports: [
     CommonModule,
-    HrHousingRoutingModule
+    HrHousingRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class HrHousingModule { }
