@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HrHousingInfo } from 'src/app/models/housing-models';
+import { HousingInfo } from 'src/app/models/housing-models';
 
 @Component({
   selector: 'app-hr-house-list',
@@ -7,7 +7,7 @@ import { HrHousingInfo } from 'src/app/models/housing-models';
   styleUrls: ['./hr-house-list.component.css']
 })
 export class HrHouseListComponent implements OnInit {
-  housingInfo: HrHousingInfo[] = [];
+  housingInfo: HousingInfo[] = [];
   // facilityInfo: FacilityInfo[] = [];
   // employeeInfo = []; object: {name, phone, email, car}
 

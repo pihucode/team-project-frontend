@@ -1,4 +1,4 @@
-export class HrHousingInfo {
+export class HousingInfo {
     // DATA INFERRED FROM INSTRUCTIONS PDF
     // address: Address ??
     address: string;
