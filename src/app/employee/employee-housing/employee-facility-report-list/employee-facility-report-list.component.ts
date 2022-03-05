@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FacilityReport } from 'src/app/models/housing-models';
+import { HousingService } from 'src/app/services/housing.service';
 
 @Component({
   selector: 'app-employee-facility-report-list',
@@ -9,29 +10,32 @@ import { FacilityReport } from 'src/app/models/housing-models';
 export class EmployeeFacilityReportListComponent implements OnInit {
   report = new FacilityReport('','','','','');
   reportList: FacilityReport[] = [];
+  email: string = 'some@email.com';
 
-  constructor() { }
+  constructor(private housingService: HousingService) { }
 
   ngOnInit(): void {
     // TODO: get Report List from backend
+    // TOGO: get employee email
+    // this.email = 
     this.report.status = 'Open';
     this.reportList.push(new FacilityReport('title1','desc2','some1','2022-09-12','In Progress'));
     this.reportList.push(new FacilityReport('title2','desc2','some2','2022-12-12','Closed'));
   }
 
   onSubmit = () => {
+    // TODO: Only send title and description ???
     // this.report.createdBy = employee name
-    // this.report.reportDate = current time
-    // POST request
-    // this.service.report(this.report).subscribe(res => {
-    //   console.log('Report successfully submitted');
-    //   this.reportList.push(this.report);
-    //   this.report.clear();
-    //   this.report.status = 'Open';
-    // }, err => {
-    //   console.log('Error submitting report');
-    //   console.log(err);
-    // });
-    console.log(this.report);
+    let date = new Date();
+    this.report.reportDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    this.housingService.postReportByEmail(this.email, this.report).subscribe(res => {
+      console.log('Report successfully submitted');
+      this.reportList.push(Object.assign({}, this.report));
+      this.report.clear();
+      this.report.status = 'Open';
+    }, err => {
+      console.log('Error submitting report');
+      console.log(err);
+    });
   }
 }
