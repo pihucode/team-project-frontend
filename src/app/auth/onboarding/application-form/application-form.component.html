@@ -27,7 +27,7 @@
     </div>
 
     <div class="form-group" formGroupName="addressInfo">
-        
+
         <h3>Address Info</h3>
 
         <label for="street">Street: </label>
@@ -46,7 +46,7 @@
         && !applicationForm.get('addressInfo').get('state').hasError('required')
         && !applicationForm.get('addressInfo').get('zip').hasError('required')">
             Address is Required
-          </div>
+        </div>
     </div>
 
     <div class="form-group" formGroupName="contactInfo">
@@ -117,7 +117,7 @@
         && !applicationForm.get('visaInfo').get('workDateStart').hasError('required')
         && !applicationForm.get('visaInfo').get('workDateEnd').hasError('required')">
             Visa Information is Required
-          </div>
+        </div>
     </div>
 
     <div class="form-group" formGroupName="carInfo">
@@ -195,6 +195,16 @@
 
     <div class="form-group">
         <h4>Documents</h4>
+        <div>
+            <!-- donwload -->
+            <button (click)="handleDocDownload('mandatory_file.txt')" type="button">Mandatory File</button>
+            <!-- upload -->
+            <input type="file" (change)="selectFile($event)" />
+        </div>
+    </div>
+
+    <!-- <div class="form-group">
+        <h4>Documents</h4>
         <button (click)="addDocument()" type="button">Add Documents</button>
 
         <div formArrayName="documents">
@@ -207,10 +217,10 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- <button type="submit" [disabled]="!applicationForm.valid">Submit</button> -->
-    <button type="submit" [disabled]="!applicationForm.valid">submit</button>
+    <button type="submit" [disabled]="!applicationForm.valid && !selectedFiles">submit</button>
     <pre>Form JSON: {{ applicationForm.value | json }}</pre>
 
 </form>

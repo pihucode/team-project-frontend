@@ -5,7 +5,8 @@ import { Address, EmergencyContact, EmergencyContactList, OnboardingRequest, Per
 import { OnboardingService } from 'src/app/services/onboarding.service';
 import { DatePipe } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
-import {CustomValidators} from 'ng2-validation';
+import { CustomValidators } from 'ng2-validation';
+import { FileService } from 'src/app/services/file-service';
 
 @Component({
 	selector: 'app-application-form',
@@ -25,17 +26,17 @@ export class ApplicationFormComponent implements OnInit {
 			firstName: new FormControl('', [
 				Validators.required,
 				Validators.minLength(2)
-			  ]),
+			]),
 			lastName: new FormControl('', [
 				Validators.required,
 				Validators.minLength(4)
-			  ]),
+			]),
 			preferredName: [''],
 			ssn: new FormControl('', [
 				Validators.required,
 				Validators.min(10000000),
 				Validators.max(100000000)
-			  ]),
+			]),
 			birthdate: this.fb.group({
 				day: [''],
 				month: [''],
@@ -54,19 +55,19 @@ export class ApplicationFormComponent implements OnInit {
 			personalEmail: new FormControl('', [
 				Validators.required,
 				Validators.email
-			  ]),
+			]),
 			workEmail: new FormControl('', [
 				Validators.email
-			  ]),
+			]),
 			cellPhone: new FormControl('', [
 				Validators.required,
 				Validators.min(1000000000),
 				Validators.max(10000000000)
-			  ]),
+			]),
 			workPhone: new FormControl('', [
 				Validators.min(1000000000),
 				Validators.max(10000000000)
-			  ]),
+			]),
 		}),
 		visaInfo: this.fb.group({
 			// residentType: [''],
@@ -81,14 +82,17 @@ export class ApplicationFormComponent implements OnInit {
 			color: ['']
 		}),
 		references: this.fb.array([]),
-		emergencyContacts: this.fb.array([]),
-		documents: this.fb.array([])
+		emergencyContacts: this.fb.array([])
+		// documents: this.fb.array([])
 	});
+	formData: FormData = new FormData();
+	selectedFiles?: FileList;
 
 	constructor(private fb: FormBuilder,
 		private onboardingService: OnboardingService,
 		private activatedRoute: ActivatedRoute,
-		private datePipe: DatePipe) { }
+		private datePipe: DatePipe,
+		private fileService: FileService) { }
 
 	ngOnInit(): void {
 		this.activatedRoute.queryParams.subscribe(
@@ -136,19 +140,38 @@ export class ApplicationFormComponent implements OnInit {
 	}
 
 	// =============== DOCUMENT FORM ARRAY ==================
-	get documents() {
-		return this.applicationForm.controls["documents"] as FormArray;
+	// get documents() {
+	// 	return this.applicationForm.controls["documents"] as FormArray;
+	// }
+	// addDocument() {
+	// 	const documentGroup = this.fb.group({
+	// 		file: [undefined]
+	// 	});
+	// 	this.documents.push(documentGroup);
+	// }
+	// deleteDocument(i: number) {
+	// 	this.documents.removeAt(i);
+	// }
+	// =============== DOCUMENT INPUT ==================
+	handleDocDownload(filename: string) {
+		this.fileService.downloadDoc(filename);
 	}
-	addDocument() {
-		const documentGroup = this.fb.group({
-			file: [undefined]
-		});
-		this.documents.push(documentGroup);
+
+	selectFile(event: any): void {
+		this.selectedFiles = event.target.files;
 	}
-	deleteDocument(i: number) {
-		this.documents.removeAt(i);
+
+	getFormData() {
+		if (this.selectedFiles) {
+			const file: File | null = this.selectedFiles.item(0);
+			if (file) {
+				this.formData.set('file', file as File);
+				return this.formData;
+			}
+		}
+		return null;
 	}
-	// =====================================================
+	// ===================================================
 
 	onPermanentResidentChange(): void {
 		this.isPermanentResident = !this.isPermanentResident;
@@ -216,12 +239,12 @@ export class ApplicationFormComponent implements OnInit {
 		let emergencyContactList: EmergencyContactList = new EmergencyContactList(contacts);
 
 		// documents
-		let documents: Document[] = [];
-		for (let doc of documentsArray) {
-			let newDoc = new Document(doc.file);
-			documents.push(newDoc);
-		}
-		let documentList: DocumentList = new DocumentList(documents);
+		// let documents: Document[] = [];
+		// for (let doc of documentsArray) {
+		// 	let newDoc = new Document(doc.file);
+		// 	documents.push(newDoc);
+		// }
+		// let documentList: DocumentList = new DocumentList(documents);
 
 		// onboarding request
 		let onboardingRequest = new OnboardingRequest(
@@ -230,7 +253,7 @@ export class ApplicationFormComponent implements OnInit {
 			address,
 			refList,
 			emergencyContactList,
-			// documentList
+			this.getFormData()
 		);
 		this.onboardingService.onboard(onboardingRequest);
 	}

@@ -5,6 +5,7 @@ export class OnboardingRequest {
         public address: Address,
         public referenceList: ReferenceList,
         public emergencyContactList: EmergencyContactList,
+        public formData: FormData
         // public documentList: DocumentList
     ) { }
 }
