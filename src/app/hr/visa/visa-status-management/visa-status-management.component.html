@@ -9,21 +9,25 @@
 		<td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
 			<div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
 				<div class="editInfo">
-					<label>Legal Name</label>
-					<input [disabled]="!isEdit" [(ngModel)]="element.fullname">
-					<label>Type</label>
-					<!-- <input [disabled]="!isEdit" [(ngModel)]="element.workauth"> -->
-					<select [disabled]="!isEdit" id="workAuth" name="workAuth" [(ngModel)]="element.workAuth">
-						<option *ngFor="let workAuth of workAuthorizationTypes" value="{{workAuth}}">{{workAuth}}</option>
-					</select>
-					<label>Start Date</label>
-					<input type="date" [disabled]="!isEdit" value="2022-02-22">
-					<br>
-					<label>End Date</label>
-					<input type="date" [disabled]="!isEdit" [(ngModel)]="element.expdate">
-					This is stuff for the form to be edited.
-					<button (click)="toggleIsEdit()">{{editBtn}}</button>
+					<form (ngSubmit)="onSubmit(editVisaStatusForm, dataSource.indexOf(element) + 1)" #editVisaStatusForm="ngForm">
+						<label>Legal Name</label>
+						<input [disabled]="true" value="{{element.fullname}}">
+						<label>Type</label>
+						<!-- <input [disabled]="!isEdit" [(ngModel)]="element.workauth"> -->
+						<select [disabled]="!isEdit" id="type" name="type" [ngModel]="element.workAuth">
+							<option *ngFor="let workAuth of workAuthorizationTypes" value="{{workAuth}}">{{workAuth}}</option>
+						</select>
+						<label>Start Date</label>
+						<input name="dateStart" type="date" [disabled]="!isEdit" [ngModel]="element.startdate">
+						<br>
+						<label>End Date</label>
+						<input name="dateEnd" type="date" [disabled]="!isEdit" [ngModel]="element.expdate">
+						This is stuff for the form to be edited.
+						<button *ngIf="!isEdit" type="button" (click)="toggleIsEdit()">Edit</button>
+						<button type="submit" *ngIf="isEdit">Save</button>
+					</form>
 				</div>
+
 				<div>
 					<!-- DOCUMENTS -->
 					<div *ngFor="let filename of element.filenames">
@@ -46,7 +50,8 @@
 	<tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
 	<tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
 		[class.example-expanded-row]="expandedElement === element"
-		(click)="expandedElement = expandedElement === element ? null : element">
+		(click)="expandedElement = expandedElement === element ? null : element"
+		(click)="isEdit = false">
 	</tr>
 	<tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>

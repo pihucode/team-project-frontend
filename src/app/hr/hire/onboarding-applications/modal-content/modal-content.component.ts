@@ -68,7 +68,7 @@ export class ModalContentComponent implements OnInit {
 
 	onSubmit = () => {
 		this.applicationsService.setApplicationStatus(this.applicationId, this.status).subscribe(response => {
-			console.log('Set application status response: '+ response);
+			console.log('Application status set');
 			this.applications[this.applicationId - 1].status = this.status;
 		}, err => {
 			console.log('Error setting application status.')

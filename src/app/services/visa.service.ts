@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DocumentFile } from '../models/general-models';
+import { Visa } from '../models/onboarding-models';
 
 @Injectable({
 	providedIn: 'root'
@@ -23,5 +24,10 @@ export class VisaService {
 	getOptStage() {
 		const url = `http://localhost:8080/api/visa/opt-stage/${this.email}`;
 		return this.http.get(url);
+	}
+
+	updateVisaById = (id: number, visa: Visa) => {
+		const url = `http://localhost:8080/api/Visa-updateById?personId=${id}`;
+		return this.http.post(url, visa);
 	}
 }
