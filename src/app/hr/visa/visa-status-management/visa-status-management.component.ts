@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { VisaInfo } from 'src/app/models/general-models';
-import { EmployeeService } from 'src/app/services/employee.service';
 import { VisaService } from 'src/app/services/visa.service';
 import { FileService } from 'src/app/services/file-service';
+import { NgForm } from '@angular/forms';
 
 @Component({
 	selector: 'app-visa-status-management',
@@ -19,14 +19,13 @@ import { FileService } from 'src/app/services/file-service';
 })
 export class VisaStatusManagementComponent implements OnInit {
 
-	data: VisaInfo[] = [];
-	dataSource: VisaInfo[];
+	// data: VisaInfo[] = [];
+	dataSource: VisaInfo[] = [];
 	columnsToDisplay = ['fullname', 'workauth', 'expdate', 'daysleft'];
 	expandedElement: VisaInfo | null;
 	formData: FormData = new FormData();
 	selectedFiles?: FileList;
 	isEdit: boolean = false;
-	editBtn: string = "Edit";
 	workAuthorizationTypes: string[] = ['H1-B', 'L2', 'F1 (CPT/OPT)', 'H4', 'Other'];
 
 	constructor(private visaService: VisaService,
@@ -35,17 +34,16 @@ export class VisaStatusManagementComponent implements OnInit {
 	ngOnInit(): void {
 		// fetch data from backend
 		this.visaService.getVisaList().subscribe((res: VisaInfo[]) => {
-			for (let item of res) {
-				this.data.push(item);
-			}
-			this.dataSource = this.data;
+			// for (let item of res) {
+			// 	this.data.push(item);
+			// }
+			// this.dataSource = this.data;
+			this.dataSource = res;
 		});
 	}
 
 	toggleIsEdit() {
 		this.isEdit = !this.isEdit;
-		if (this.isEdit) this.editBtn = "Save";
-		else this.editBtn = "Edit";
 	}
 
 	selectFile(event: any): void {
@@ -66,6 +64,16 @@ export class VisaStatusManagementComponent implements OnInit {
 		}
 
 		this.selectedFiles = undefined;
+	}
+
+	onSubmit = (form: NgForm, id: number) => {
+		this.visaService.updateVisaById(id, form.value).subscribe(res => {
+			this.dataSource[id - 1].expdate = form.value.dateEnd;
+			this.dataSource[id - 1].workauth = form.value.type;
+		}, err => {
+			console.log('Error editing form');
+		});
+		this.isEdit = false;
 	}
 
 }

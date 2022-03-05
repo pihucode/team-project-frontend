@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { VisaRoutingModule } from './visa-routing.module';
 import { VisaComponent } from './visa.component';
@@ -26,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    ReactiveFormsModule
   ]
 })
 export class VisaModule { }
