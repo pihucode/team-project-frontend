@@ -17,7 +17,7 @@ export class EmployeeHouseInfoComponent implements OnInit {
   constructor(private housingService: HousingService) { }
 
   ngOnInit(): void {
-    // TODO: get employee email
+    // TODO: getß email
     // this.email = 
 
     // GET employee house info from backend
@@ -31,9 +31,11 @@ export class EmployeeHouseInfoComponent implements OnInit {
 
     // TODO: Delete this after receiving from backend
     this.house = {
+      id: 0,
       address: '34 Valley View Drive', 
-      landlord: 'LZDHR', phone: 6094011666, 
-      email: 'some@email.com', 
-      personCount: 100};
+      landlord: 'LZDHR', 
+      landlordPhone: 6094011666, 
+      landlordEmail: 'some@email.com', 
+      numPeople: 100};
   }
 }

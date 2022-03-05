@@ -1,12 +1,10 @@
 export class HousingInfo {
-    // DATA INFERRED FROM INSTRUCTIONS PDF
-    // address: Address ??
+    id: number;
     address: string;
-    // landlord: Person; .name ??
     landlord: string;
-    phone: number;
-    email: string;
-    personCount: number;
+    landlordEmail: string;
+    landlordPhone: number;
+    numPeople: number;
 }
 
 export class FacilityReport {

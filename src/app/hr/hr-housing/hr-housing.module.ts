@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HrHousingRoutingModule } from './hr-housing-routing.module';
 import { HrHouseListComponent } from './hr-house-list/hr-house-list.component';
