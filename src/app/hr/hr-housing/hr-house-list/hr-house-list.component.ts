@@ -25,6 +25,7 @@ export class HrHouseListComponent implements OnInit {
       console.log(err);
     });
 
+    // TODO: Delete after backend setup
     this.housingInfo = [
       {address: '34 Valley View Drive', landlord: 'LZDHR', phone: 6094011666, email: 'some@email.com', personCount: 100},
       {address: '123 ave Princeton, NJ, 00001', landlord: 'LIOCL', phone: 6094011666, email: 'some@email.com', personCount: 5},
