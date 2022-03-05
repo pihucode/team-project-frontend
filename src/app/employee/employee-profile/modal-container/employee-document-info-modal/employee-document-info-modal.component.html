@@ -1,7 +1,14 @@
-<div>
+<!-- <div>
     <h2>Document Info</h2>
     <p>{{documentInfo.document1}} <a href="/employee/profile">Download</a></p>
     <p>{{documentInfo.document2}} <a href="/employee/profile">Download</a></p>
     <p>{{documentInfo.document3}} <a href="/employee/profile">Download</a></p>
     <button (click)="openDocumentInfoModal()">Edit</button>
+</div> -->
+
+<div>
+    <h2>Document Info</h2>
+    <div *ngFor="let filename of filenames">
+        <button class="btn btn-link btn-sm" (click)="handleDocDownload(filename)">{{filename}}</button>
+    </div>
 </div>
