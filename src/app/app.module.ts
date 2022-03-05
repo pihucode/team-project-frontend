@@ -2,21 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {CustomFormsModule} from "ng2-validation";
+import { CustomFormsModule } from "ng2-validation";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OnboardingModule } from './auth/onboarding/onboarding.module';
 import { HireModule } from './hr/hire/hire.module';
-import { InfoComponent } from './pages/info/info.component';
-import { HouseComponent } from './pages/house/house.component';
-import { NavigationComponent } from './pages/navigation/navigation.component';
+// import { InfoComponent } from './pages/info/info.component';
+// import { HouseComponent } from './pages/house/house.component';
+// import { NavigationComponent } from './pages/navigation/navigation.component';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './pages/layout/layout.component';
-import { HRPersonalProfileComponent } from './HRpages/hr-personal-profile/hr-personal-profile.component';
-import { HRHireComponent } from './HRpages/hr-hire/hr-hire.component';
-import { HRHouseManagementComponent } from './HRpages/hr-house-management/hr-house-management.component';
-import { HRLayoutComponent } from './HRpages/hr-layout/hr-layout.component';
-import { HRNavigationComponent } from './HRpages/hr-navigation/hr-navigation.component';
+// import { LayoutComponent } from './pages/layout/layout.component';
+// import { HRPersonalProfileComponent } from './HRpages/hr-personal-profile/hr-personal-profile.component';
+// import { HRHireComponent } from './HRpages/hr-hire/hr-hire.component';
+// import { HRHouseManagementComponent } from './HRpages/hr-house-management/hr-house-management.component';
+// import { HRLayoutComponent } from './HRpages/hr-layout/hr-layout.component';
+// import { HRNavigationComponent } from './HRpages/hr-navigation/hr-navigation.component';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -35,15 +35,15 @@ const routes: Routes = []
 @NgModule({
   declarations: [
     AppComponent,
-    InfoComponent,
-    HouseComponent,
-    NavigationComponent,
-    LayoutComponent,
-    HRPersonalProfileComponent,
-    HRHireComponent,
-    HRHouseManagementComponent,
-    HRLayoutComponent,
-    HRNavigationComponent
+    // InfoComponent,
+    // HouseComponent,
+    // NavigationComponent,
+    // LayoutComponent,
+    // HRPersonalProfileComponent,
+    // HRHireComponent,
+    // HRHouseManagementComponent,
+    // HRLayoutComponent,
+    // HRNavigationComponent
   ],
   imports: [
     FormsModule,
@@ -65,8 +65,7 @@ const routes: Routes = []
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule,
     BrowserAnimationsModule,
-    EmployeeProfileModule,
-    HrHousingModule
+    EmployeeProfileModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
