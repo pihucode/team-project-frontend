@@ -1,3 +1,28 @@
-<p>employee-facility-report-list works!</p>
-<p>------ add a facility report form ------</p>
-<p>------ list of facility reports ------</p>
+<h2 class="text-center">Report Yours</h2>
+<form #facilityReportForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <input type="text" class="form-control" id="title"
+         required
+         [(ngModel)]="report.title" name="title" placeholder="Title*">
+    </div>
+
+    <div class="form-group">
+        <textarea class="form-control" id="description" rows="2"
+         required
+         [(ngModel)]="report.description" name="description" placeholder="Description*"></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-primary btn-sm position-relative start-50 translate-middle-x">Submit</button>
+</form>
+<br>
+<br>
+<h2 class="text-center">Employee Facility Reports</h2>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let element of reportList">
+        <p class="fw-bold">Title: <span class="fw-normal">{{element.title}}</span></p>
+        <p class="fw-bold">Date: <span class="fw-normal">{{element.reportDate}}</span></p>
+        <p class="fw-bold">Description: <span class="fw-normal">{{element.description}}</span></p>
+        <p class="fw-bold">Created By: <span class="fw-normal">{{element.createdBy}}</span></p>
+        <p class="fw-bold">Status: <span class="fw-normal">{{element.status}}</span></p>
+    </li>
+</ul>
