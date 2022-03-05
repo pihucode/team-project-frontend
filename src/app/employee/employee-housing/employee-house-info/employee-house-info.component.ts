@@ -24,5 +24,4 @@ export class EmployeeHouseInfoComponent implements OnInit {
 
     // TODO: get employee roommate info
   }
-
 }

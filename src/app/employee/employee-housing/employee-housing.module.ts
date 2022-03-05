@@ -7,6 +7,8 @@ import { EmployeeFacilityReportListComponent } from './employee-facility-report-
 import { EmployeeFacilityReportComponent } from './employee-facility-report/employee-facility-report.component';
 import { EmployeeHousingComponent } from './employee-housing.component';
 
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { EmployeeHousingComponent } from './employee-housing.component';
   ],
   imports: [
     CommonModule,
-    EmployeeHousingRoutingModule
+    EmployeeHousingRoutingModule,
+    FormsModule
   ]
 })
 export class EmployeeHousingModule { }
