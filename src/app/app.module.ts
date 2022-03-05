@@ -23,10 +23,11 @@ import { EmployeeHomeModule } from './employee/home/home.module';
 import { EmployeeProfileModule } from './employee/employee-profile/employee-profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VisaModule } from './hr/visa/visa.module';
-import { HrHomeModule } from './hr/home/home.module';
 import { EmployeeListModule } from './hr/employee-list/employee-list.module';
 import { EmployeeVisaModule } from './employee/employee-visa/employee-visa.module';
 import { DatePipe } from '@angular/common';
+import { HrHousingModule } from './hr/hr-housing/hr-housing.module';
+import { EmployeeHousingModule } from './employee/employee-housing/employee-housing.module';
 
 const routes: Routes = []
 
@@ -53,9 +54,10 @@ const routes: Routes = []
     RegisterModule,
     EmployeeHomeModule,
     EmployeeVisaModule,
-    HrHomeModule,
     VisaModule,
     EmployeeListModule,
+    HrHousingModule,
+    EmployeeHousingModule,
     RouterModule.forRoot(routes, { useHash: false }),
     NgbModule,
     BrowserAnimationsModule,
