@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
+import { ApplicationsService } from 'src/app/services/applications.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
 	login = new Account('', '', '');
 	displayBadLogin: boolean = false;
 
-	constructor(private loginService: LoginService, private router: Router) { }
+	constructor(private loginService: LoginService,
+		private router: Router,
+		private applicationsService: ApplicationsService) { }
 
 	ngOnInit(): void {
 	}
@@ -41,9 +44,20 @@ export class LoginComponent implements OnInit {
 				sessionStorage.setItem('role', 'employee');
 				sessionStorage.setItem('email', this.login.email);
 
-				// redirect
-				this.displayBadLogin = false;
-				this.router.navigate(['employee/home']);
+				// redirect to onboarding if application does not exist
+				// todo
+
+				// redirect to either home or status page
+				this.applicationsService.getApplicationStatus().subscribe((status: string) => {
+					let route = 'application-status';
+					if (status === 'approved') {
+						route = 'employee/home';
+					} else if (status === 'notexist') {
+						route = 'onboarding';
+					}
+					this.displayBadLogin = false;
+					this.router.navigate([route]);
+				});
 			} else {
 				// No redirect, display login error message
 				this.displayBadLogin = true;

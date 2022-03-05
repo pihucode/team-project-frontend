@@ -7,12 +7,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ApplicationFormComponent } from './application-form/application-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnboardingRoutingModule } from './onboarding-routing.module';
+import { ApplicationStatusComponent } from './application-status/application-status.component';
 
 
 
 @NgModule({
   declarations: [
-    ApplicationFormComponent
+    ApplicationFormComponent,
+    ApplicationStatusComponent
   ],
   imports: [
     CommonModule,

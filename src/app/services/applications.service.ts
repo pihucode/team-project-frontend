@@ -7,17 +7,18 @@ import { Applications } from '../models/applications';
   providedIn: 'root'
 })
 export class ApplicationsService {
+  private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
   private endpoint = 'http://localhost:8080/api/application'
 
   private applications: BehaviorSubject<Applications[]> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient) { }
 
-  getApplicationsObservable = () : Observable<Applications[]> => {
+  getApplicationsObservable = (): Observable<Applications[]> => {
     return this.applications.asObservable();
   }
 
-  setApplicationsObservable = (val : Applications[]) => {
+  setApplicationsObservable = (val: Applications[]) => {
     this.applications.next(val);
   }
 
@@ -29,6 +30,10 @@ export class ApplicationsService {
     return this.http.get(this.endpoint + '-info?applicationId=' + id);
   }
 
+  getApplicationStatus = () => {
+    const url = `http://localhost:8080/api/application-status/${this.email}`;
+    return this.http.get(url, { responseType: 'text' });
+  }
   setApplicationStatus = (id: number, status: string) => {
     return this.http.post(this.endpoint + '-status?applicationId=' + id + '&status=' + status, null);
   }
