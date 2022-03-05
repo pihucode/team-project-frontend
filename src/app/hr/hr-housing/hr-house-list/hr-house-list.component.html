@@ -9,8 +9,33 @@
         <p class="fw-bold">Email: <span class="fw-normal">{{house.landlordEmail}}</span></p>
         <button (click)="getDetails(i)" type="button" class="btn btn-primary btn-sm">Details</button>
     </div>
+</div>
 
-    <form> 
-        
-    </form>
+<div class="container">
+    <div class="box">
+        <h2 class="text-center">Add House</h2>
+        <form [formGroup]="addHouseForm" (ngSubmit)="onSubmit()">
+            <div class="form-group" formGroupName="address">
+                <input type="text" class="form-control" id="street"
+                required formControlName="street" placeholder="Street*">
+                
+                <input type="text" class="form-control" id="city"
+                required formControlName="city" placeholder="City*">
+                
+                <input type="text" class="form-control" id="state"
+                required formControlName="state" placeholder="State*">
+                
+                <input type="number" class="form-control" id="zip"
+                required formControlName="zip" placeholder="Zip*">
+            </div>
+
+            <select class="form-select" id="landlord" formControlName="landlord">
+                <option *ngFor="let landlord of landlords" value="{{landlord}}">{{landlord}}</option>
+            </select>
+
+            <input class="form-control" type="number" id="numPeople" formControlName="numPeople" placeholder="Max House Size*">
+            
+            <button type="submit" class="btn btn-primary btn-sm position-relative start-50 translate-middle-x">Submit</button>
+        </form>
+    </div>
 </div>

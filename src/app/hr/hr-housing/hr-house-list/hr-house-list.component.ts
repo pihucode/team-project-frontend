@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { HousingInfo } from 'src/app/models/housing-models';
 import { HousingService } from 'src/app/services/housing.service';
 
@@ -11,8 +12,20 @@ export class HrHouseListComponent implements OnInit {
   housingInfo: HousingInfo[] = [];
   // facilityInfo: FacilityInfo[] = [];
   // employeeInfo = []; object: {name, phone, email, car}
+  addHouseForm = this.fb.group({
+    address: this.fb.group({
+			street: ['', Validators.required],
+			city: ['', Validators.required],
+			state: ['', Validators.required],
+			zip: ['', Validators.required]
+		}),
+    landlord: ['', Validators.required],
+    numPeople: ['', Validators.required]
+  });
 
-  constructor(private housingService: HousingService) { }
+  landlords: string[] = ['guy1', 'guy2', 'guy3'];
+
+  constructor(private housingService: HousingService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.housingService.getAllHouses().subscribe(houses => {
@@ -28,4 +41,7 @@ export class HrHouseListComponent implements OnInit {
     console.log(index);
   }
 
+  onSubmit = () => {
+    console.log(this.addHouseForm.value);
+  }
 }
