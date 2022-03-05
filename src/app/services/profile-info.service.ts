@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo } from '../models/profile-models';
+import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo, UniqueContact, UniqueContactList } from '../models/profile-models';
 
 @Injectable({
 	providedIn: 'root'
@@ -11,6 +11,9 @@ export class ProfileInfoService {
 	private contactInfo: BehaviorSubject<ContactInfo> = new BehaviorSubject(new ContactInfo('', '', 0, 0));
 	private employmentInfo: BehaviorSubject<EmploymentInfo> = new BehaviorSubject(new EmploymentInfo('', '', ''));
 	// TODO: emergencyContactInfo
+	private emergencyContacts: BehaviorSubject<UniqueContact[]> = new BehaviorSubject([]);
+	private references: BehaviorSubject<UniqueContact[]> = new BehaviorSubject([]);
+
 	// TODO: documentInfo
 
 	constructor() { }
@@ -27,6 +30,12 @@ export class ProfileInfoService {
 	getEmploymentInfo = (): Observable<EmploymentInfo> => {
 		return this.employmentInfo.asObservable();
 	}
+	getEmergencyContacts = (): Observable<UniqueContact[]> => {
+		return this.emergencyContacts.asObservable();
+	}
+	getReferences = (): Observable<UniqueContact[]> => {
+		return this.references.asObservable();
+	}
 
 	setPersonalInfo = (val: PersonalInfo) => {
 		this.personalInfo.next(val);
@@ -39,5 +48,11 @@ export class ProfileInfoService {
 	}
 	setEmploymentInfo = (val: EmploymentInfo) => {
 		this.employmentInfo.next(val);
+	}
+	setEmergencyContacts = (val: UniqueContact[]) => {
+		this.emergencyContacts.next(val);
+	}
+	setReferences = (val: UniqueContact[]) => {
+		this.references.next(val);
 	}
 }

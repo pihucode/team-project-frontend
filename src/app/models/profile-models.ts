@@ -34,6 +34,22 @@ export class EmploymentInfo {
     ) { }
 }
 
-// TODO: EmergencyContactInfo
+// for Reference and Emergency contacts
+export class UniqueContactList {
+    constructor(
+        public contacts: UniqueContact[]
+    ) { }
+}
+
+export class UniqueContact {
+    constructor(
+        public id: number,
+        public firstname: string,
+        public lastname: string,
+        public email: string,
+        public phone: number,
+        public relationship: string
+    ) { }
+}
 
 // TODO: Document Info?

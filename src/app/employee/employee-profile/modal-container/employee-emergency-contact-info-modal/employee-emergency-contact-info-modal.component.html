@@ -1,8 +1,10 @@
 <div>
-    <h2>Emergency Contact Info</h2>
-    <p>Relationship: {{emergencyContactInfo.relationship}}</p>
-    <p>Full Name: {{emergencyContactInfo.fullname}}</p>
-    <p>Phone: {{emergencyContactInfo.phone}}</p>
-    <p>Address: {{emergencyContactInfo.address}}</p>
-    <button (click)="openEmgencyContactInfoModal()">Edit</button>
+    <h2>Emergency Contacts</h2>
+    <div *ngFor="let emergencyContactInfo of emergencyContacts">
+        <p>Full Name: {{emergencyContactInfo.firstname}} {{emergencyContactInfo.lastname}}</p>
+        <p>Phone: {{emergencyContactInfo.phone}}</p>
+        <p>Email: {{emergencyContactInfo.email}}</p>
+        <p>Relationship: {{emergencyContactInfo.relationship}}</p>
+        <button (click)="openEmgencyContactInfoModal(emergencyContactInfo)">Edit</button>
+    </div>
 </div>

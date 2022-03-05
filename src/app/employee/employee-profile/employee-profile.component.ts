@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo } from 'src/app/models/profile-models';
+import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo, UniqueContact } from 'src/app/models/profile-models';
 import { ProfileInfoService } from 'src/app/services/profile-info.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -12,13 +12,15 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class EmployeeProfileComponent implements OnInit {
 	contactInfo: ContactInfo;
 	employmentInfo: EmploymentInfo;
+	emergencyContacts: UniqueContact[];
+	references: UniqueContact[];
 
-	emergencyContactInfo = {
-		relationship: "Mother",
-		fullname: "Your Mom",
-		phone: "1113337777",
-		address: "123 Your Moms House"
-	}
+	// emergencyContactInfo = {
+	// 	relationship: "Mother",
+	// 	fullname: "Your Mom",
+	// 	phone: "1113337777",
+	// 	address: "123 Your Moms House"
+	// }
 
 	documentInfo = {
 		document1: "SomeDoc1",
@@ -43,6 +45,12 @@ export class EmployeeProfileComponent implements OnInit {
 		});
 		this.profileService.getEmploymentInfo().subscribe((data: EmploymentInfo) => {
 			this.profileInfoService.setEmploymentInfo(data);
+		});
+		this.profileService.getEmergencyContacts().subscribe((data: UniqueContact[]) => {
+			this.profileInfoService.setEmergencyContacts(data);
+		});
+		this.profileService.getReferences().subscribe((data: UniqueContact[]) => {
+			this.profileInfoService.setReferences(data);
 		});
 	}
 

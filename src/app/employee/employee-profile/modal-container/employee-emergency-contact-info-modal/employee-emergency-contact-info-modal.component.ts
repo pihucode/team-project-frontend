@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UniqueContact } from 'src/app/models/profile-models';
+import { ProfileInfoService } from 'src/app/services/profile-info.service';
 import { EmployeeEmergencyContactInfoModalContentComponent } from '../../modal-content/employee-emergency-contact-info-modal-content/employee-emergency-contact-info-modal-content.component';
 
 @Component({
@@ -8,16 +10,20 @@ import { EmployeeEmergencyContactInfoModalContentComponent } from '../../modal-c
   styleUrls: ['./employee-emergency-contact-info-modal.component.css']
 })
 export class EmployeeEmergencyContactInfoModalComponent implements OnInit {
-  @Input()
-  emergencyContactInfo
+  @Input() emergencyContacts: UniqueContact[];
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,
+    private profileInfoService: ProfileInfoService) { }
 
   ngOnInit(): void {
+    this.profileInfoService.getEmergencyContacts().subscribe(data => {
+      this.emergencyContacts = data;
+    });
   }
 
-  openEmgencyContactInfoModal = (): void => {
+  openEmgencyContactInfoModal = (data: UniqueContact): void => {
     const modalRef = this.modalService.open(EmployeeEmergencyContactInfoModalContentComponent, { centered: true });
-    modalRef.componentInstance.emergencyContactInfo = this.emergencyContactInfo;
+    modalRef.componentInstance.emergencyContacts = this.emergencyContacts;
+    modalRef.componentInstance.emergencyContactInfo = data;
   }
 }

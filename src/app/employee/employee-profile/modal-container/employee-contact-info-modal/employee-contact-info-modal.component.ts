@@ -15,7 +15,6 @@ export class EmployeeContactInfoModalComponent implements OnInit {
   constructor(private modalService: NgbModal, private profileInfoService: ProfileInfoService) { }
 
   ngOnInit(): void {
-
     this.profileInfoService.getContactInfo().subscribe(contactInfo => {
       this.contactInfo = contactInfo;
     });
