@@ -35,6 +35,11 @@ export class RegisterComponent implements OnInit {
     this.registerService.registerNewUser(this.register, this.email).subscribe(response => {
       if (response === 'true') {
         console.log('Account Registered');
+        // set session data
+        sessionStorage.setItem('login', 'true');
+        sessionStorage.setItem('role', 'employee');
+        sessionStorage.setItem('email', this.email);
+
         // redirect to onboarding page
         this.router.navigate(
           ['/onboarding'],
@@ -42,7 +47,6 @@ export class RegisterComponent implements OnInit {
         );
         this.displayUsernameTaken = false;
       } else {
-        console.log('Username already taken');
         // If not redirected, display error msg of username taken
         this.displayUsernameTaken = true;
       }
