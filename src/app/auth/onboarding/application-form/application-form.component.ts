@@ -82,7 +82,7 @@ export class ApplicationFormComponent implements OnInit {
 			color: ['']
 		}),
 		references: this.fb.array([]),
-		emergencyContacts: this.fb.array([])
+		emergencyContacts: this.fb.array([], Validators.required)
 		// documents: this.fb.array([])
 	});
 	formData: FormData = new FormData();
