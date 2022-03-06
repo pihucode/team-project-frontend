@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HousingInfo } from 'src/app/models/housing-models';
 import { HousingService } from 'src/app/services/housing.service';
 
@@ -25,7 +26,8 @@ export class HrHouseListComponent implements OnInit {
 
   landlords: string[] = ['guy1', 'guy2', 'guy3'];
 
-  constructor(private housingService: HousingService, private fb: FormBuilder) { }
+  constructor(private housingService: HousingService, private fb: FormBuilder,
+     private router: Router) { }
 
   ngOnInit(): void {
     this.housingService.getAllHouses().subscribe(houses => {
@@ -34,11 +36,37 @@ export class HrHouseListComponent implements OnInit {
     }, err => {
       console.log('Error receiving list of houses info.');
       console.log(err);
+      this.housingInfo = [
+        {
+          id: 1,
+          address: 'address',
+          landlord: 'landlord',
+          landlordEmail: 'email',
+          landlordPhone: 1,
+          numPeople: 1
+        }, 
+        {
+          id: 2,
+          address: 'address',
+          landlord: 'landlord',
+          landlordEmail: 'email',
+          landlordPhone: 1,
+          numPeople: 1
+        }, 
+        {
+          id: 3,
+          address: 'address',
+          landlord: 'landlord',
+          landlordEmail: 'email',
+          landlordPhone: 1,
+          numPeople: 1
+        }, 
+      ];
     });
   }
 
-  getDetails(index: number): void {
-    console.log(index);
+  getDetails(houseId: number): void {
+    this.router.navigate(['hr/house/' + houseId]);
   }
 
   onSubmit = () => {
