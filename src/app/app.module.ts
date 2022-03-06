@@ -30,12 +30,14 @@ import { DatePipe } from '@angular/common';
 import { HrHousingModule } from './hr/hr-housing/hr-housing.module';
 import { EmployeeHousingModule } from './employee/employee-housing/employee-housing.module';
 import { HrHomeModule } from './hr/home/home.module';
+import { NavComponent } from './nav/nav.component';
 
 const routes: Routes = []
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavComponent,
     // InfoComponent,
     // HouseComponent,
     // NavigationComponent,

@@ -1,0 +1,58 @@
+<div>
+    <nav>
+        <ul *ngIf="isNotLoggedIn">
+            <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        </ul>
+
+        <ul *ngIf="isOnboarding">
+            <li><a routerLink="/onboarding" routerLinkActive="active">Onboarding</a></li>
+            <li><a routerLink="/application-status" routerLinkActive="active">Application Status</a></li>
+            <li><button (click)="logout()">Logout</button></li>
+        </ul>
+
+        <ul *ngIf="isEmployeePending">
+            <li><button (click)="logout()">Logout</button></li>
+        </ul>
+
+        <ul *ngIf="isEmployeeApproved">
+            <li><a routerLink="/employee/profile" routerLinkActive="active">Employee Profile</a></li>
+            <li><a routerLink="/employee/visa" routerLinkActive="active">Employee Visa</a></li>
+            <li><a routerLink="/employee/housing" routerLinkActive="active">Employee Housing</a></li>
+            <li><a routerLink="/employee/facility-reports" routerLinkActive="active">Employee Facility Reports</a></li>
+            <li><button (click)="logout()">Logout</button></li>
+
+        </ul>
+
+        <ul *ngIf="isHr">
+            <li><a routerLink="/hr/home" routerLinkActive="active">HR Home</a></li>
+            <li><a routerLink="/hr/hire" routerLinkActive="active">HR Hire</a></li>
+            <li><a routerLink="/hr/visa" routerLinkActive="active">HR Visa</a></li>
+            <li><a routerLink="/hr/employee-list" routerLinkActive="active">HR Employee List</a></li>
+            <li><a routerLink="/hr/housing" routerLinkActive="active">HR Housing</a></li>
+            <li><button (click)="logout()">Logout</button></li>
+        </ul>
+    </nav>
+
+    <div *ngIf="isTest">
+        <ul>
+            <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+
+            <li><a routerLink="/onboarding" routerLinkActive="active">Onboarding</a></li>
+            <li><a routerLink="/application-status" routerLinkActive="active">Application Status</a></li>
+
+            <li><a routerLink="/employee/profile" routerLinkActive="active">Employee Profile</a></li>
+            <li><a routerLink="/employee/visa" routerLinkActive="active">Employee Visa</a></li>
+            <li><a routerLink="/employee/housing" routerLinkActive="active">Employee Housing</a></li>
+            <li><a routerLink="/employee/facility-reports" routerLinkActive="active">Employee Facility Reports</a></li>
+
+            <li><a routerLink="/hr/home" routerLinkActive="active">HR Home</a></li>
+            <li><a routerLink="/hr/hire" routerLinkActive="active">HR Hire</a></li>
+            <li><a routerLink="/hr/visa" routerLinkActive="active">HR Visa</a></li>
+            <li><a routerLink="/hr/employee-list" routerLinkActive="active">HR Employee List</a></li>
+            <li><a routerLink="/hr/housing" routerLinkActive="active">HR Housing</a></li>
+
+        </ul>
+        <li><button (click)="logout()">Logout</button></li>
+
+    </div>
+</div>
