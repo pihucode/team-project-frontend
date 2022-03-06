@@ -7,7 +7,7 @@ import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo, UniqueContact, 
 	providedIn: 'root'
 })
 export class ProfileService {
-	private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
+	private email = sessionStorage.getItem('email');
 	// private email2 = 'test2@mailinator.com'; //todo get from auth cookie
 
 	constructor(private http: HttpClient) { }

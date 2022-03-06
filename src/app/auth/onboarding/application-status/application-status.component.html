@@ -8,5 +8,10 @@
             {{comment}}
         </li>
     </ul>
-    <span>Submit a new <a href="/onboarding">Onboarding Application</a></span>  
+    <span>Submit a new <a href="/onboarding">Onboarding Application</a></span>
+</div>
+
+<div *ngIf="status === 'notexist'">
+    <p>You have not made an application yet.</p>
+    <span>Create an <a href="/onboarding">Onboarding Application</a></span>
 </div>

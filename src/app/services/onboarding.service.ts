@@ -18,7 +18,7 @@ export class OnboardingService {
         var self = this;
         this.http.post(this.endpoint, req, { responseType: 'text' }).subscribe(response => {
             self.fileService.uploadDocToEmail(formData, 'mandatory', email);
-            // self.fileService.uploadDocToEmail(formData, 'mandatory', 'pinxhuang@gmail.com');
+            sessionStorage.setItem('status', 'pending');
             self.router.navigate(['employee/home']);
         })
     }

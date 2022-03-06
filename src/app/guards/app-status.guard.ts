@@ -13,13 +13,16 @@ export class AppStatusGuard implements CanActivate, CanActivateChild {
 	constructor(private router: Router,
 		private applicationsService: ApplicationsService) { }
 
-	status: string = AuthConstant.STATUS;
+	// status: string = AuthConstant.STATUS;
 
+	getStatus(): string {
+		return sessionStorage.getItem('status');
+	}
 	isEmployee(): boolean {
 		return sessionStorage.getItem('role') === 'employee';
 	}
 	isEmployeeAndNotApproved() {
-		return sessionStorage.getItem('role') === 'employee' && this.status !== 'approved';
+		return sessionStorage.getItem('role') === 'employee' && this.getStatus() !== 'approved';
 	}
 
 	canActivate(

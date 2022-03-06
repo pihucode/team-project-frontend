@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
         sessionStorage.setItem('login', 'true');
         sessionStorage.setItem('role', 'employee');
         sessionStorage.setItem('email', this.email);
+        sessionStorage.setItem('status', 'notexist');
 
         // redirect to onboarding page
         this.router.navigate(

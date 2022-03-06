@@ -7,7 +7,7 @@ import { Visa } from '../models/onboarding-models';
 	providedIn: 'root'
 })
 export class VisaService {
-	private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
+	private email = sessionStorage.getItem('email');
 
 	constructor(private http: HttpClient) { }
 

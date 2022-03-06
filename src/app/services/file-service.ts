@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class FileService {
 
-	private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
+	private email = sessionStorage.getItem('email');
 
 	constructor(private http: HttpClient) { }
 

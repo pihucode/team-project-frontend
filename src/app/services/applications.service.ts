@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map, pipe, lastValueFrom, of } from 'rxjs';
 import { Applications } from '../models/applications';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApplicationsService {
-  private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
+  private email = sessionStorage.getItem('email');
   private endpoint = 'http://localhost:8080/api/application'
 
   private applications: BehaviorSubject<Applications[]> = new BehaviorSubject([]);
@@ -34,6 +34,14 @@ export class ApplicationsService {
     const url = `http://localhost:8080/api/application-status/${this.email}`;
     return this.http.get(url, { responseType: 'text' });
   }
+
+  // getApplicationStatusPromise() {
+  //   const url = `http://localhost:8080/api/application-status/${this.email}`;
+  //   return fetch(url).then((res) => {
+  //     console.log(res)
+  //     return res;
+  //   });
+  // }
 
   setApplicationStatus = (id: number, status: string) => {
     return this.http.post(this.endpoint + '-status?applicationId=' + id + '&status=' + status, null);

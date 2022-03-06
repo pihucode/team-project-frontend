@@ -95,12 +95,12 @@ export class ApplicationFormComponent implements OnInit {
 		private fileService: FileService) { }
 
 	ngOnInit(): void {
-		this.activatedRoute.queryParams.subscribe(
-			(params) => {
-				this.email = params['email'];
-			}
-		)
-		console.log(this.applicationForm.valid);
+		this.email = sessionStorage.getItem('email');
+		// this.activatedRoute.queryParams.subscribe(
+		// 	(params) => {
+		// 		this.email = params['email'];
+		// 	}
+		// )
 	}
 
 	// =============== REFERENCE FORM ARRAY ==================

@@ -16,4 +16,8 @@ export class LoginService {
     });
   }
 
+  getUserEmail = (username: string) => {
+    const url = `http://localhost:9999/api/user-email/${username}`;
+    return this.http.get(url, { responseType: 'text' });
+  }
 }

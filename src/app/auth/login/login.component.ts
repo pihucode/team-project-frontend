@@ -29,40 +29,66 @@ export class LoginComponent implements OnInit {
 	onSubmit = () => {
 		this.loginService.attemptLogin(this.login).subscribe(response => {
 			if (response == "hr") {
-				// set session data
-				sessionStorage.setItem('login', 'true');
-				sessionStorage.setItem('role', 'hr');
-				sessionStorage.setItem('email', this.login.email);
-
+				if (this.login.email === '') {
+					//get email from backend
+					this.loginService.getUserEmail(this.login.username).subscribe((email: string) => {
+						// set session data
+						sessionStorage.setItem('login', 'true');
+						sessionStorage.setItem('role', 'hr');
+						sessionStorage.setItem('email', email);
+						console.log('loggin in with username');
+					})
+				} else {
+					// set session data
+					sessionStorage.setItem('login', 'true');
+					sessionStorage.setItem('role', 'hr');
+					sessionStorage.setItem('email', this.login.email);
+				}
 				// redirect
 				this.displayBadLogin = false;
 				this.router.navigate(['hr/home']);
 
 			} else if (response == "employee") {
-				// set session data
-				sessionStorage.setItem('login', 'true');
-				sessionStorage.setItem('role', 'employee');
-				sessionStorage.setItem('email', this.login.email);
-
-				// redirect to onboarding if application does not exist
-				// todo
+				if (this.login.email === '') {
+					//get email from backend
+					this.loginService.getUserEmail(this.login.username).subscribe((email: string) => {
+						// set session data
+						sessionStorage.setItem('login', 'true');
+						sessionStorage.setItem('role', 'employee');
+						sessionStorage.setItem('email', email);
+					})
+				} else {
+					// set session data
+					sessionStorage.setItem('login', 'true');
+					sessionStorage.setItem('role', 'employee');
+					sessionStorage.setItem('email', this.login.email);
+				}
 
 				// redirect to either home or status page
 				this.applicationsService.getApplicationStatus().subscribe((status: string) => {
+					sessionStorage.setItem('status', status);
+
 					let route = 'application-status';
+
 					if (status === 'approved') {
 						route = 'employee/home';
+
 					} else if (status === 'notexist') {
 						route = 'onboarding';
+
+					} else {
+						route = 'application-status';
 					}
 					this.displayBadLogin = false;
 					this.router.navigate([route]);
 				});
+
+
 			} else {
 				// No redirect, display login error message
 				this.displayBadLogin = true;
 			}
 		});
-		this.login.clear();
+		// this.login.clear();
 	}
 }

@@ -17,8 +17,9 @@ export class ApplicationStatusComponent implements OnInit {
 
 	ngOnInit(): void {
 		// fetch data from backend
-		this.applicationsService.getApplicationStatus().subscribe(data => {
+		this.applicationsService.getApplicationStatus().subscribe((data: string) => {
 			this.status = data;
+			sessionStorage.setItem('status', data);
 		});
 
 		// TODO: Get Application's Comments

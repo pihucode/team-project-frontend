@@ -13,26 +13,31 @@ export class OnBoardAuthGuardGuard implements CanActivate, CanActivateChild {
 	constructor(private router: Router,
 		private applicationsService: ApplicationsService) { }
 
-	status: string = AuthConstant.STATUS;
+	// status: string = AuthConstant.STATUS;
+
+	getStatus(): string {
+		console.log(sessionStorage.getItem('status'));
+		return sessionStorage.getItem('status');
+	}
 
 	isOnBoard() {
 		// this.applicationsService.getApplicationStatus().pipe(map(status => {
 		// 	return sessionStorage.getItem('role') === 'employee' && status === 'rejected';
 		// }));
 		return sessionStorage.getItem('role') === 'employee'
-			&& (this.status === 'rejected' || this.status === 'notexist');
+			&& (this.getStatus() === 'rejected' || this.getStatus() === 'notexist');
 	}
 	isEmployeeAndApproved(): boolean {
 		// this.applicationsService.getApplicationStatus().subscribe(status => {
 		// 	return sessionStorage.getItem('role') === 'employee' && status === 'approved';
 		// });
-		return sessionStorage.getItem('role') === 'employee' && this.status === 'approved';
+		return sessionStorage.getItem('role') === 'employee' && this.getStatus() === 'approved';
 	}
 	isEmployeeAndPending() {
 		// this.applicationsService.getApplicationStatus().subscribe(status => {
 		// 	return sessionStorage.getItem('role') === 'employee' && status === 'pending';
 		// });
-		return sessionStorage.getItem('role') === 'employee' && this.status === 'pending';
+		return sessionStorage.getItem('role') === 'employee' && this.getStatus() === 'pending';
 	}
 
 	canActivate(
