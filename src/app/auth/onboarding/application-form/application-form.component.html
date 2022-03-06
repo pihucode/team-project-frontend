@@ -13,13 +13,13 @@
         <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('required')">
             First name is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('minlength')">
-            can not be shorter than 2 characters</div>
+            Cannot be shorter than 2 characters.</div>
         <label for="last-name">Last Name: </label>
         <input id="last-name" type="text" formControlName="lastName">
         <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('required')">
             Last name is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('minlength')">
-            can not be shorter than 4 characters</div>
+            Cannot be shorter than 4 characters.</div>
         <label for="preferred-name">Preferred Name: </label>
         <input id="preferred-name" type="text" formControlName="preferredName">
 
@@ -63,31 +63,31 @@
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('required')">
             Personal Email is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('email')">
-            Invalid Email Type</div>
+            Invalid Email Type.</div>
 
         <label for="work-email">Work Email: </label>
         <input id="work-email" type="email" formControlName="workEmail">
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('workEmail').hasError('email')">
-            Invalid Email Type</div>
+            Invalid Email Type.</div>
         <label for="cell-phone">Cell Phone: </label>
         <input id="cell-phone" type="number" formControlName="cellPhone">
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('required')">
             Cell Phone Number is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('min') &&
         !applicationForm.get('contactInfo').get('cellPhone').hasError('max')">
-            Invalid Phone Number</div>
+            Invalid Phone Number.</div>
         <label for="work-phone">Work Phone: </label>
         <input id="work-phone" type="number" formControlName="workPhone">
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('workPhone').hasError('min') &&
         !applicationForm.get('contactInfo').get('workPhone').hasError('max')">
-            Invalid Phone Number</div>
+            Invalid Phone Number.</div>
     </div>
 
     <div class="form-group" formGroupName="visaInfo">
 
         <label for="is-permanent-resident">Are you a citizen or permanent resident of the U.S? </label>
         <input id="is-permanent-resident" type="checkbox" [checked]="isPermanentResident"
-            (change)="onPermanentResidentChange()" />
+            (change)="onPermanentResidentChange()"/>
 
         <div [hidden]="!isPermanentResident">
             <label for="resident-type">Green Card or Citizen:</label>
@@ -104,7 +104,7 @@
             </select>
         </div>
 
-        <div>
+        <div [hidden]="isPermanentResident">
             <mat-form-field appearance="fill">
                 <label for="work-start-date">Work Authorization Start Date:</label>
                 <input id="work-start-date" formControlName="workDateStart" matInput
@@ -114,7 +114,7 @@
             </mat-form-field>
         </div>
 
-        <div>
+        <div [hidden]="isPermanentResident">
             <mat-form-field appearance="fill">
                 <label for="work-end-date">Work Authorization End Date:</label>
                 <input id="work-end-date" formControlName="workDateEnd" matInput [matDatepicker]="workEndDatePicker">
@@ -185,21 +185,30 @@
                     <input type="text" formControlName="firstName">
                     <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('firstName').hasError('required')">
                         First name is required.</div>
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('firstName').hasError('minlength')">
+                        Cannot be shorter than 2 characters.</div>
 
                     <label>Last Name: </label>
                     <input type="text" formControlName="lastName">
                     <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('lastName').hasError('required')">
                         Last name is required.</div>
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('lastName').hasError('minlength')">
+                        Cannot be shorter than 4 characters.</div>
 
                     <label>Phone: </label>
                     <input type="number" formControlName="phone">
                     <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('phone').hasError('required')">
                         Phone Number is required.</div>
-
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('phone').hasError('min') 
+                    && !emergencyContacts.controls[i].get('phone').hasError('max')">
+                        Invalid Phone Number.</div>
+                    
                     <label>Email: </label>
                     <input type="email" formControlName="email">
                     <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('email').hasError('required')">
                         Email is required.</div>
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('email').hasError('email')">
+                        Invalid Email Type.</div>
 
                     <label>Relationship: </label>
                     <input type="text" formControlName="relationship">

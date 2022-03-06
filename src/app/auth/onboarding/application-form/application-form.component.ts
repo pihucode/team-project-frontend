@@ -23,10 +23,7 @@ export class ApplicationFormComponent implements OnInit {
 
 	applicationForm = this.fb.group({
 		personalInfo: this.fb.group({
-			firstName: new FormControl('', [
-				Validators.required,
-				Validators.minLength(2)
-			]),
+			firstName: ['', [Validators.required,Validators.minLength(2)]],
 			lastName: new FormControl('', [
 				Validators.required,
 				Validators.minLength(4)
@@ -73,8 +70,8 @@ export class ApplicationFormComponent implements OnInit {
 			// residentType: [''],
 			// workAuthorization: [''],
 			type: ['', Validators.required],
-			workDateStart: ['', Validators.required],
-			workDateEnd: ['', Validators.required],
+			workDateStart: [''],
+			workDateEnd: [''],
 		}),
 		carInfo: this.fb.group({
 			maker: [''],
@@ -127,10 +124,12 @@ export class ApplicationFormComponent implements OnInit {
 	}
 	addEmergencyContact() {
 		const emergencyContactGroup = this.fb.group({
-			firstName: ['', Validators.required],
-			lastName: ['', Validators.required],
-			phone: ['', Validators.required],
-			email: ['', Validators.required],
+			firstName: ['', [Validators.required, Validators.minLength(2)]],
+			lastName: ['', [Validators.required, Validators.minLength(4)]],
+			phone: ['', [Validators.required, 
+				Validators.min(1000000000),
+				Validators.max(10000000000)]],
+			email: ['', [Validators.required, Validators.email]],
 			relationship: ['', Validators.required]
 		});
 		this.emergencyContacts.push(emergencyContactGroup);
@@ -175,8 +174,6 @@ export class ApplicationFormComponent implements OnInit {
 
 	onPermanentResidentChange(): void {
 		this.isPermanentResident = !this.isPermanentResident;
-		// if (this.isPermanentResident) this.applicationForm.value.visaInfo.workAuthorization = '';
-		// else this.applicationForm.value.visaInfo.residentType = '';
 	}
 
 	onSubmit(): void {
