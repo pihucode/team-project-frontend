@@ -14,7 +14,7 @@ export class FacilityReport {
         public createdBy: string,
         public reportDate: string, // DATE??
         public status: string,
-    ) {}
+    ) { }
 
     clear = () => {
         this.title = '';
@@ -36,4 +36,10 @@ export class FacilityInfo {
     chairs: number;
     tables: number;
     mattresses: number;
+}
+
+export class Landlord {
+    id: number;
+    fullname: string;
+    email: string;
 }

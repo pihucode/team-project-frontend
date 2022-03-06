@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HousingInfo } from 'src/app/models/housing-models';
+import { HousingInfo, Landlord } from 'src/app/models/housing-models';
 import { HousingService } from 'src/app/services/housing.service';
 
 @Component({
@@ -11,25 +11,36 @@ import { HousingService } from 'src/app/services/housing.service';
 })
 export class HrHouseListComponent implements OnInit {
   housingInfo: HousingInfo[] = [];
+  landlords: Landlord[] = [];
   // facilityInfo: FacilityInfo[] = [];
   // employeeInfo = []; object: {name, phone, email, car}
   addHouseForm = this.fb.group({
     address: this.fb.group({
-			street: ['', Validators.required],
-			city: ['', Validators.required],
-			state: ['', Validators.required],
-			zip: ['', Validators.required]
-		}),
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zip: ['', Validators.required]
+    }),
+    furniture: this.fb.group({
+      beds: [0, Validators.required],
+      mattresses: [0, Validators.required],
+      tables: [0, Validators.required],
+      chairs: [0, Validators.required]
+    }),
     landlord: ['', Validators.required],
-    numPeople: ['', Validators.required]
+    numPeople: [0, Validators.required]
   });
 
-  landlords: string[] = ['guy1', 'guy2', 'guy3'];
+  // landlords: string[] = ['guy1', 'guy2', 'guy3'];
 
   constructor(private housingService: HousingService, private fb: FormBuilder,
-     private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.housingService.getPotentialLandlords().subscribe((data: Landlord[]) => {
+      this.landlords = data;
+    });
+
     this.housingService.getAllHouses().subscribe(houses => {
       console.log('Successful GET of houses.');
       this.housingInfo = houses as HousingInfo[];
@@ -44,7 +55,7 @@ export class HrHouseListComponent implements OnInit {
           landlordEmail: 'email',
           landlordPhone: 1,
           numPeople: 1
-        }, 
+        },
         {
           id: 2,
           address: 'address',
@@ -52,7 +63,7 @@ export class HrHouseListComponent implements OnInit {
           landlordEmail: 'email',
           landlordPhone: 1,
           numPeople: 1
-        }, 
+        },
         {
           id: 3,
           address: 'address',
@@ -60,7 +71,7 @@ export class HrHouseListComponent implements OnInit {
           landlordEmail: 'email',
           landlordPhone: 1,
           numPeople: 1
-        }, 
+        },
       ];
     });
   }

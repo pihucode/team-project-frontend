@@ -27,10 +27,14 @@ export class HousingService {
     const url = `http://localhost:8080/api/facility-reports`;
     return this.http.get(url);
   }
+  getPotentialLandlords() {
+    const url = `http://localhost:8080/api/landlords/potential`;
+    return this.http.get(url);
+  }
 
   postReportByEmail = (email: string, report) => {
     const url = `http://localhost:8080/api/facility-report/${email}`;
-    return this.http.post(url, report, {responseType: 'text'});
+    return this.http.post(url, report, { responseType: 'text' });
   }
 
 }
