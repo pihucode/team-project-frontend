@@ -6,11 +6,12 @@ import { AddHouseRequest } from '../models/housing-models';
   providedIn: 'root'
 })
 export class HousingService {
+  private email = sessionStorage.getItem('email');
 
   constructor(private http: HttpClient) { }
 
-  getHouseByEmail = (email: string) => {
-    const url = `http://localhost:8080/api/house/${email}`;
+  getHouseByEmail = () => {
+    const url = `http://localhost:8080/api/house/${this.email}`;
     return this.http.get(url);
   }
 
@@ -24,6 +25,11 @@ export class HousingService {
     return this.http.get(url);
   }
 
+  getResidentsByHouseId = (id: number) => {
+    const url = `http://localhost:8080/api/house/residents/${id}`;
+    return this.http.get(url);
+  }
+
   getAllReports = () => {
     const url = `http://localhost:8080/api/facility-reports`;
     return this.http.get(url);
@@ -34,12 +40,10 @@ export class HousingService {
   }
 
   postReportByEmail = (email: string, report) => {
-    const url = `http://localhost:8080/api/facility-report/${email}`;
+    const url = `http://localhost:8080/api/facility-report/${this.email}`;
     return this.http.post(url, report, { responseType: 'text' });
   }
   addHouse(houseReq: AddHouseRequest) {
-    console.log('add house called!');
-    console.log(houseReq);
     const url = `http://localhost:8080/api/add-house`;
     this.http.post(url, houseReq).subscribe(res => {
       console.log('addHouse called!');

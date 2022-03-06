@@ -1,10 +1,16 @@
 export class HousingInfo {
-    id: number;
+    id: number; //house id
     address: string;
     landlordName: string;
     landlordEmail: string;
     landlordPhone: number;
     numPeople: number;
+}
+export class Resident {
+    id: number; //person id
+    fullname: string;
+    email: string;
+    phone: number;
 }
 
 export class FacilityReport {

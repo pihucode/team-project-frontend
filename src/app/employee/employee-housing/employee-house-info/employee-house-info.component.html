@@ -11,13 +11,12 @@
 </div>
 
 <div class="roommate-info">
-    <h2>Employee Roommate Info</h2>
-    <!-- <div *ngFor="let roommate of roommates"> -->
+    <h2>Residents</h2>
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let roommate of roommates">
-            <p class="fw-bold">Name: <span class="fw-normal">{{roommate.name}}</span></p>
-            <p class="fw-bold">Phone: <span class="fw-normal">{{roommate.phone}}</span></p>
+        <li class="list-group-item" *ngFor="let resident of residents">
+            <p class="fw-bold">Name: <span class="fw-normal">{{resident.fullname}}</span></p>
+            <p class="fw-bold">Email: <span class="fw-normal">{{resident.email}}</span></p>
+            <p class="fw-bold">Phone: <span class="fw-normal">{{resident.phone}}</span></p>
         </li>
-        <!-- </div> -->
     </ul>
 </div>
