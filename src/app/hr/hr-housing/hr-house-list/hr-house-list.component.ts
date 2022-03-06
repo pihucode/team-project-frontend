@@ -40,11 +40,7 @@ export class HrHouseListComponent implements OnInit {
 		});
 
 		this.housingService.getAllHouses().subscribe(houses => {
-			console.log('Successful GET of houses.');
 			this.housingInfo = houses as HousingInfo[];
-		}, err => {
-			console.log('Error receiving list of houses info.');
-			console.log(err);
 		});
 	}
 
@@ -53,7 +49,6 @@ export class HrHouseListComponent implements OnInit {
 	}
 
 	onSubmit = () => {
-		console.log(this.addHouseForm.value);
 		let data = this.addHouseForm.value;
 		let houseRequest = new AddHouseRequest(
 			data.address.street,
@@ -68,7 +63,7 @@ export class HrHouseListComponent implements OnInit {
 			data.numPeople
 		);
 		this.housingService.addHouse(houseRequest);
-		// this.onboardingService.onboard(onboardingRequest, this.getFormData(), this.email);
-
+		alert("House has been created!");
+		location.reload();
 	}
 }

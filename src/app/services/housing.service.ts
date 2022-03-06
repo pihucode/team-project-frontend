@@ -39,7 +39,12 @@ export class HousingService {
     return this.http.get(url);
   }
   getAllReportsByEmail() {
-    const url = `http://localhost:8080/api/facility-reports/house/${this.email}`;
+    const url = `http://localhost:8080/api/facility-reports/email/${this.email}`;
+    return this.http.get(url);
+  }
+
+  getAllReportsByHouse(houseId: number) {
+    const url = `http://localhost:8080/api/facility-reports/house/${houseId}`;
     return this.http.get(url);
   }
 

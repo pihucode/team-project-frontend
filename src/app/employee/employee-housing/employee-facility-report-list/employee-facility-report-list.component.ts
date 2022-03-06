@@ -26,18 +26,6 @@ export class EmployeeFacilityReportListComponent implements OnInit {
     this.housingService.getAllReportsByEmail().subscribe((data: FacilityReport[]) => {
       this.reportList = data;
     });
-
-    // GET Report List from backend
-    // this.housingService.getAllReports().subscribe(reportList => {
-    //   console.log('Got report List');
-    //   // this.reportList = reportList;
-    // }, err => {
-    //   console.log('Error receiving report list.');
-    //   console.log(err);
-    // });
-
-    // this.reportList.push(new FacilityReport('title1', 'desc2', 'some1', '2022-09-12', 'In Progress'));
-    // this.reportList.push(new FacilityReport('title2', 'desc2', 'some2', '2022-12-12', 'Closed'));
   }
 
   onSubmit = () => {
@@ -51,17 +39,5 @@ export class EmployeeFacilityReportListComponent implements OnInit {
     this.housingService.addReport(report);
     alert("Facility Report has been submitted!");
     location.reload();
-
-    // let date = new Date();
-    // this.report.reportDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-    // this.housingService.postReportByEmail(this.email, this.report).subscribe(res => {
-    //   console.log('Report successfully submitted');
-    //   this.reportList.push(Object.assign({}, this.report));
-    //   this.report.clear();
-    //   this.report.status = 'Open';
-    // }, err => {
-    //   console.log('Error submitting report');
-    //   console.log(err);
-    // });
   }
 }
