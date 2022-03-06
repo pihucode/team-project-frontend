@@ -1,0 +1,30 @@
+div {
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+  }
+
+  .parent1{
+      display: flex;
+      width: 100%;
+  }
+
+  .child1{
+      width: 45%;
+      flex-shrink: 0;
+      padding: 1rem;
+      margin: 20px;
+  }
+
+  .parent2{
+    display: flex;
+    width: 100%;
+}
+
+.child2{
+    width: 45%;
+    flex-shrink: 0;
+    padding: 1rem;
+    margin: 20px;
+}
