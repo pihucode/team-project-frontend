@@ -4,8 +4,7 @@ export class OnboardingRequest {
         public visa: Visa,
         public address: Address,
         public referenceList: ReferenceList,
-        public emergencyContactList: EmergencyContactList,
-        public formData: FormData
+        public emergencyContactList: EmergencyContactList
         // public documentList: DocumentList
     ) { }
 }

@@ -8,7 +8,7 @@ import { AddressInfo, ContactInfo, EmploymentInfo, PersonalInfo, UniqueContact, 
 })
 export class ProfileService {
 	private email = 'pinxhuang@gmail.com'; //todo get from auth cookie
-	private email2 = 'test2@mailinator.com'; //todo get from auth cookie
+	// private email2 = 'test2@mailinator.com'; //todo get from auth cookie
 
 	constructor(private http: HttpClient) { }
 
@@ -29,11 +29,11 @@ export class ProfileService {
 		return this.http.get(url);
 	}
 	getReferences() {
-		const url = `http://localhost:8080/api/employee/profile/references/${this.email2}`;
+		const url = `http://localhost:8080/api/employee/profile/references/${this.email}`;
 		return this.http.get(url);
 	}
 	getEmergencyContacts() {
-		const url = `http://localhost:8080/api/employee/profile/emergency-contacts/${this.email2}`;
+		const url = `http://localhost:8080/api/employee/profile/emergency-contacts/${this.email}`;
 		return this.http.get(url);
 	}
 
