@@ -1,1 +1,56 @@
-<p>hr-house-detail works!</p>
+<ul class="list-group">
+    <div class="house-info">
+        <h1>House ID#{{house.id}} Info</h1>
+        <li class="list-group-item">
+            <h2 class="text-center">House Information</h2>
+            <img src="https://cdn.vox-cdn.com/thumbor/6itLJS9BZ-B5gXPjM1AB_z-ZKVI=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/65890203/iStock_1067331614.7.jpg">
+            <p class="fw-bold">Address: <span class="fw-normal">{{house.address}}</span></p>
+            <p class="fw-bold">Landlord: <span class="fw-normal">{{house.landlord}}</span></p>
+            <p class="fw-bold">Phone: <span class="fw-normal">{{house.landlordPhone}}</span></p>
+            <p class="fw-bold">Email: <span class="fw-normal">{{house.landlordEmail}}</span></p>
+            <p class="fw-bold">Number of People: <span class="fw-normal">{{house.numPeople}}</span></p>
+        </li>
+    </div>
+
+    <div class="facility-info">
+        <li class="list-group-item">
+            <h2 class="text-center">Facility Information</h2>
+            <p class="fw-bold">Number of Beds: <span class="fw-normal"></span></p>
+            <p class="fw-bold">Number of Mattresses: <span class="fw-normal"></span></p>
+            <p class="fw-bold">Number of Tables: <span class="fw-normal"></span></p>
+            <p class="fw-bold">Number of Chairs: <span class="fw-normal"></span></p>
+            <h3 class="fw-bold text-center">Facility Reports: <span class="fw-normal"></span></h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <p class="fw-bold">Title: <span class="fw-normal"></span></p>
+                    <p class="fw-bold">Description: <span class="fw-normal"></span></p>
+                    <p class="fw-bold">Created By: <span class="fw-normal"></span></p>
+                    <p class="fw-bold">Report Date: <span class="fw-normal"></span></p>
+                    <p class="fw-bold">Status: <span class="fw-normal"></span></p>
+                    <h4 class="fw-bold text-center">Comments: <span class="fw-normal"></span></h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <p class="fw-bold">Description: <span class="fw-normal"></span></p>
+                            <p class="fw-bold">Created By: <span class="fw-normal"></span></p>  
+                            <p class="fw-bold">Comment Date: <span class="fw-normal"></span></p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </div>
+
+    <div class="employee-info">
+        <li class="list-group-item">
+            <h2 class="text-center">Employee Information</h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <p class="fw-bold">Name: <span class="fw-normal"></span></p>
+                    <p class="fw-bold">Phone: <span class="fw-normal"></span></p>
+                    <p class="fw-bold">Email: <span class="fw-normal"></span></p>
+                    <p class="fw-bold">Car: <span class="fw-normal"></span></p>
+                </li>
+            </ul>
+        </li>
+    </div>
+</ul>

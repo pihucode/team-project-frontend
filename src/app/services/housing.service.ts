@@ -13,6 +13,11 @@ export class HousingService {
     return this.http.get(url);
   }
 
+  getHouseById = (id: number) => {
+    const url = `http://localhost:8080/api/houses/${id}`;
+    return this.http.get(url);
+  }
+
   getAllHouses = () => {
     const url = 'http://localhost:8080/api/houses';
     return this.http.get(url);
