@@ -6,10 +6,19 @@
             <button [disabled]="!useEmail" class="btn btn-link" (click)="changeLoginField()">Username</button>
             <button [disabled]="useEmail" class="btn btn-link" (click)="changeLoginField()">Email</button>
             <br>
-            <input *ngIf="useEmail === false" type="text" class="form-control" id="username" 
-                required [(ngModel)]="login.username" name="username">
-            <input *ngIf="useEmail === true" type="email" class="form-control" id="email" 
-                required [(ngModel)]="login.email" name="email" ngModel email>
+            <input *ngIf="!useEmail" type="text" class="form-control" id="username" 
+                required [(ngModel)]="login.username" name="username" #username="ngModel">
+            <div *ngIf="!useEmail && login.username.length === 0" class="text-danger">
+                Username is required. 
+            </div>
+            <input *ngIf="useEmail" type="email" class="form-control" id="email" 
+                required [(ngModel)]="login.email" name="email" #email="ngModel" ngModel email>
+            <div *ngIf="useEmail && login.email.length === 0" class="text-danger">
+                Email is required. 
+            </div>
+            <div *ngIf="useEmail && !emailMatch()" class="text-danger">
+                Invalid Email Type.
+            </div>
         </div>
 
         <div class="form-group">
@@ -17,6 +26,9 @@
             <br>
             <input type="password" class="form-control" id="password"
                 required [(ngModel)]="login.password" name="password">
+            <div *ngIf="login.password.length === 0" class="text-danger">
+                Password is required. 
+            </div>
         </div>
     </div>
 
