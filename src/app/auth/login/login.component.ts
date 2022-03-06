@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
 								route = 'application-status';
 							}
 							this.displayBadLogin = false;
-							// console.log('set status before redirect: ' + status);
+							console.log('set status before redirect: ' + status);
 							this.router.navigate([route]);
 						});
 					})

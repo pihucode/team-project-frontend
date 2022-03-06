@@ -31,7 +31,10 @@ export class ApplicationsService {
   }
 
   getApplicationStatus = () => {
-    const url = `http://localhost:8080/api/application-status/${this.email}`;
+    // console.log('getApplicationStatus!');
+    // console.log(this.email); //null
+    let email = sessionStorage.getItem('email');
+    const url = `http://localhost:8080/api/application-status/${email}`;
     return this.http.get(url, { responseType: 'text' });
   }
 

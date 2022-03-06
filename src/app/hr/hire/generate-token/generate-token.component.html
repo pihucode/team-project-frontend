@@ -1,7 +1,6 @@
 <form [formGroup]="generateTokenForm" (ngSubmit)="generateToken()">
     <label for="email">Generate Token: </label>
     <input id="email" type="email" formControlName="email">
-    <pre>{{generateTokenForm.value | json}}</pre>
 
     <button type="submit" [disabled]="!generateTokenForm.valid">Generate</button>
 </form>

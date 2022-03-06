@@ -36,7 +36,5 @@
 
         <button type="submit" [disabled]="!registerForm.form.valid">Register</button>
         <p *ngIf="displayUsernameTaken">Username Already Taken!</p>
-        <!-- By Chad, mainly for testing -->
-        <pre>Form JSON: {{register | json}}</pre>
     </form>
 </div>
