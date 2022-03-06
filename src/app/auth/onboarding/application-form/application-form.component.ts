@@ -252,10 +252,9 @@ export class ApplicationFormComponent implements OnInit {
 			visa,
 			address,
 			refList,
-			emergencyContactList,
-			this.getFormData()
+			emergencyContactList
 		);
-		this.onboardingService.onboard(onboardingRequest);
+		this.onboardingService.onboard(onboardingRequest, this.getFormData(), this.email);
 	}
 
 }
