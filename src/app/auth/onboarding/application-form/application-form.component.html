@@ -10,10 +10,14 @@
 
         <label for="first-name">First Name: </label>
         <input id="first-name" type="text" formControlName="firstName">
+        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('required')">
+            First name is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('minlength')">
             can not be shorter than 2 characters</div>
         <label for="last-name">Last Name: </label>
         <input id="last-name" type="text" formControlName="lastName">
+        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('required')">
+            Last name is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('minlength')">
             can not be shorter than 4 characters</div>
         <label for="preferred-name">Preferred Name: </label>
@@ -21,6 +25,8 @@
 
         <label for="ssn">SSN: </label>
         <input id="ssn" type="number" formControlName="ssn">
+        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('ssn').hasError('required')">
+            SSN is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('ssn').hasError('min') &&
         !applicationForm.get('personalInfo').get('ssn').hasError('max')">
             Invalid SSN</div>
@@ -54,6 +60,8 @@
 
         <label for="personal-email">Personal Email: </label>
         <input id="personal-email" type="email" formControlName="personalEmail">
+        <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('required')">
+            Personal Email is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('email')">
             Invalid Email Type</div>
 
@@ -63,6 +71,8 @@
             Invalid Email Type</div>
         <label for="cell-phone">Cell Phone: </label>
         <input id="cell-phone" type="number" formControlName="cellPhone">
+        <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('required')">
+            Cell Phone Number is required.</div>
         <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('min') &&
         !applicationForm.get('contactInfo').get('cellPhone').hasError('max')">
             Invalid Phone Number</div>
@@ -173,23 +183,35 @@
                 <div [formGroupName]="i" class="form-group">
                     <label>First Name: </label>
                     <input type="text" formControlName="firstName">
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('firstName').hasError('required')">
+                        First name is required.</div>
 
                     <label>Last Name: </label>
                     <input type="text" formControlName="lastName">
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('lastName').hasError('required')">
+                        Last name is required.</div>
 
                     <label>Phone: </label>
                     <input type="number" formControlName="phone">
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('phone').hasError('required')">
+                        Phone Number is required.</div>
 
                     <label>Email: </label>
                     <input type="email" formControlName="email">
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('email').hasError('required')">
+                        Email is required.</div>
 
                     <label>Relationship: </label>
                     <input type="text" formControlName="relationship">
+                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('relationship').hasError('required')">
+                        Relationship is required.</div>
 
                     <button (click)="deleteEmergencyContact(i)" type="button">Remove</button>
                 </div>
 
             </div>
+            <div class="text-danger" [hidden]="!applicationForm.get('emergencyContacts').hasError('required')">
+                Need At Least 1 Emergency Contact</div>
         </div>
     </div>
 
