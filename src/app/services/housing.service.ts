@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddHouseRequest } from '../models/housing-models';
+import { AddFacilityReport, AddHouseRequest } from '../models/housing-models';
 
 @Injectable({
   providedIn: 'root'
@@ -38,15 +38,26 @@ export class HousingService {
     const url = `http://localhost:8080/api/landlords/potential`;
     return this.http.get(url);
   }
+  getAllReportsByEmail() {
+    const url = `http://localhost:8080/api/facility-reports/house/${this.email}`;
+    return this.http.get(url);
+  }
 
   postReportByEmail = (email: string, report) => {
     const url = `http://localhost:8080/api/facility-report/${this.email}`;
     return this.http.post(url, report, { responseType: 'text' });
   }
+
   addHouse(houseReq: AddHouseRequest) {
     const url = `http://localhost:8080/api/add-house`;
     this.http.post(url, houseReq).subscribe(res => {
       console.log('addHouse called!');
+    })
+  }
+  addReport(report: AddFacilityReport) {
+    const url = `http://localhost:8080/api/facility-report/${this.email}`;
+    this.http.post(url, report).subscribe(res => {
+      console.log('addReport called!');
     })
   }
 

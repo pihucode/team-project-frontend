@@ -7,7 +7,7 @@ import { EmployeeFacilityReportListComponent } from './employee-facility-report-
 import { EmployeeFacilityReportComponent } from './employee-facility-report/employee-facility-report.component';
 import { EmployeeHousingComponent } from './employee-housing.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     EmployeeHousingRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeeHousingModule { }

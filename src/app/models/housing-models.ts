@@ -64,3 +64,11 @@ export class AddHouseRequest {
         public numPeople: number,
     ) { }
 }
+
+
+export class AddFacilityReport {
+    constructor(
+        public title: string,
+        public description: string,
+    ) { }
+}
