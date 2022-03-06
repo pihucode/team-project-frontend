@@ -19,7 +19,8 @@ export class GenerateTokenComponent implements OnInit {
 		]))
 	});
 
-	constructor(private fb: FormBuilder, private http: HttpClient, private emailService: EmailService,
+	constructor(private fb: FormBuilder,
+		private emailService: EmailService,
 		private tokenService: TokenService) { }
 
 	ngOnInit(): void {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailMessage } from 'src/app/models/email-message';
 import { VisaInfo } from 'src/app/models/general-models';
+import { EmailService } from 'src/app/services/email.service';
 import { FileService } from 'src/app/services/file-service';
 import { VisaService } from 'src/app/services/visa.service';
 
@@ -19,6 +21,7 @@ export class StatusTrackingTableComponent implements OnInit {
 	dataSource: VisaInfo[];
 
 	constructor(private visaService: VisaService,
+		private emailService: EmailService,
 		private fileService: FileService) { }
 
 	ngOnInit(): void {
@@ -33,8 +36,12 @@ export class StatusTrackingTableComponent implements OnInit {
 		});
 	}
 
-	notify(email: string) {
-		console.log("notify: " + email);
+	notify(email: string, nextStep: string) {
+		let subject: string = 'Visa Status Reminder';
+		let text: string = `Reminder to upload your ${nextStep} file.`;
+		let emailMessage = new EmailMessage(email, subject, text);
+		this.emailService.sendEmail(emailMessage);
+		alert('Notification has been sent!');
 	}
 
 	handleDocDownload(email: string) {

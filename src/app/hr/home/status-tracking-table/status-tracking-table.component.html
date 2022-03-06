@@ -33,7 +33,7 @@
 		<th mat-header-cell *matHeaderCellDef> Action </th>
 		<td mat-cell *matCellDef="let element">
 			<button type="button" class="btn btn-danger btn-sm" *ngIf="element.nextStep !== 'I-983 requires signature'"
-				(click)="notify(element.email)">Notify</button>
+				(click)="notify(element.email, element.nextStep)">Notify</button>
 			<div class="btn-group" role="group" *ngIf="element.nextStep === 'I-983 requires signature'">
 				<button type="button" class="btn btn-primary btn-sm"
 					(click)="handleDocPreview(element.email)">Preview</button>
