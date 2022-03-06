@@ -56,33 +56,51 @@ export class LoginComponent implements OnInit {
 						sessionStorage.setItem('login', 'true');
 						sessionStorage.setItem('role', 'employee');
 						sessionStorage.setItem('email', email);
+
+						// redirect to either home or status page
+						this.applicationsService.getApplicationStatus().subscribe((status: string) => {
+							sessionStorage.setItem('status', status);
+
+							let route = 'application-status';
+
+							if (status === 'approved') {
+								route = 'employee/home';
+
+							} else if (status === 'notexist') {
+								route = 'onboarding';
+
+							} else {
+								route = 'application-status';
+							}
+							this.displayBadLogin = false;
+							this.router.navigate([route]);
+						});
 					})
 				} else {
 					// set session data
 					sessionStorage.setItem('login', 'true');
 					sessionStorage.setItem('role', 'employee');
 					sessionStorage.setItem('email', this.login.email);
+
+					// redirect to either home or status page
+					this.applicationsService.getApplicationStatus().subscribe((status: string) => {
+						sessionStorage.setItem('status', status);
+
+						let route = 'application-status';
+
+						if (status === 'approved') {
+							route = 'employee/home';
+
+						} else if (status === 'notexist') {
+							route = 'onboarding';
+
+						} else {
+							route = 'application-status';
+						}
+						this.displayBadLogin = false;
+						this.router.navigate([route]);
+					});
 				}
-
-				// redirect to either home or status page
-				this.applicationsService.getApplicationStatus().subscribe((status: string) => {
-					sessionStorage.setItem('status', status);
-
-					let route = 'application-status';
-
-					if (status === 'approved') {
-						route = 'employee/home';
-
-					} else if (status === 'notexist') {
-						route = 'onboarding';
-
-					} else {
-						route = 'application-status';
-					}
-					this.displayBadLogin = false;
-					this.router.navigate([route]);
-				});
-
 
 			} else {
 				// No redirect, display login error message
