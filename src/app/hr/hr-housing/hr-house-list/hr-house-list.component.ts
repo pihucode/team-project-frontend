@@ -31,8 +31,6 @@ export class HrHouseListComponent implements OnInit {
 		numPeople: [0, Validators.required]
 	});
 
-	// landlords: string[] = ['guy1', 'guy2', 'guy3'];
-
 	constructor(private housingService: HousingService, private fb: FormBuilder,
 		private router: Router) { }
 
@@ -47,32 +45,6 @@ export class HrHouseListComponent implements OnInit {
 		}, err => {
 			console.log('Error receiving list of houses info.');
 			console.log(err);
-			this.housingInfo = [
-				{
-					id: 1,
-					address: 'address',
-					landlord: 'landlord',
-					landlordEmail: 'email',
-					landlordPhone: 1,
-					numPeople: 1
-				},
-				{
-					id: 2,
-					address: 'address',
-					landlord: 'landlord',
-					landlordEmail: 'email',
-					landlordPhone: 1,
-					numPeople: 1
-				},
-				{
-					id: 3,
-					address: 'address',
-					landlord: 'landlord',
-					landlordEmail: 'email',
-					landlordPhone: 1,
-					numPeople: 1
-				},
-			];
 		});
 	}
 

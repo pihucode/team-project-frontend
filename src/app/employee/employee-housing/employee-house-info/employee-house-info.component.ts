@@ -10,8 +10,8 @@ import { HousingService } from 'src/app/services/housing.service';
 export class EmployeeHouseInfoComponent implements OnInit {
   house = new HousingInfo();
   roommates = [
-    {name: 'Ted', phone: 1293128344}, // email, car?
-    {name: 'Fred', phone: 2139129933} 
+    { name: 'Ted', phone: 1293128344 }, // email, car?
+    { name: 'Fred', phone: 2139129933 }
   ];
   email: string = 'some@email.com';
   constructor(private housingService: HousingService) { }
@@ -32,10 +32,11 @@ export class EmployeeHouseInfoComponent implements OnInit {
     // TODO: Delete this after receiving from backend
     this.house = {
       id: 0,
-      address: '34 Valley View Drive', 
-      landlord: 'LZDHR', 
-      landlordPhone: 6094011666, 
-      landlordEmail: 'some@email.com', 
-      numPeople: 100};
+      address: '34 Valley View Drive',
+      landlordName: 'LZDHR',
+      landlordPhone: 6094011666,
+      landlordEmail: 'some@email.com',
+      numPeople: 100
+    };
   }
 }

@@ -20,7 +20,7 @@ export class HrHouseDetailComponent implements OnInit {
       phone: 12812938,
       email: 'e@mail.com',
       car: 'Car1'
-    }, 
+    },
     {
       name: 'name2',
       phone: 1231413355,
@@ -41,11 +41,11 @@ export class HrHouseDetailComponent implements OnInit {
         console.log('Error getting house info by id.');
         console.log(err);
         this.house = {
-          id: this.id, 
-          address: 'address', 
-          landlord: 'landlord', 
-          landlordEmail: 'email', 
-          landlordPhone: 1234567890, 
+          id: this.id,
+          address: 'address',
+          landlordName: 'landlord',
+          landlordEmail: 'email',
+          landlordPhone: 1234567890,
           numPeople: 1
         };
       });
@@ -56,7 +56,7 @@ export class HrHouseDetailComponent implements OnInit {
       //   console.log('Error getting facility info.');
       //   console.log(err);
       // });
-      this.facility = {beds: 1, mattresses: 1, tables: 1, chairs: 1};
+      this.facility = { beds: 1, mattresses: 1, tables: 1, chairs: 1 };
 
       // TODO: GET FACILITY REPORT
       // this.service.get().subscribe(res => {
@@ -65,8 +65,8 @@ export class HrHouseDetailComponent implements OnInit {
       //   console.log('Error getting facility info.');
       //   console.log(err);
       // });
-      this.reports = [new FacilityReport('title1','dec1','some1','2022-12-12','Close'), 
-      new FacilityReport('title2','dec2', 'some2','2021-12-12','Open')];
+      this.reports = [new FacilityReport('title1', 'dec1', 'some1', '2022-12-12', 'Close'),
+      new FacilityReport('title2', 'dec2', 'some2', '2021-12-12', 'Open')];
 
       // TODO: GET REPORT COMMENTS (MAKE PART OF FACILITY REPORT CLASS???)
 

@@ -1,7 +1,7 @@
 export class HousingInfo {
     id: number;
     address: string;
-    landlord: string;
+    landlordName: string;
     landlordEmail: string;
     landlordPhone: number;
     numPeople: number;
