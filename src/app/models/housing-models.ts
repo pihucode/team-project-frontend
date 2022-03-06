@@ -23,12 +23,17 @@ export class FacilityReport {
         this.reportDate = '';
         this.status = '';
     }
-
-    // comments: FacilityReportComment[];
 }
 
 export class FacilityReportComment {
     description: string;
     createdBy: string;
     commentDate: string; // DATE??
+}
+
+export class FacilityInfo {
+    beds: number;
+    chairs: number;
+    tables: number;
+    mattresses: number;
 }
