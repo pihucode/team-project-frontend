@@ -16,32 +16,46 @@
     <div class="facility-info">
         <li class="list-group-item">
             <h2 class="text-center">Facility Information</h2>
-            <p class="fw-bold">Number of Beds: <span class="fw-normal">{{facility.beds}}</span></p>
-            <p class="fw-bold">Number of Mattresses: <span class="fw-normal">{{facility.mattresses}}</span></p>
-            <p class="fw-bold">Number of Tables: <span class="fw-normal">{{facility.tables}}</span></p>
-            <p class="fw-bold">Number of Chairs: <span class="fw-normal">{{facility.chairs}}</span></p>
+            <p class="fw-bold">Number of Beds: <span class="fw-normal">{{house.beds}}</span></p>
+            <p class="fw-bold">Number of Mattresses: <span class="fw-normal">{{house.mattresses}}</span></p>
+            <p class="fw-bold">Number of Tables: <span class="fw-normal">{{house.tables}}</span></p>
+            <p class="fw-bold">Number of Chairs: <span class="fw-normal">{{house.chairs}}</span></p>
+
+
             <h3 class="fw-bold text-center">Facility Reports: <span class="fw-normal"></span></h3>
-            <ul class="list-group">
-                <li class="list-group-item" *ngFor="let report of reports">
-                    <p class="fw-bold">Title: <span class="fw-normal">{{report.title}}</span></p>
-                    <p class="fw-bold">Description: <span class="fw-normal">{{report.description}}</span></p>
-                    <p class="fw-bold">Created By: <span class="fw-normal">{{report.createdBy}}</span></p>
-                    <p class="fw-bold">Report Date: <span class="fw-normal">{{report.reportDate}}</span></p>
-                    <p class="fw-bold">Status: <span class="fw-normal">{{report.status}}</span></p>
-                    <h4 class="fw-bold text-center">Comments: <span class="fw-normal"></span></h4>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <p class="fw-bold">Description: <span class="fw-normal"></span></p>
-                            <p class="fw-bold">Created By: <span class="fw-normal"></span></p>
-                            <p class="fw-bold">Comment Date: <span class="fw-normal"></span></p>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+
+            <p *ngIf="reports.length === 0">None</p>
+
+            <div *ngIf="reports.length > 0">
+
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let report of reports">
+                        <p class="fw-bold">Title: <span class="fw-normal">{{report.title}}</span></p>
+                        <p class="fw-bold">Description: <span class="fw-normal">{{report.description}}</span></p>
+                        <p class="fw-bold">Created By: <span class="fw-normal">{{report.createdBy}}</span></p>
+                        <p class="fw-bold">Report Date: <span class="fw-normal">{{report.reportDate}}</span></p>
+                        <p class="fw-bold">Status: <span class="fw-normal">{{report.status}}</span></p>
+
+                        <div *ngIf="false">
+                            <h4 class="fw-bold text-center">Comments: <span class="fw-normal"></span></h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <p class="fw-bold">Description: <span class="fw-normal"></span></p>
+                                    <p class="fw-bold">Created By: <span class="fw-normal"></span></p>
+                                    <p class="fw-bold">Comment Date: <span class="fw-normal"></span></p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+
         </li>
     </div>
 
-    <div class="employee-info">
+    <!-- <div class="employee-info">
         <li class="list-group-item">
             <h2 class="text-center">Employee Information</h2>
             <ul class="list-group">
@@ -53,5 +67,6 @@
                 </li>
             </ul>
         </li>
-    </div>
+    </div> -->
+
 </ul>

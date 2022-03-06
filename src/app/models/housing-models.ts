@@ -1,10 +1,30 @@
 export class HousingInfo {
-    id: number;
+    id: number; //house id
     address: string;
     landlordName: string;
     landlordEmail: string;
     landlordPhone: number;
     numPeople: number;
+}
+
+export class HousingInfoFull {
+    id: number; //house id
+    address: string;
+    landlordName: string;
+    landlordEmail: string;
+    landlordPhone: number;
+    numPeople: number;
+    beds: number;
+    mattresses: number;
+    tables: number;
+    chairs: number;
+}
+
+export class Resident {
+    id: number; //person id
+    fullname: string;
+    email: string;
+    phone: number;
 }
 
 export class FacilityReport {
@@ -56,5 +76,13 @@ export class AddHouseRequest {
         public chairs: number,
         public landlord: number,
         public numPeople: number,
+    ) { }
+}
+
+
+export class AddFacilityReport {
+    constructor(
+        public title: string,
+        public description: string,
     ) { }
 }

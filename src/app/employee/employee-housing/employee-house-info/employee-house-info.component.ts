@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HousingInfo } from 'src/app/models/housing-models';
+import { HousingInfo, Resident } from 'src/app/models/housing-models';
 import { HousingService } from 'src/app/services/housing.service';
 
 @Component({
@@ -8,35 +8,20 @@ import { HousingService } from 'src/app/services/housing.service';
   styleUrls: ['./employee-house-info.component.css']
 })
 export class EmployeeHouseInfoComponent implements OnInit {
-  house = new HousingInfo();
-  roommates = [
-    { name: 'Ted', phone: 1293128344 }, // email, car?
-    { name: 'Fred', phone: 2139129933 }
-  ];
-  email: string = 'some@email.com';
+  house: HousingInfo;
+  residents: Resident[];
+
   constructor(private housingService: HousingService) { }
 
   ngOnInit(): void {
-    // TODO: getß email
-    // this.email = 
-
     // GET employee house info from backend
-    this.housingService.getHouseByEmail(this.email).subscribe(house => {
-      console.log('Received house information!')
-      // this.house = house;
-    }, err => {
-      console.log('Error receiving house info.');
-      console.log(err);
-    });
+    this.housingService.getHouseByEmail().subscribe((house: HousingInfo) => {
+      this.house = house;
 
-    // TODO: Delete this after receiving from backend
-    this.house = {
-      id: 0,
-      address: '34 Valley View Drive',
-      landlordName: 'LZDHR',
-      landlordPhone: 6094011666,
-      landlordEmail: 'some@email.com',
-      numPeople: 100
-    };
+      // get residents
+      this.housingService.getResidentsByHouseId(house.id).subscribe((data: Resident[]) => {
+        this.residents = data;
+      });
+    });
   }
 }

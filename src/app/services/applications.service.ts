@@ -35,14 +35,6 @@ export class ApplicationsService {
     return this.http.get(url, { responseType: 'text' });
   }
 
-  // getApplicationStatusPromise() {
-  //   const url = `http://localhost:8080/api/application-status/${this.email}`;
-  //   return fetch(url).then((res) => {
-  //     console.log(res)
-  //     return res;
-  //   });
-  // }
-
   setApplicationStatus = (id: number, status: string) => {
     return this.http.post(this.endpoint + '-status?applicationId=' + id + '&status=' + status, null);
   }
