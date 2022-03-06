@@ -43,3 +43,18 @@ export class Landlord {
     fullname: string;
     email: string;
 }
+
+export class AddHouseRequest {
+    constructor(
+        public street: string,
+        public city: string,
+        public state: string,
+        public zip: number,
+        public beds: number,
+        public mattresses: number,
+        public tables: number,
+        public chairs: number,
+        public landlord: number,
+        public numPeople: number,
+    ) { }
+}
