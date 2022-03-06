@@ -2,6 +2,11 @@
 
 <div *ngIf="status === 'rejected'">
     <!-- display comments -->
-
-    Submit a new <a href="/onboarding">Onboarding Application</a>
+    <h2>Comments:</h2>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let comment of comments">
+            {{comment}}
+        </li>
+    </ul>
+    <span>Submit a new <a href="/onboarding">Onboarding Application</a></span>  
 </div>

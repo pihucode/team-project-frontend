@@ -9,7 +9,9 @@ import { ProfileService } from 'src/app/services/profile.service';
 	styleUrls: ['./application-status.component.css']
 })
 export class ApplicationStatusComponent implements OnInit {
-	status: string;
+	status: string = '';
+	// TODO: set comments;
+	comments = [];
 
 	constructor(private applicationsService: ApplicationsService) { }
 
@@ -17,6 +19,19 @@ export class ApplicationStatusComponent implements OnInit {
 		// fetch data from backend
 		this.applicationsService.getApplicationStatus().subscribe(data => {
 			this.status = data;
+		});
+
+		// TODO: Get Application's Comments
+		this.applicationsService.getApplicationComments().subscribe(res => {
+			// this.comments = res as Object
+		}, err => {
+			console.log('Error getting comments');
+			console.log(err);
+			this.comments = [
+				'Bad',
+				'Sad',
+				'Mad'
+			];
 		});
 
 	}

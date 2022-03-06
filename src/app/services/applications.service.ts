@@ -34,8 +34,14 @@ export class ApplicationsService {
     const url = `http://localhost:8080/api/application-status/${this.email}`;
     return this.http.get(url, { responseType: 'text' });
   }
+
   setApplicationStatus = (id: number, status: string) => {
     return this.http.post(this.endpoint + '-status?applicationId=' + id + '&status=' + status, null);
+  }
+
+  // TODO: GET APPLICATION's COMMENTS
+  getApplicationComments = () => {
+    return this.http.get(this.endpoint);
   }
 
   setApplicationComments = (comment) => {
