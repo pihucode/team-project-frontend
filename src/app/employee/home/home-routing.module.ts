@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'employee/home', component: EmployeeHomeComponent,
   canActivate:[AuthguardGuard] },
   { path: 'employee/profile', component: EmployeeProfileComponent,
-  canActivate:[AuthguardGuard] }
+  canActivate:[AuthguardGuard] 
+}
 
 ];
 

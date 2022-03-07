@@ -5,7 +5,8 @@ import { EmployeeVisaComponent } from './employee-visa.component';
 
 const routes: Routes = [
   { path: 'employee/visa', component: EmployeeVisaComponent ,
-  canActivate:[AuthguardGuard]}
+  canActivate:[AuthguardGuard]
+}
 ];
 
 @NgModule({

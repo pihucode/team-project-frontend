@@ -12,3 +12,9 @@ img {
     height: 100%;
     margin-bottom: 10%;
 }
+.form-group{
+    display:grid;
+}
+.number {
+    height: 38px;
+}

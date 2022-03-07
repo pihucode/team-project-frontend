@@ -11,10 +11,10 @@ div {
   }
 
   .child1{
-      width: 45%;
+      width: 50%;
       flex-shrink: 0;
       padding: 1rem;
-      margin: 20px;
+      margin: 40px;
   }
 
   .parent2{
