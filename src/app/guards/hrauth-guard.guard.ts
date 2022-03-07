@@ -10,8 +10,8 @@ export class HRAuthGuardGuard implements CanActivate, CanActivateChild {
 
   isHr() {
     console.log(`session role: ${sessionStorage.getItem('role')}`);
-    // return sessionStorage.getItem('role') === 'hr';
-    return true;
+    return sessionStorage.getItem('role') === 'hr';
+    // return true;
   }
 
   canActivate(

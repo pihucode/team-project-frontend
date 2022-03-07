@@ -14,7 +14,21 @@ img {
 }
 .form-group{
     display:grid;
+    padding: 12px 0;
 }
-.number {
+
+h3 {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 12px;
+}
+label {
+    padding-bottom: 4px;
+}
+input, select {
+    margin-bottom: 12px;
+}
+/* .number {
     height: 38px;
-}
+} */
