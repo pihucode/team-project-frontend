@@ -23,7 +23,9 @@
                 <td>{{app.visaType}}</td>
                 <td>{{app.visaStartDate}}</td>
                 <td>{{app.visaEndDate}}</td>
-                <td>{{app.status}}</td>
+                <td *ngIf="app.status === 'approved'" class="text-success">{{app.status}}</td>
+                <td *ngIf="app.status === 'rejected'" class="text-danger">{{app.status}}</td>
+                <td *ngIf="app.status !== 'rejected' && app.status !== 'approved'" class="text-primary">{{app.status}}</td>
                 <td>
                     <app-modal-container [applicationId]="i+1" [email]="app.email"></app-modal-container>
                 <td></td>
