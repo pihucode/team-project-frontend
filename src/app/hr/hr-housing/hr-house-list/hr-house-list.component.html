@@ -8,7 +8,7 @@
         <p class="fw-bold">Phone: <span class="fw-normal">{{house.landlordPhone}}</span></p>
         <p class="fw-bold">Number of People: <span class="fw-normal">{{house.numPeople}}</span></p>
         <p class="fw-bold">Email: <span class="fw-normal">{{house.landlordEmail}}</span></p>
-        <button (click)="getDetails(house.id)" type="button" class="btn btn-primary btn-sm">Details</button>
+        <button (click)="getDetails(house.id)" type="button" class="mybtn">Details</button>
     </div>
 </div>
 
@@ -70,8 +70,9 @@
             <label>Max number of residents</label>
             <input class="number" type="number" formControlName="numPeople">
 
-            <button type="submit"
-                class="btn btn-primary btn-sm position-relative start-50 translate-middle-x">Submit</button>
+            <button type="submit" class="mybtn">Add</button>
+            <!-- <button type="submit"
+                class="btn btn-primary btn-sm position-relative start-50 translate-middle-x">Submit</button> -->
         </form>
     </div>
 </div>
