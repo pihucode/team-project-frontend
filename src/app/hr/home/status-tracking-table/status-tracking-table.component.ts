@@ -47,6 +47,10 @@ export class StatusTrackingTableComponent implements OnInit {
 
 	handleDocPreview(email: string) {
 		console.log("handleDocPreview: " + email);
+		this.fileService.getFileNameByEmailAndType(email, "I-983_form").subscribe((filename: string) => {
+			window.open(filename, '_blank');
+
+		});
 	}
 
 }

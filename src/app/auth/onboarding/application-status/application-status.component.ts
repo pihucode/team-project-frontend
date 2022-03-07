@@ -13,6 +13,10 @@ export class ApplicationStatusComponent implements OnInit {
 	status: string = '';
 	// TODO: set comments;
 	comment?: AppCommentRequest;
+	personalComments: string[] = [];
+	addressComments: string[] = [];
+	contactComments: string[] = [];
+	visaComments: string[] = [];
 
 	constructor(private applicationsService: ApplicationsService) { }
 
@@ -27,6 +31,26 @@ export class ApplicationStatusComponent implements OnInit {
 				// get Application's Comments
 				this.applicationsService.getApplicationComments().subscribe((res: AppCommentRequest) => {
 					this.comment = res;
+
+					if (res.firstname !== '') this.personalComments.push(res.firstname);
+					if (res.lastname !== '') this.personalComments.push(res.lastname);
+					if (res.preferredName !== '') this.personalComments.push(res.preferredName);
+					if (res.ssn !== '') this.personalComments.push(res.ssn);
+
+					if (res.street !== '') this.addressComments.push(res.street);
+					if (res.city !== '') this.addressComments.push(res.city);
+					if (res.state !== '') this.addressComments.push(res.state);
+					if (res.zip !== '') this.addressComments.push(res.zip);
+
+					if (res.personalEmail !== '') this.contactComments.push(res.personalEmail);
+					if (res.workEmail !== '') this.contactComments.push(res.workEmail);
+					if (res.cellphone !== '') this.contactComments.push(res.cellphone);
+					if (res.workphone !== '') this.contactComments.push(res.workphone);
+
+					if (res.visaType !== '') this.visaComments.push(res.visaType);
+					if (res.visaStartDate !== '') this.visaComments.push(res.visaStartDate);
+					if (res.visaEndDate !== '') this.visaComments.push(res.visaEndDate);
+
 				});
 			}
 		});

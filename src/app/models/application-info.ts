@@ -27,17 +27,17 @@ export class AppCommentRequest {
     firstname: string;
     lastname: string;
     preferredName: string;
-    ssn: number;
+    ssn: string;
 
     street: string;
     city: string;
     state: string;
-    zip: number;
+    zip: string;
 
     personalEmail: string;
     workEmail: string;
-    cellphone: number;
-    workphone: number;
+    cellphone: string;
+    workphone: string;
 
 
     visaType: string;

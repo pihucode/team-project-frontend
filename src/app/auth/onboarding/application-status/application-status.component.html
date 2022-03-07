@@ -3,12 +3,47 @@
 <div *ngIf="status === 'rejected'">
     <!-- display comments -->
     <h2>Comments:</h2>
-    <pre>{{comment | json}}</pre>
-    <!-- <ul class="list-group">
-        <li class="list-group-item" *ngFor="let comment of comments">
-            {{comment}}
-        </li>
-    </ul> -->
+
+    <div *ngIf="comment.general !== ''">
+        <h3>General Info</h3>
+        <p>{{comment.general}}</p>
+    </div>
+
+    <div *ngIf="this.personalComments.length > 0">
+        <h3>Personal Info</h3>
+        <p *ngFor="let c of this.personalComments">{{c}}</p>
+    </div>
+
+    <div *ngIf="this.addressComments.length > 0">
+        <h3>Address Info</h3>
+        <p *ngFor="let c of this.addressComments">{{c}}</p>
+    </div>
+
+    <div *ngIf="this.contactComments.length > 0">
+        <h3>Contact Info</h3>
+        <p *ngFor="let c of this.contactComments">{{c}}</p>
+    </div>
+
+    <div *ngIf="this.visaComments.length > 0">
+        <h3>Visa Info</h3>
+        <p *ngFor="let c of this.visaComments">{{c}}</p>
+    </div>
+
+    <div *ngIf="comment.references !== ''">
+        <h3>References Info</h3>
+        <p>{{comment.references}}</p>
+    </div>
+
+    <div *ngIf="comment.emergencyContacts !== ''">
+        <h3>Emergency Contacts Info</h3>
+        <p>{{comment.emergencyContacts}}</p>
+    </div>
+
+    <div *ngIf="comment.documents !== ''">
+        <h3>Documents Info</h3>
+        <p>{{comment.documents}}</p>
+    </div>
+
     <span>Submit a new <a href="/onboarding">Onboarding Application</a></span>
 </div>
 
