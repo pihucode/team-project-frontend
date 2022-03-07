@@ -1,5 +1,8 @@
 <div>
     <h2>References</h2>
+    <div *ngIf="refs.length === 0">
+        None
+    </div>
     <div *ngFor="let refInfo of refs">
         <p>Full Name: {{refInfo.firstname}} {{refInfo.lastname}}</p>
         <p>Phone: {{refInfo.phone}}</p>

@@ -60,10 +60,12 @@ export class VisaStatusManagementComponent implements OnInit {
 			if (file) {
 				this.formData.set('file', file as File);
 				this.fileService.uploadDocToEmail(this.formData, 'I-983_signed', email);
+				this.selectedFiles = undefined;
+				alert("File has been uploaded!");
+				location.reload();
 			}
 		}
 
-		this.selectedFiles = undefined;
 	}
 
 	onSubmit = (form: NgForm, id: number) => {

@@ -46,7 +46,11 @@ export class FileService {
 
 	getFileName(email: string, type: string) {
 		const url = `http://localhost:8080/api/documents/opt/${email}/${type}`;
-		return this.http.get(url);
+		return this.http.get(url, { responseType: 'text' });
+	}
+	getFileNameByEmailAndType(email: string, type: string) {
+		const url = `http://localhost:8080/api/document/${email}/${type}`;
+		return this.http.get(url, { responseType: 'text' });
 	}
 	getMandatoryDocsByEmail(email: string) {
 		const url = `http://localhost:8080/api/documents/mandatory/${email}`;

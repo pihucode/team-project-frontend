@@ -260,9 +260,9 @@
                     </div> -->
 
             <!-- [disabled]="applicationInfo.status !== 'open'" -->
-            <button type="submit" (click)="setApprove()">Approve</button>
-            <button type="submit" (click)="setReject()">Reject</button>
-            <button type="button" (click)="displayCancel()">Cancel</button>
+            <button type="submit" (click)="setApprove()" *ngIf="status === 'pending'">Approve</button>
+            <button type="submit" (click)="setReject()" *ngIf="status === 'pending'">Reject</button>
+            <button type="button" (click)="displayCancel()" *ngIf="status === 'pending'">Cancel</button>
         </form>
     </div>
     <!-- </mat-tab> -->

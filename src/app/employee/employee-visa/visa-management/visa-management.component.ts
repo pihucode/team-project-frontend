@@ -65,13 +65,12 @@ export class VisaManagementComponent implements OnInit {
 					this.selectedFiles = undefined;
 					this.setupStatus();
 					this.populateDocs();
-				}, err => {
-					console.log('Error with uploading document.')
-					console.log(err);
+					alert("File has been uploaded!");
+					// location.reload();
 				});
 			}
 		}
-
+		this.selectedFiles = undefined;
 		// this.stage++;
 		// this.selectedFiles = undefined;
 		// this.setupStatus();

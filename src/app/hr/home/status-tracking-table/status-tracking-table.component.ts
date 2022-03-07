@@ -13,11 +13,6 @@ import { VisaService } from 'src/app/services/visa.service';
 export class StatusTrackingTableComponent implements OnInit {
 	columnsToDisplay: string[] = ['fullname', 'visa-type', 'exp-date', 'days-left', 'next-step', 'action', 'manage'];
 
-	// data = [
-	//   {id: 1, name: 'name1', visatype: 'visa1', expdate: '2022-09-23', daysleft: 210, nextstep: 'I-20', action: 'notify'},
-	//   {id: 8844, name: 'name2', visatype: 'other', expdate: '2022-12-20', daysleft: 298, nextstep: 'SOME SIGN', action: 'preview download'},
-	//   {id: 271, name: 'name3', visatype: 'H4', expdate: '2022-12-29', daysleft: 307, nextstep: 'I--983 NEED TO BE SIGNED', action: 'preview download'},
-	// ]
 	dataSource: VisaInfo[];
 
 	constructor(private visaService: VisaService,
@@ -45,7 +40,7 @@ export class StatusTrackingTableComponent implements OnInit {
 	}
 
 	handleDocDownload(email: string) {
-		this.fileService.getFileName(email, "I-983_form").subscribe((filename: string) => {
+		this.fileService.getFileNameByEmailAndType(email, "I-983_form").subscribe((filename: string) => {
 			this.fileService.downloadDoc(filename);
 		});
 	}
