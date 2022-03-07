@@ -91,5 +91,8 @@ table {
     background-color: slateblue;
 }
 
-  
+.mybtn:disabled {
+  background-color: gray;
+  cursor: initial;
+}
   

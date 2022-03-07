@@ -11,7 +11,7 @@ import { VisaService } from 'src/app/services/visa.service';
 	styleUrls: ['./status-tracking-table.component.css']
 })
 export class StatusTrackingTableComponent implements OnInit {
-	columnsToDisplay: string[] = ['fullname', 'visa-type', 'exp-date', 'days-left', 'next-step', 'action', 'manage'];
+	columnsToDisplay: string[] = ['fullname', 'visa-type', 'exp-date', 'next-step', 'action', 'manage'];
 
 	dataSource: VisaInfo[];
 

@@ -12,6 +12,7 @@ export class VisaInfo {
     constructor(
         public fullname: string,
         public workauth: string,
+        public startdate: string,
         public expdate: string,
         public daysleft: number,
         public nextStep: string,

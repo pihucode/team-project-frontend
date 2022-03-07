@@ -21,7 +21,7 @@ export class VisaStatusManagementComponent implements OnInit {
 
 	// data: VisaInfo[] = [];
 	dataSource: VisaInfo[] = [];
-	columnsToDisplay = ['fullname', 'workauth', 'expdate', 'daysleft'];
+	columnsToDisplay = ['fullname', 'workauth', 'startdate', 'expdate'];
 	expandedElement: VisaInfo | null;
 	formData: FormData = new FormData();
 	selectedFiles?: FileList;
@@ -74,6 +74,7 @@ export class VisaStatusManagementComponent implements OnInit {
 	onSubmit = (form: NgForm, id: number) => {
 		this.visaService.updateVisaById(id, form.value).subscribe(res => {
 			this.dataSource[id - 1].expdate = form.value.dateEnd;
+			this.dataSource[id - 1].startdate = form.value.dateStart;
 			this.dataSource[id - 1].workauth = form.value.type;
 		}, err => {
 			console.log('Error editing form');

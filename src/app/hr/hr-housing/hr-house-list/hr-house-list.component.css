@@ -52,6 +52,10 @@ input, select {
 .mybtn:hover {
     background-color: slateblue;
 }
+.mybtn:disabled {
+    background-color: gray;
+    cursor: initial;
+}
 /* .number {
     height: 38px;
 } */
