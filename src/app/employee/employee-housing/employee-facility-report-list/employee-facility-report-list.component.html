@@ -9,7 +9,7 @@
         <label>Description:</label>
         <input class="description" type="text" formControlName="description">
 
-        <button type="submit" [disabled]="!addReportGroup.valid">Submit</button>
+        <button class="mybtn" type="submit" [disabled]="!addReportGroup.valid">Submit</button>
     </form>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let element of reportList">

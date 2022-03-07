@@ -1,9 +1,11 @@
-<p>{{message}}</p>
-<div *ngIf="docType != ''">
-    <input type="file" (change)="selectFile($event)" />
-    <button class="btn btn-success btn-sm" (click)="handleDocUpload()" [disabled]="!selectedFiles">
-        Upload file
-    </button>
+<div class="todo">
+    <p>{{message}}</p>
+    <div *ngIf="docType != ''">
+        <input type="file" (change)="selectFile($event)" />
+        <button class="mybtn" (click)="handleDocUpload()" [disabled]="!selectedFiles">
+            Upload file
+        </button>
+    </div>
 </div>
 
 <div class="card w-75">
@@ -15,17 +17,20 @@
         <br>
         <div class="text-muted">Work Authorization</div>
         <div>{{visa.workAuth}}</div>
+        <br>
 
-        <div class="text-muted">Authorization Days Left</div>
-        <div>{{visa.daysLeft}}</div>
+        <!-- <div class="text-muted">Authorization Days Left</div>
+        <div>{{visa.daysLeft}}</div> -->
 
         <div class="text-muted">Authorization Start Date</div>
         <div>{{visa.startDate}}</div>
+        <br>
 
         <div class="text-muted">Authorization End Date</div>
         <div>{{visa.endDate}}</div>
         <br>
-        <div class="fw-bold fs-5">Documents Uploaded:</div>
+        <div class="fw-bold fs-5">Documents Uploaded</div>
+        <p *ngIf="filenames.length === 0">None</p>
         <div *ngFor="let filename of filenames">
             <button class="btn btn-link btn-sm" (click)="handleDocDownload(filename)">{{filename}}</button>
         </div>

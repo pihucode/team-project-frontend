@@ -2,3 +2,39 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.todo {
+    padding: 64px 32px;
+}
+
+
+.mybtn {
+    display: block;
+    background: darkslateblue;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    
+    color: white;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 12px 16px;
+    border-radius: 5px;
+    width: fit-content;
+    margin-top: 18px;
+    margin-bottom: 32px;
+}
+
+.mybtn:hover {
+    background-color: slateblue;
+}
+
+
+.mybtn:disabled {
+    background-color: gray;
+    cursor: initial;
+}
