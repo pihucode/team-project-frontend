@@ -66,7 +66,7 @@ export class VisaManagementComponent implements OnInit {
 					this.setupStatus();
 					this.populateDocs();
 					alert("File has been uploaded!");
-					// location.reload();
+					location.reload();
 				});
 			}
 		}
