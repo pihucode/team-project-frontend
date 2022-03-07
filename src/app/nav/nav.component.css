@@ -1,5 +1,37 @@
 nav {
+    display: flex;
     padding: 32px 0;
-    padding-right: 24px;
-    width: 300px;
+    padding-left: 64px;
+    padding-top: 128px;
+    width: 250px;
+    background-color: whitesmoke;
+    height: 100vh;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: darkslateblue;
+}
+
+li {
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+  button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    color: darkslateblue;
+    padding-top: 16px;
+  }

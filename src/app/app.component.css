@@ -1,5 +1,14 @@
 .master-container {
     display: flex;
     flex-direction: row;
-    padding: 64px;
+    /* padding: 64px; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    padding: 72px 128px;
 }
