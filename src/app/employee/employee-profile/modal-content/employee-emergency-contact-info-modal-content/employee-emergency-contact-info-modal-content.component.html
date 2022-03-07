@@ -12,30 +12,57 @@
             <div class="form-group">
                 <label for="firstname">First Name: </label>
                 <input type="text" class="form-control" id="firstname" name="firstname"
-                    [ngModel]="emergencyContactInfo.firstname">
+                    [ngModel]="emergencyContactInfo.firstname" required minlength="2" #firstname="ngModel">
+                <div class="text-danger" *ngIf="firstname.errors?.['required']">
+                    First name is required.
+                </div>
+                <div class="text-danger" *ngIf="firstname.errors?.['minlength']">
+                    Cannot be shorter than 2 characters.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="lastname">Last Name: </label>
                 <input type="text" class="form-control" id="lastname" name="lastname"
-                    [ngModel]="emergencyContactInfo.lastname">
+                    [ngModel]="emergencyContactInfo.lastname" required minlength="4" #lastname="ngModel">
+                <div class="text-danger" *ngIf="lastname.errors?.['required']">
+                    Last name is required.
+                </div>
+                <div class="text-danger" *ngIf="lastname.errors?.['minlength']">
+                    Cannot be shorter than 4 characters.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone: </label>
                 <input type="number" class="form-control" id="phone" name="phone"
-                    [ngModel]="emergencyContactInfo.phone">
+                    [ngModel]="emergencyContactInfo.phone" required min="1000000000" max="10000000000" #phone="ngModel">
+                <div class="text-danger" *ngIf="phone.errors?.['required']">
+                    Phone number is required.
+                </div>
+                <div class="text-danger" *ngIf="phone.errors?.['min'] || phone.errors?.['max']">
+                    Invalid phone number.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="email" class="form-control" id="email" name="email" [ngModel]="emergencyContactInfo.email">
+                <input type="email" class="form-control" id="email" name="email" [ngModel]="emergencyContactInfo.email" required email #email="ngModel">
+                <div class="text-danger" *ngIf="email.errors?.['required']">
+                    Email is required.
+                </div>
+                <div class="text-danger" *ngIf="email.errors?.['email']">
+                    Invalid email type.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="relationship">Relationship: </label>
-                <input type="text" class="form-control" id="relationship" name="relationship"
-                    [ngModel]="emergencyContactInfo.relationship">
+                <input type="text" class="form-control" id="relationship" name="relationship" required
+                    [ngModel]="emergencyContactInfo.relationship" #relationship="ngModel">
+                <div class="text-danger" *ngIf="relationship.errors?.['required']">
+                    Relationship is required.
+                </div>
             </div>
         </div>
         <button type="button" (click)="displayCancel()">Cancel</button>

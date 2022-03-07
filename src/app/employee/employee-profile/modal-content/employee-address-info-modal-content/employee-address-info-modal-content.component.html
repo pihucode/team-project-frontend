@@ -11,22 +11,25 @@
 
             <div class="form-group">
                 <label for="street">Street: </label>
-                <input type="text" class="form-control" id="street" name="street" [ngModel]="addressInfo.street">
+                <input type="text" class="form-control" id="street" name="street" [ngModel]="addressInfo.street" required>
             </div>
 
             <div class="form-group">
                 <label for="city">City: </label>
-                <input type="text" class="form-control" id="city" name="city" [ngModel]="addressInfo.city">
+                <input type="text" class="form-control" id="city" name="city" [ngModel]="addressInfo.city" required>
             </div>
 
             <div class="form-group">
                 <label for="state">State: </label>
-                <input type="text" class="form-control" id="state" name="state" [ngModel]="addressInfo.state">
+                <input type="text" class="form-control" id="state" name="state" [ngModel]="addressInfo.state" required>
             </div>
 
             <div class="form-group">
                 <label for="zip">ZIP: </label>
-                <input type="number" class="form-control" id="zip" name="zip" [ngModel]="addressInfo.zip">
+                <input type="number" class="form-control" id="zip" name="zip" [ngModel]="addressInfo.zip" required>
+            </div>
+            <div class="text-danger" *ngIf="!editAddressInfoForm.form.valid">
+                Complete all address fields.
             </div>
         </div>
         <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
