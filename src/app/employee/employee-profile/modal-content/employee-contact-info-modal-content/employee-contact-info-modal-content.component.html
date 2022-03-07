@@ -11,25 +11,43 @@
             <div class="form-group">
                 <label for="personal-email">Personal Email: </label>
                 <input type="email" class="form-control" id="personal-email" name="personalEmail"
-                    [ngModel]="contactInfo.personalEmail" ngModel email>
+                    [ngModel]="contactInfo.personalEmail" required email #personalEmail="ngModel">
+                <div class="text-danger" *ngIf="personalEmail.errors?.['required']">
+                    Personal email is required.
+                </div>
+                <div class="text-danger" *ngIf="personalEmail.errors?.['email']">
+                    Invalid email type.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="work-email">Work Email: </label>
                 <input type="email" class="form-control" id="work-email" name="workEmail"
-                    [ngModel]="contactInfo.workEmail" ngModel email>
+                    [ngModel]="contactInfo.workEmail" ngModel email #workEmail="ngModel">
+                <div class="text-danger" *ngIf="workEmail.errors?.['email']">
+                    Invalid email type.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="cellphone">Cell Phone: </label>
                 <input type="number" class="form-control" id="cellphone" name="cellphone"
-                    [ngModel]="contactInfo.cellphone">
+                    [ngModel]="contactInfo.cellphone" required min="1000000000" max="10000000000" #cellphone="ngModel">
+                <div class="text-danger" *ngIf="cellphone.errors?.['required']">
+                    Cell phone number is required.
+                </div>
+                <div class="text-danger" *ngIf="cellphone.errors?.['min'] || cellphone.errors?.['max']">
+                    Invalid phone number.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="workphone">Work Phone: </label>
                 <input type="number" class="form-control" id="workphone" name="workphone"
-                    [ngModel]="contactInfo.workphone">
+                    [ngModel]="contactInfo.workphone" min="1000000000" max="10000000000" #workphone="ngModel">
+                <div class="text-danger" *ngIf="workphone.errors?.['min'] || workphone.errors?.['max']">
+                    Invalid phone number.
+                </div>
             </div>
         </div>
         <!-- TODO: Cancel To Trigger Guard That Displays Alert??? -->
