@@ -10,5 +10,7 @@ body {
 }
 
 .main-content {
-    padding: 72px 128px;
+    padding-left: 128px;
+    padding-top: 72px;
+    padding-bottom: 72px;
 }
