@@ -35,29 +35,27 @@
                 <h3>Furniture</h3>
 
                 <label>Beds:</label>
-                <input type="number" formControlName="beds">
+                <input class="number" type="number" formControlName="beds">
 
                 <label>Mattresses:</label>
-                <input type="number" formControlName="mattresses">
+                <input class="number" type="number" formControlName="mattresses">
 
                 <label>Tables:</label>
-                <input type="number" formControlName="tables">
+                <input class="number" type="number" formControlName="tables">
 
                 <label>Chairs:</label>
-                <input type="number" formControlName="chairs">
+                <input class="number" type="number" formControlName="chairs">
 
-            </div>
-
-            <select class="form-select" formControlName="landlord">
+                <label>Landlord: </label>
+                <select class="form-select" formControlName="landlord">
                 <option *ngFor="let landlord of landlords" value="{{landlord.id}}">{{landlord.fullname}}
                     ({{landlord.email}})</option>
-            </select>
+                </select>
 
-            <label>Max number of people:</label>
-            <input type="number" formControlName="numPeople">
-            <!-- <input class="form-control" type="number" id="numPeople" formControlName="numPeople"
-                placeholder="Max House Size*"> -->
-
+                <label>Max number of people :</label>
+                <input class="number" type="number" formControlName="numPeople">
+                </div>
+            
             <button type="submit"
                 class="btn btn-primary btn-sm position-relative start-50 translate-middle-x">Submit</button>
         </form>

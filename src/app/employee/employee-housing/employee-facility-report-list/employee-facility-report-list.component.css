@@ -1,0 +1,14 @@
+input {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    margin: 10px;
+}
+
+div {
+    margin-left: 200px;
+}
+
+.description{
+    height: 100px;
+}

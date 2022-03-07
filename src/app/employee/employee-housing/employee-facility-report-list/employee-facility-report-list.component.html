@@ -1,3 +1,4 @@
+<div>
 <h2 class="text-center">Report Yours</h2>
 
 <form [formGroup]="addReportGroup" (ngSubmit)="onSubmit()">
@@ -5,13 +6,11 @@
     <label>Title:</label>
     <input type="text" formControlName="title">
 
-    <label>Description:</label>
-    <input type="text" formControlName="description">
+    <label >Description:</label>
+    <input class="description" type="text" formControlName="description">
 
     <button type="submit" [disabled]="!addReportGroup.valid">Submit</button>
 </form>
-
-<h2 class="text-center">Employee Facility Reports</h2>
 <ul class="list-group">
     <li class="list-group-item" *ngFor="let element of reportList">
         <p class="fw-bold">Title: <span class="fw-normal">{{element.title}}</span></p>
@@ -21,3 +20,4 @@
         <p class="fw-bold">Status: <span class="fw-normal">{{element.status}}</span></p>
     </li>
 </ul>
+</div>
