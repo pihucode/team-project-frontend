@@ -1,0 +1,66 @@
+.box h3, .box2 h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 6px;
+    padding-top: 18px;
+}
+
+.box2 h3 {
+    padding-top:0;
+}
+.box2 {
+    padding: 12px 0;
+}
+.box, .box2 {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.bigbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.application-item {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 8px 0;
+}
+
+.contact-item {
+    padding: 12px 0;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.box-email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* width: fit-content; */
+    padding: 32px 42px;
+}
+
+.email-label {
+    font-size: 14px;
+}
+
+input:enabled {
+    border: 0;
+}
+
+input:disabled {
+    font-size: 14px;
+}
+
+label {
+    color: gray;
+    font-size: 11px;
+}
