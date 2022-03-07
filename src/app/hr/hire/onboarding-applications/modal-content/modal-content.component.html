@@ -4,145 +4,277 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-
+<pre>{{applicationInfo | json}}</pre>
 <div class="modal-body">
     <!-- TODO - APPLICATION -->
     <!-- <mat-tab-group> -->
-        <!-- <mat-tab label="Personal Info">  -->
-            <div class="personalInfoTab">
-                <form [formGroup]="personalInfoForm" (ngSubmit)="onSubmit()">
-                    <label for="email">User's registration email:</label>
-                    <input type="text" id="email" name="email" disabled value="{{email}}">
-                    <div class="application-item">
-                        <input type="text" id="comment-first-name" name="comment-first-name" formControlName="comment_firstname" placeholder="Add comments here...">
-                        <input type="text" id="first-name" name="first-name" disabled value="{{applicationInfo.firstname}}">
-                        <label for="first-name">First name</label>
-                    </div>
+    <!-- <mat-tab label="Personal Info">  -->
+    <div class="personalInfoTab">
+        <form [formGroup]="personalInfoForm" (ngSubmit)="onSubmit()">
+            <label for="email">User's registration email:</label>
+            <input type="text" id="email" name="email" disabled value="{{email}}">
 
-                    <div class="application-item">
-                        <input type="text" id="comment-last-name" name="comment-last-name" formControlName="comment_lastname" placeholder="Add comments here...">
-                        <input type="text" id="last-name" name="last-name" disabled value="{{applicationInfo.lastname}}">
-                        <label for="last-name">Last name</label>
-                    </div>
+            <div>
+                <h3>Add Comment For Application</h3>
+                <input type="text" formControlName="general" placeholder="Add comments here...">
+            </div>
 
-                    <!-- <div class="application-item">
+            <div>
+                <h3>Personal Info</h3>
+                <div class="application-item">
+                    <input type="text" id="comment-first-name" name="comment-first-name" formControlName="firstname"
+                        placeholder="Add comments here...">
+                    <input type="text" id="first-name" name="first-name" disabled value="{{applicationInfo.firstname}}">
+                    <label for="first-name">First name</label>
+                </div>
+
+                <div class="application-item">
+                    <input type="text" id="comment-last-name" name="comment-last-name" formControlName="lastname"
+                        placeholder="Add comments here...">
+                    <input type="text" id="last-name" name="last-name" disabled value="{{applicationInfo.lastname}}">
+                    <label for="last-name">Last name</label>
+                </div>
+
+                <div class="application-item">
+                    <input type="text" formControlName="preferredName" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.preferredName}}">
+                    <label>Preferred Name</label>
+                </div>
+
+                <!-- <div class="application-item">
                         <input type="text" id="comment-middle-name" name="comment-middle-name" placeholder="Add comments here...">
                         <input type="text" id="middle-name" name="middle-name" disabled value="{{applicationInfo.middlename}}"> 
                         <label for="middle-name">Middle name</label>
                     </div> -->
 
-                    <div class="application-item">
-                        <input type="text" id="comment-ssn" name="comment-ssn" formControlName="comment_ssn" placeholder="Add comments here...">
-                        <input type="text" id="ssn" name="ssn" disabled value="{{applicationInfo.ssn}}"> 
-                        <label for="ssn">SSN</label>
-                    </div>
+                <div class="application-item">
+                    <input type="text" id="comment-ssn" name="comment-ssn" formControlName="ssn"
+                        placeholder="Add comments here...">
+                    <input type="text" id="ssn" name="ssn" disabled value="{{applicationInfo.ssn}}">
+                    <label for="ssn">SSN</label>
+                </div>
 
-                    <div class="application-item">
-                        <input type="text" id="comment-gender" name="comment-gender" formControlName="comment_gender" placeholder="Add comments here...">
-                        <input type="text" id="gender" name="gender" disabled value="{{applicationInfo.gender}}">
-                        <label for="gender">Gender</label>
-                    </div>
+            </div>
 
-                    <div class="application-item">
-                        <input type="text" id="comment-dob" name="comment-dob" formControlName="comment_dob" placeholder="Add comments here...">
-                        <input type="text" id="dob" name="dob" disabled value="{{applicationInfo.date_birth}}">
-                        <label for="dob">Date of birth</label>
-                    </div>
 
-                    <div class="application-item">
-                        <input type="text" id="comment-status" name="comment-status" formControlName="comment_status" placeholder="Add comments here...">
-                        <input type="text" id="status" name="status" disabled value="{{applicationInfo.status}}">
-                        <label for="status">Status</label>
-                    </div>
+            <!-- <div class="application-item">
+                <input type="text" id="comment-gender" name="comment-gender" formControlName="comment_gender"
+                    placeholder="Add comments here...">
+                <input type="text" id="gender" name="gender" disabled value="{{applicationInfo.gender}}">
+                <label for="gender">Gender</label>
+            </div>
 
-                    <div class="application-item">
-                        <input type="text" id="comment-visa-type" name="comment-visa-type" formControlName="comment_visatype" placeholder="Add comments here...">
-                        <input type="text" id="visa-type" name="visa-type" disabled value="{{applicationInfo.visaType}}">
-                        <label for="visa-type">Visa Type</label>
-                    </div>
+            <div class="application-item">
+                <input type="text" id="comment-dob" name="comment-dob" formControlName="comment_dob"
+                    placeholder="Add comments here...">
+                <input type="text" id="dob" name="dob" disabled value="{{applicationInfo.date_birth}}">
+                <label for="dob">Date of birth</label>
+            </div> -->
 
-                    <div class="application-item">
-                        <input type="text" id="comment-visa-start-date" name="comment-visa-start-date" formControlName="comment_visastartdate" placeholder="Add comments here...">
-                        <input type="text" id="visa-start-date" name="visa-start-date" disabled value="{{applicationInfo.visaStartDate}}">
-                        <label for="visa-start-date">Visa Start Date</label>
-                    </div>
+            <!-- <div class="application-item">
+                <input type="text" id="comment-status" name="comment-status" formControlName="comment_status"
+                    placeholder="Add comments here...">
+                <input type="text" id="status" name="status" disabled value="{{applicationInfo.status}}">
+                <label for="status">Status</label>
+            </div> -->
+            <div>
+                <h3>Address</h3>
+                <div class="application-item">
+                    <input type="text" formControlName="street" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.street}}">
+                    <label>Street</label>
+                </div>
 
-                    <div class="application-item">
-                        <input type="text" id="comment-visa-end-date" name="comment-visa-end-date" formControlName="comment_visaenddate" placeholder="Add comments here...">
-                        <input type="text" id="visa-end-date" name="visa-end-date" disabled value="{{applicationInfo.visaEndDate}}">
-                        <label for="visa-end-date">Visa End Date</label>
-                    </div>
+                <div class="application-item">
+                    <input type="text" formControlName="city" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.city}}">
+                    <label>City</label>
+                </div>
 
-                    <div class="application-item">
-                        <input type="text" id="comment-cellphone" name="comment-cellphone" formControlName="comment_cellphone" placeholder="Add comments here...">
-                        <input type="text" id="cellphone" name="cellphone" disabled value="{{applicationInfo.cellphone}}">
-                        <label for="cellphone">Cellphone</label>
-                    </div>
+                <div class="application-item">
+                    <input type="text" formControlName="state" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.state}}">
+                    <label>State</label>
+                </div>
 
-                    <!-- <div class="application-item">
+                <div class="application-item">
+                    <input type="text" formControlName="zip" placeholder="Add comments here...">
+                    <input type="number" disabled value="{{applicationInfo.zip}}">
+                    <label>ZIP Code</label>
+                </div>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+
+                <div class="application-item">
+                    <input type="text" formControlName="personalEmail" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.personalEmail}}">
+                    <label>Personal Email</label>
+                </div>
+
+                <div class="application-item">
+                    <input type="text" formControlName="workEmail" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.workEmail}}">
+                    <label>Work Email</label>
+                </div>
+
+                <div class="application-item">
+                    <input type="text" formControlName="cellphone" placeholder="Add comments here...">
+                    <input type="number" disabled value="{{applicationInfo.cellphone}}">
+                    <label>Cell Phone</label>
+                </div>
+
+                <div class="application-item">
+                    <input type="text" formControlName="workphone" placeholder="Add comments here...">
+                    <input type="number" disabled value="{{applicationInfo.workphone}}">
+                    <label>Work Phone</label>
+                </div>
+            </div>
+
+            <div>
+                <h3>Visa</h3>
+
+                <div class="application-item">
+                    <input type="text" formControlName="visaType" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.visaType}}">
+                    <label>Visa Type</label>
+                </div>
+
+                <div class="application-item">
+                    <input type="text" formControlName="visaStartDate" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.visaStartDate}}">
+                    <label>Start Date</label>
+                </div>
+
+                <div class="application-item">
+                    <input type="text" formControlName="visaEndDate" placeholder="Add comments here...">
+                    <input type="text" disabled value="{{applicationInfo.visaEndDate}}">
+                    <label>Expire Date</label>
+                </div>
+            </div>
+
+            <div>
+                <h3>References</h3>
+                <input type="text" formControlName="references" placeholder="Add comments here...">
+
+                <div *ngFor="let refInfo of references">
+                    <p>Full Name: {{refInfo.firstname}} {{refInfo.lastname}}</p>
+                    <p>Phone: {{refInfo.phone}}</p>
+                    <p>Email: {{refInfo.email}}</p>
+                    <p>Relationship: {{refInfo.relationship}}</p>
+                </div>
+
+            </div>
+
+            <div>
+                <h3>Emergency Contacts</h3>
+                <input type="text" formControlName="emergencyContacts" placeholder="Add comments here...">
+
+                <div *ngFor="let emergencyContactInfo of emergencyContacts">
+                    <p>Full Name: {{emergencyContactInfo.firstname}} {{emergencyContactInfo.lastname}}</p>
+                    <p>Phone: {{emergencyContactInfo.phone}}</p>
+                    <p>Email: {{emergencyContactInfo.email}}</p>
+                    <p>Relationship: {{emergencyContactInfo.relationship}}</p>
+                </div>
+
+            </div>
+
+            <div>
+                <h3>Documents</h3>
+                <input type="text" formControlName="documents" placeholder="Add comments here...">
+
+                <div *ngFor="let filename of filenames">
+                    <button class="btn btn-link btn-sm" (click)="handleDocDownload(filename)">{{filename}}</button>
+                </div>
+            </div>
+            <!-- <div class="application-item">
+                <input type="text" id="comment-visa-type" name="comment-visa-type" formControlName="comment_visatype"
+                    placeholder="Add comments here...">
+                <input type="text" id="visa-type" name="visa-type" disabled value="{{applicationInfo.visaType}}">
+                <label for="visa-type">Visa Type</label>
+            </div>
+
+            <div class="application-item">
+                <input type="text" id="comment-visa-start-date" name="comment-visa-start-date"
+                    formControlName="comment_visastartdate" placeholder="Add comments here...">
+                <input type="text" id="visa-start-date" name="visa-start-date" disabled
+                    value="{{applicationInfo.visaStartDate}}">
+                <label for="visa-start-date">Visa Start Date</label>
+            </div> -->
+
+            <!-- <div class="application-item">
+                <input type="text" id="comment-visa-end-date" name="comment-visa-end-date"
+                    formControlName="comment_visaenddate" placeholder="Add comments here...">
+                <input type="text" id="visa-end-date" name="visa-end-date" disabled
+                    value="{{applicationInfo.visaEndDate}}">
+                <label for="visa-end-date">Visa End Date</label>
+            </div> -->
+
+            <!-- <div class="application-item">
                         <input type="text" id="comment-work-auth" name="comment-work-auth" placeholder="Add comments here...">
                         <input type="text" id="work-auth" name="work-auth" disabled value="{{applicationInfo.workauth}}"> 
                         <label for="work-auth">Work Authorization</label>
                     </div> -->
 
-                    <!-- <div class="application-item">
+            <!-- <div class="application-item">
                         <input type="text" id="comment-auth-start" name="comment-auth-start" placeholder="Add comments here...">
                         <input type="text" id="auth-start" name="auth-start" disabled value="{{applicationInfo.authstart}}">
                         <label for="auth-start">Authorization Start</label>
                     </div> -->
 
-                    <!-- <div class="application-item">
+            <!-- <div class="application-item">
                         <input type="text" id="comment-auth-end" name="comment-auth-end" placeholder="Add comments here...">
                         <input type="text" id="auth-end" name="auth-end" disabled value="{{applicationInfo.authend}}"> 
                         <label for="auth-end">Authorization End</label>
                     </div> -->
 
-                    <!-- <div class="application-item">
+            <!-- <div class="application-item">
                         <input type="text" id="comment-driver-liscense" name="comment-driver-liscense" placeholder="Add comments here...">
                         <input type="text" id="driver-liscense" name="driver-liscense" disabled value="{{applicationInfo.driverliscense}}">
                         <label for="driver-liscense">Driver Liscense</label>
                     </div> -->
 
-                    <!-- <div class="application-item">
+            <!-- <div class="application-item">
                         <input type="text" id="comment-liscense-exp-date" name="comment-liscense-exp-date" placeholder="Add comments here...">
                         <input type="text" id="liscense-exp-date" name="liscense-exp-date" disabled value="{{applicationInfo.liscenseexpdate}}">
                         <label for="liscense-exp-date">Liscense Expiration Date</label>
                     </div> -->
 
-                    <!-- <div class="application-item">
+            <!-- <div class="application-item">
                         <input type="text" id="comment-primary-phone" name="comment-primary-phone" placeholder="Add comments here...">
                         <input type="text" id="primary-phone" name="primary-phone" disabled value="{{applicationInfo.primaryphone}}"> 
                         <label for="primary-phone">Primary Phone</label>
                     </div> -->
 
-                    <!-- <div class="application-item">
+            <!-- <div class="application-item">
                         <input type="text" id="comment-car" name="comment-car" placeholder="Add comments here...">
                         <input type="text" id="car" name="car" disabled value="{{applicationInfo.car}}"> 
                         <label for="car">Car</label>
                     </div> -->
 
-                    <!-- <div class="application-item">
+            <!-- <div class="application-item">
                         <input type="text" id="comment-alternative-phone" name="comment-alternative-phone" placeholder="Add comments here...">
                         <input type="text" id="alternative-phone" name="alternative-phone" disabled value="{{applicationInfo.alternativephone}}"> 
                         <label for="alternative-phone">Alternative Phone</label>
                     </div> -->
-                    
-                    <!-- [disabled]="applicationInfo.status !== 'open'" -->
-                    <button type="submit" (click)="setApprove()">Approve</button>
-                    <button type="submit" (click)="setReject()">Reject</button>
-                    <button type="button" (click)="displayCancel()">Cancel</button>
-                </form>
-            </div>
-        <!-- </mat-tab> -->
-        <!-- <mat-tab label="Contact">  -->
-            <div class="contactTab">
 
-            </div>
-        <!-- </mat-tab> -->
-        <!-- <mat-tab label="Files">  -->
-            <div class="filesTab">
+            <!-- [disabled]="applicationInfo.status !== 'open'" -->
+            <button type="submit" (click)="setApprove()">Approve</button>
+            <button type="submit" (click)="setReject()">Reject</button>
+            <button type="button" (click)="displayCancel()">Cancel</button>
+        </form>
+    </div>
+    <!-- </mat-tab> -->
+    <!-- <mat-tab label="Contact">  -->
+    <div class="contactTab">
 
-            </div>
-        <!-- </mat-tab> -->
+    </div>
+    <!-- </mat-tab> -->
+    <!-- <mat-tab label="Files">  -->
+    <div class="filesTab">
+
+    </div>
+    <!-- </mat-tab> -->
     <!-- </mat-tab-group> -->
 </div>

@@ -6,12 +6,13 @@ import { AddFacilityReport, AddHouseRequest } from '../models/housing-models';
   providedIn: 'root'
 })
 export class HousingService {
-  private email = sessionStorage.getItem('email');
+  // private email = sessionStorage.getItem('email');
 
   constructor(private http: HttpClient) { }
 
   getHouseByEmail = () => {
-    const url = `http://localhost:8080/api/house/${this.email}`;
+    let email = sessionStorage.getItem('email');
+    const url = `http://localhost:8080/api/house/${email}`;
     return this.http.get(url);
   }
 
@@ -39,7 +40,8 @@ export class HousingService {
     return this.http.get(url);
   }
   getAllReportsByEmail() {
-    const url = `http://localhost:8080/api/facility-reports/email/${this.email}`;
+    let email = sessionStorage.getItem('email');
+    const url = `http://localhost:8080/api/facility-reports/email/${email}`;
     return this.http.get(url);
   }
 
@@ -49,7 +51,7 @@ export class HousingService {
   }
 
   postReportByEmail = (email: string, report) => {
-    const url = `http://localhost:8080/api/facility-report/${this.email}`;
+    const url = `http://localhost:8080/api/facility-report/${email}`;
     return this.http.post(url, report, { responseType: 'text' });
   }
 
@@ -60,7 +62,8 @@ export class HousingService {
     })
   }
   addReport(report: AddFacilityReport) {
-    const url = `http://localhost:8080/api/facility-report/${this.email}`;
+    let email = sessionStorage.getItem('email');
+    const url = `http://localhost:8080/api/facility-report/${email}`;
     this.http.post(url, report).subscribe(res => {
       console.log('addReport called!');
     })

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, pipe, lastValueFrom, of } from 'rxjs';
+import { AppCommentRequest } from '../models/application-info';
 import { Applications } from '../models/applications';
 
 @Injectable({
@@ -42,12 +43,14 @@ export class ApplicationsService {
     return this.http.post(this.endpoint + '-status?applicationId=' + id + '&status=' + status, null);
   }
 
-  // TODO: GET APPLICATION's COMMENTS
   getApplicationComments = () => {
-    return this.http.get(this.endpoint);
+    let email = sessionStorage.getItem('email');
+    const url = `http://localhost:8080/api/application-comment/${email}`;
+    return this.http.get(url);
   }
 
-  setApplicationComments = (comment) => {
-    return this.http.post(this.endpoint + '-comment', comment);
+  setApplicationComments = (appId: number, comment: AppCommentRequest) => {
+    const url = `http://localhost:8080/api/application-comment/${appId}`;
+    return this.http.post(url, comment);
   }
 }

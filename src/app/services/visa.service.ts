@@ -7,7 +7,7 @@ import { Visa } from '../models/onboarding-models';
 	providedIn: 'root'
 })
 export class VisaService {
-	private email = sessionStorage.getItem('email');
+	// private email = sessionStorage.getItem('email');
 
 	constructor(private http: HttpClient) { }
 
@@ -17,12 +17,14 @@ export class VisaService {
 	}
 
 	getVisaInfo() {
-		const url = `http://localhost:8080/api/visa/${this.email}`;
+		let email = sessionStorage.getItem('email');
+		const url = `http://localhost:8080/api/visa/${email}`;
 		return this.http.get(url);
 	}
 
 	getOptStage() {
-		const url = `http://localhost:8080/api/visa/opt-stage/${this.email}`;
+		let email = sessionStorage.getItem('email');
+		const url = `http://localhost:8080/api/visa/opt-stage/${email}`;
 		return this.http.get(url);
 	}
 

@@ -10,7 +10,7 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 	styleUrls: ['./modal-container.component.css']
 })
 export class ModalContainerComponent implements OnInit {
-	@Input() 
+	@Input()
 	applicationId: number;
 
 	@Input()
@@ -22,12 +22,16 @@ export class ModalContainerComponent implements OnInit {
 	}
 
 	openModal() {
-		const modalRef = this.modalService.open(ModalContentComponent, {size: 'xl'});
-		this.applicationsService.getApplicationById(this.applicationId).subscribe(result => {
-			modalRef.componentInstance.applicationInfo = result as ApplicationInfo;
-			modalRef.componentInstance.email = this.email;
-			modalRef.componentInstance.applicationId = this.applicationId;
-		});
+		const modalRef = this.modalService.open(ModalContentComponent, { size: 'xl' });
+		modalRef.componentInstance.email = this.email;
+		modalRef.componentInstance.applicationId = this.applicationId;
+
+
+		// this.applicationsService.getApplicationById(this.applicationId).subscribe((result: ApplicationInfo) => {
+		// 	modalRef.componentInstance.applicationInfo = result;
+		// 	modalRef.componentInstance.email = this.email;
+		// 	modalRef.componentInstance.applicationId = this.applicationId;
+		// });
 	}
 
 

@@ -15,11 +15,11 @@ export class EmployeeProfileComponent implements OnInit {
 	emergencyContacts: UniqueContact[];
 	references: UniqueContact[];
 
-	documentInfo = {
-		document1: "SomeDoc1",
-		document2: "SomeDoc2",
-		document3: "SomeDoc3",
-	}
+	// documentInfo = {
+	// 	document1: "SomeDoc1",
+	// 	document2: "SomeDoc2",
+	// 	document3: "SomeDoc3",
+	// }
 
 	constructor(
 		private profileService: ProfileService,

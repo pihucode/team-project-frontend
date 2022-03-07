@@ -7,12 +7,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class FileService {
 
-	private email = sessionStorage.getItem('email');
+	// private email = sessionStorage.getItem('email');
 
 	constructor(private http: HttpClient) { }
 
 	uploadDoc(data: FormData, type: string) {
-		const url = `http://localhost:8080/api/document/${this.email}/${type}`;
+		let email = sessionStorage.getItem('email');
+		const url = `http://localhost:8080/api/document/${email}/${type}`;
 		// let headers = new HttpHeaders({
 		// 	'Content-Type': 'multipart/form-data'
 		// });
@@ -33,7 +34,8 @@ export class FileService {
 	}
 
 	getOptDocs() {
-		const url = `http://localhost:8080/api/documents/opt/${this.email}`;
+		let email = sessionStorage.getItem('email');
+		const url = `http://localhost:8080/api/documents/opt/${email}`;
 		return this.http.get(url);
 	}
 
@@ -44,6 +46,10 @@ export class FileService {
 
 	getFileName(email: string, type: string) {
 		const url = `http://localhost:8080/api/documents/opt/${email}/${type}`;
+		return this.http.get(url);
+	}
+	getMandatoryDocsByEmail(email: string) {
+		const url = `http://localhost:8080/api/documents/mandatory/${email}`;
 		return this.http.get(url);
 	}
 
