@@ -45,6 +45,9 @@ export class VisaStatusManagementComponent implements OnInit {
 	toggleIsEdit() {
 		this.isEdit = !this.isEdit;
 	}
+	setIsEditFalse() {
+		this.isEdit = false;
+	}
 
 	selectFile(event: any): void {
 		this.selectedFiles = event.target.files;
