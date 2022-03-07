@@ -1,245 +1,253 @@
 <!-- <h2>Onboarding</h2> -->
 <!-- <p>Email: {{email}}</p> -->
 <div class="center">
-<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
-    
-    <div class="form-group" formGroupName="personalInfo">
-        <h2>Application Form</h2>
-        <h3>Personal Info</h3>
+    <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
 
-        <label for="first-name">First Name: </label>
-        <input id="first-name" type="text" formControlName="firstName">
-        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('required')">
-            First name is required.</div>
-        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('minlength')">
-            Cannot be shorter than 2 characters.</div>
-        <label for="last-name">Last Name: </label>
-        <input id="last-name" type="text" formControlName="lastName">
-        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('required')">
-            Last name is required.</div>
-        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('minlength')">
-            Cannot be shorter than 4 characters.</div>
-        <label for="preferred-name">Preferred Name: </label>
-        <input id="preferred-name" type="text" formControlName="preferredName">
+        <div class="form-group" formGroupName="personalInfo">
+            <h2>Application Form</h2>
+            <h3>Personal Info</h3>
 
-        <label for="ssn">SSN: </label>
-        <input id="ssn" type="number" formControlName="ssn">
-        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('ssn').hasError('required')">
-            SSN is required.</div>
-        <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('ssn').hasError('min') &&
+            <label for="first-name">First Name: </label>
+            <input id="first-name" type="text" formControlName="firstName">
+            <div class="text-danger"
+                [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('required')">
+                First name is required.</div>
+            <div class="text-danger"
+                [hidden]="!applicationForm.get('personalInfo').get('firstName').hasError('minlength')">
+                Cannot be shorter than 2 characters.</div>
+            <label for="last-name">Last Name: </label>
+            <input id="last-name" type="text" formControlName="lastName">
+            <div class="text-danger"
+                [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('required')">
+                Last name is required.</div>
+            <div class="text-danger"
+                [hidden]="!applicationForm.get('personalInfo').get('lastName').hasError('minlength')">
+                Cannot be shorter than 4 characters.</div>
+            <label for="preferred-name">Preferred Name: </label>
+            <input id="preferred-name" type="text" formControlName="preferredName">
+
+            <label for="ssn">SSN: </label>
+            <input id="ssn" type="number" formControlName="ssn">
+            <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('ssn').hasError('required')">
+                SSN is required.</div>
+            <div class="text-danger" [hidden]="!applicationForm.get('personalInfo').get('ssn').hasError('min') &&
         !applicationForm.get('personalInfo').get('ssn').hasError('max')">
-            Invalid SSN</div>
-    </div>
-    
-    <div class="form-group" formGroupName="addressInfo">
-        <h3>Address Info</h3>
-        <label for="street">Street: </label>
-        <input id="street" type="text" formControlName="street">
+                Invalid SSN</div>
+        </div>
 
-        <label for="city">City: </label>
-        <input id="city" type="text" formControlName="city">
+        <div class="form-group" formGroupName="addressInfo">
+            <h3>Address Info</h3>
+            <label for="street">Street: </label>
+            <input id="street" type="text" formControlName="street">
 
-        <label for="state">State: </label>
-        <input id="state" type="text" formControlName="state">
+            <label for="city">City: </label>
+            <input id="city" type="text" formControlName="city">
 
-        <label for="zip">Zip Code: </label>
-        <input id="zip" type="number" formControlName="zip">
-        <div class="text-danger" [hidden]="!applicationForm.get('addressInfo').get('street').hasError('required')
+            <label for="state">State: </label>
+            <input id="state" type="text" formControlName="state">
+
+            <label for="zip">Zip Code: </label>
+            <input id="zip" type="number" formControlName="zip">
+            <div class="text-danger" [hidden]="!applicationForm.get('addressInfo').get('street').hasError('required')
         && !applicationForm.get('addressInfo').get('city').hasError('required')
         && !applicationForm.get('addressInfo').get('state').hasError('required')
         && !applicationForm.get('addressInfo').get('zip').hasError('required')">
-            Address is Required
+                Address is Required
+            </div>
         </div>
-    </div>
 
-    <div class="form-group" formGroupName="contactInfo">
-        <h3>Contact Info</h3>
+        <div class="form-group" formGroupName="contactInfo">
+            <h3>Contact Info</h3>
 
-        <label for="personal-email">Personal Email: </label>
-        <input id="personal-email" type="email" formControlName="personalEmail">
-        <div class="text-danger"
-            [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('required')">
-            Personal Email is required.</div>
-        <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('email')">
-            Invalid Email Type.</div>
+            <label for="personal-email">Personal Email: </label>
+            <input id="personal-email" type="email" formControlName="personalEmail">
+            <div class="text-danger"
+                [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('required')">
+                Personal Email is required.</div>
+            <div class="text-danger"
+                [hidden]="!applicationForm.get('contactInfo').get('personalEmail').hasError('email')">
+                Invalid Email Type.</div>
 
-        <label for="work-email">Work Email: </label>
-        <input id="work-email" type="email" formControlName="workEmail">
-        <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('workEmail').hasError('email')">
-            Invalid Email Type.</div>
-        <label for="cell-phone">Cell Phone: </label>
-        <input id="cell-phone" type="number" formControlName="cellPhone">
-        <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('required')">
-            Cell Phone Number is required.</div>
-        <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('min') &&
+            <label for="work-email">Work Email: </label>
+            <input id="work-email" type="email" formControlName="workEmail">
+            <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('workEmail').hasError('email')">
+                Invalid Email Type.</div>
+            <label for="cell-phone">Cell Phone: </label>
+            <input id="cell-phone" type="number" formControlName="cellPhone">
+            <div class="text-danger"
+                [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('required')">
+                Cell Phone Number is required.</div>
+            <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('cellPhone').hasError('min') &&
         !applicationForm.get('contactInfo').get('cellPhone').hasError('max')">
-            Invalid Phone Number.</div>
-        <label for="work-phone">Work Phone: </label>
-        <input id="work-phone" type="number" formControlName="workPhone">
-        <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('workPhone').hasError('min') &&
+                Invalid Phone Number.</div>
+            <label for="work-phone">Work Phone: </label>
+            <input id="work-phone" type="number" formControlName="workPhone">
+            <div class="text-danger" [hidden]="!applicationForm.get('contactInfo').get('workPhone').hasError('min') &&
         !applicationForm.get('contactInfo').get('workPhone').hasError('max')">
-            Invalid Phone Number.</div>
-    </div>
-
-    <div class="form-group" formGroupName="visaInfo">
-
-        <label for="is-permanent-resident">Are you a citizen or permanent resident of the U.S? </label>
-        <input id="is-permanent-resident" type="checkbox" [checked]="isPermanentResident"
-            (change)="onPermanentResidentChange()" />
-
-        <div [hidden]="!isPermanentResident">
-            <label for="resident-type">Green Card or Citizen:</label>
-            <select formControlName="type" required>
-                <option value="greencard">Green Card</option>
-                <option value="citizen">Citizen</option>
-            </select>
+                Invalid Phone Number.</div>
         </div>
 
-        <div [hidden]="isPermanentResident">
-            <label for="work-authorization">What is your work authorization?</label>
-            <select formControlName="type" required>
-                <option *ngFor="let workAuth of workAuthorizationTypes" [value]="workAuth">{{workAuth}}</option>
-            </select>
-        </div>
+        <div class="form-group" formGroupName="visaInfo">
 
-        <div [hidden]="isPermanentResident">
-            <mat-form-field appearance="fill">
-                <label for="work-start-date">Work Authorization Start Date:</label>
-                <input id="work-start-date" formControlName="workDateStart" matInput
-                    [matDatepicker]="workStartDatePicker">
-                <mat-datepicker-toggle matSuffix [for]="workStartDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker #workStartDatePicker></mat-datepicker>
-            </mat-form-field>
-        </div>
+            <label for="is-permanent-resident">Are you a citizen or permanent resident of the U.S? </label>
+            <input id="is-permanent-resident" type="checkbox" [checked]="isPermanentResident"
+                (change)="onPermanentResidentChange()" />
 
-        <div [hidden]="isPermanentResident">
-            <mat-form-field appearance="fill">
-                <label for="work-end-date">Work Authorization End Date:</label>
-                <input id="work-end-date" formControlName="workDateEnd" matInput [matDatepicker]="workEndDatePicker">
-                <mat-datepicker-toggle matSuffix [for]="workEndDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker #workEndDatePicker></mat-datepicker>
-            </mat-form-field>
-        </div>
+            <div [hidden]="!isPermanentResident">
+                <label for="resident-type">Green Card or Citizen:</label>
+                <select formControlName="type" required>
+                    <option value="greencard">Green Card</option>
+                    <option value="citizen">Citizen</option>
+                </select>
+            </div>
 
-        <div class="text-danger" [hidden]="!applicationForm.get('visaInfo').get('type').hasError('required')
+            <div [hidden]="isPermanentResident">
+                <label for="work-authorization">What is your work authorization?</label>
+                <select formControlName="type" required>
+                    <option *ngFor="let workAuth of workAuthorizationTypes" [value]="workAuth">{{workAuth}}</option>
+                </select>
+            </div>
+
+            <div [hidden]="isPermanentResident">
+                <mat-form-field appearance="fill">
+                    <label for="work-start-date">Work Authorization Start Date:</label>
+                    <input id="work-start-date" formControlName="workDateStart" matInput
+                        [matDatepicker]="workStartDatePicker">
+                    <mat-datepicker-toggle matSuffix [for]="workStartDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #workStartDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div [hidden]="isPermanentResident">
+                <mat-form-field appearance="fill">
+                    <label for="work-end-date">Work Authorization End Date:</label>
+                    <input id="work-end-date" formControlName="workDateEnd" matInput
+                        [matDatepicker]="workEndDatePicker">
+                    <mat-datepicker-toggle matSuffix [for]="workEndDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #workEndDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="text-danger" [hidden]="!applicationForm.get('visaInfo').get('type').hasError('required')
         && !applicationForm.get('visaInfo').get('workDateStart').hasError('required')
         && !applicationForm.get('visaInfo').get('workDateEnd').hasError('required')">
-            Visa Information is Required
-        </div>
-    </div>
-
-    <div class="form-group" formGroupName="carInfo">
-        <h4>Car Info</h4>
-
-        <label for="car-maker">Maker: </label>
-        <input id="car-maker" type="text" formControlName="maker">
-
-        <label for="car-model">Model: </label>
-        <input id="car-model" type="text" formControlName="model">
-
-        <label for="car-color">Color: </label>
-        <input id="car-color" type="text" formControlName="color">
-    </div>
-
-    <div class="form-group">
-        <h4>References</h4>
-        <button (click)="addReference()" type="button">Add References</button>
-
-        <div formArrayName="references">
-            <div *ngFor="let referenceGroup of references.controls; let i = index">
-
-                <div [formGroupName]="i" class="form-group">
-                    <label>First Name: </label>
-                    <input type="text" formControlName="firstName">
-
-                    <label>Last Name: </label>
-                    <input type="text" formControlName="lastName">
-
-                    <label>Phone: </label>
-                    <input type="number" formControlName="phone">
-
-                    <label>Email: </label>
-                    <input type="email" formControlName="email">
-
-                    <label>Relationship: </label>
-                    <input type="text" formControlName="relationship">
-
-                    <button (click)="deleteReference(i)" type="button">Remove</button>
-                </div>
-
+                Visa Information is Required
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <h4>Emergency Contacts</h4>
-        <button (click)="addEmergencyContact()" type="button">Add Emergency Contacts</button>
+        <div class="form-group" formGroupName="carInfo">
+            <h4>Car Info</h4>
 
-        <div formArrayName="emergencyContacts">
-            <div *ngFor="let emergencyContactGroup of emergencyContacts.controls; let i = index">
+            <label for="car-maker">Maker: </label>
+            <input id="car-maker" type="text" formControlName="maker">
 
-                <div [formGroupName]="i" class="form-group">
-                    <label>First Name: </label>
-                    <input type="text" formControlName="firstName">
-                    <div class="text-danger"
-                        [hidden]="!emergencyContacts.controls[i].get('firstName').hasError('required')">
-                        First name is required.</div>
-                    <div class="text-danger"
-                        [hidden]="!emergencyContacts.controls[i].get('firstName').hasError('minlength')">
-                        Cannot be shorter than 2 characters.</div>
+            <label for="car-model">Model: </label>
+            <input id="car-model" type="text" formControlName="model">
 
-                    <label>Last Name: </label>
-                    <input type="text" formControlName="lastName">
-                    <div class="text-danger"
-                        [hidden]="!emergencyContacts.controls[i].get('lastName').hasError('required')">
-                        Last name is required.</div>
-                    <div class="text-danger"
-                        [hidden]="!emergencyContacts.controls[i].get('lastName').hasError('minlength')">
-                        Cannot be shorter than 4 characters.</div>
+            <label for="car-color">Color: </label>
+            <input id="car-color" type="text" formControlName="color">
+        </div>
 
-                    <label>Phone: </label>
-                    <input type="number" formControlName="phone">
-                    <div class="text-danger"
-                        [hidden]="!emergencyContacts.controls[i].get('phone').hasError('required')">
-                        Phone Number is required.</div>
-                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('phone').hasError('min') 
+        <div class="form-group">
+            <h4>References</h4>
+            <button (click)="addReference()" type="button">Add References</button>
+
+            <div formArrayName="references">
+                <div *ngFor="let referenceGroup of references.controls; let i = index">
+
+                    <div [formGroupName]="i" class="form-group">
+                        <label>First Name: </label>
+                        <input type="text" formControlName="firstName">
+
+                        <label>Last Name: </label>
+                        <input type="text" formControlName="lastName">
+
+                        <label>Phone: </label>
+                        <input type="number" formControlName="phone">
+
+                        <label>Email: </label>
+                        <input type="email" formControlName="email">
+
+                        <label>Relationship: </label>
+                        <input type="text" formControlName="relationship">
+
+                        <button (click)="deleteReference(i)" type="button">Remove</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Emergency Contacts</h4>
+            <button (click)="addEmergencyContact()" type="button">Add Emergency Contacts</button>
+
+            <div formArrayName="emergencyContacts">
+                <div *ngFor="let emergencyContactGroup of emergencyContacts.controls; let i = index">
+
+                    <div [formGroupName]="i" class="form-group">
+                        <label>First Name: </label>
+                        <input type="text" formControlName="firstName">
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('firstName').hasError('required')">
+                            First name is required.</div>
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('firstName').hasError('minlength')">
+                            Cannot be shorter than 2 characters.</div>
+
+                        <label>Last Name: </label>
+                        <input type="text" formControlName="lastName">
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('lastName').hasError('required')">
+                            Last name is required.</div>
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('lastName').hasError('minlength')">
+                            Cannot be shorter than 4 characters.</div>
+
+                        <label>Phone: </label>
+                        <input type="number" formControlName="phone">
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('phone').hasError('required')">
+                            Phone Number is required.</div>
+                        <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('phone').hasError('min') 
                     && !emergencyContacts.controls[i].get('phone').hasError('max')">
-                        Invalid Phone Number.</div>
+                            Invalid Phone Number.</div>
 
-                    <label>Email: </label>
-                    <input type="email" formControlName="email">
-                    <div class="text-danger"
-                        [hidden]="!emergencyContacts.controls[i].get('email').hasError('required')">
-                        Email is required.</div>
-                    <div class="text-danger" [hidden]="!emergencyContacts.controls[i].get('email').hasError('email')">
-                        Invalid Email Type.</div>
+                        <label>Email: </label>
+                        <input type="email" formControlName="email">
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('email').hasError('required')">
+                            Email is required.</div>
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('email').hasError('email')">
+                            Invalid Email Type.</div>
 
-                    <label>Relationship: </label>
-                    <input type="text" formControlName="relationship">
-                    <div class="text-danger"
-                        [hidden]="!emergencyContacts.controls[i].get('relationship').hasError('required')">
-                        Relationship is required.</div>
+                        <label>Relationship: </label>
+                        <input type="text" formControlName="relationship">
+                        <div class="text-danger"
+                            [hidden]="!emergencyContacts.controls[i].get('relationship').hasError('required')">
+                            Relationship is required.</div>
 
-                    <button (click)="deleteEmergencyContact(i)" type="button">Remove</button>
+                        <button (click)="deleteEmergencyContact(i)" type="button">Remove</button>
+                    </div>
+
                 </div>
-
+                <div class="text-danger" [hidden]="!applicationForm.get('emergencyContacts').hasError('required')">
+                    Need At Least 1 Emergency Contact</div>
             </div>
-            <div class="text-danger" [hidden]="!applicationForm.get('emergencyContacts').hasError('required')">
-                Need At Least 1 Emergency Contact</div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <h4>Documents</h4>
-        <div>
-            <!-- donwload -->
-            <button (click)="handleDocDownload('mandatory_file.txt')" type="button">Mandatory File</button>
-            <!-- upload -->
-            <input type="file" (change)="selectFile($event)" />
+        <div class="form-group">
+            <h4>Documents</h4>
+            <div>
+                <!-- donwload -->
+                <button (click)="handleDocDownload('mandatory_file.txt')" type="button">Mandatory File</button>
+                <!-- upload -->
+                <input type="file" (change)="selectFile($event)" />
+            </div>
         </div>
-    </div>
 
-    <!-- <div class="form-group">
+        <!-- <div class="form-group">
         <h4>Documents</h4>
         <button (click)="addDocument()" type="button">Add Documents</button>
 
@@ -255,9 +263,9 @@
         </div>
     </div> -->
 
-    <!-- <button type="submit" [disabled]="!applicationForm.valid">Submit</button> -->
-    <button type="submit" [disabled]="!applicationForm.valid && !selectedFiles">submit</button>
-    <!-- <pre>Form JSON: {{ applicationForm.value | json }}</pre> -->
+        <!-- <button type="submit" [disabled]="!applicationForm.valid">Submit</button> -->
+        <button type="submit" [disabled]="!applicationForm.valid || !selectedFiles">submit</button>
+        <!-- <pre>Form JSON: {{ applicationForm.value | json }}</pre> -->
 
-</form>
+    </form>
 </div>

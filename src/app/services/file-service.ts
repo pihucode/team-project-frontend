@@ -52,5 +52,10 @@ export class FileService {
 		const url = `http://localhost:8080/api/documents/mandatory/${email}`;
 		return this.http.get(url);
 	}
+	getMandatoryDocs() {
+		let email = sessionStorage.getItem('email');
+		const url = `http://localhost:8080/api/documents/mandatory/${email}`;
+		return this.http.get(url);
+	}
 
 }

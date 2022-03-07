@@ -23,7 +23,7 @@ export class ApplicationFormComponent implements OnInit {
 
 	applicationForm = this.fb.group({
 		personalInfo: this.fb.group({
-			firstName: ['', [Validators.required,Validators.minLength(2)]],
+			firstName: ['', [Validators.required, Validators.minLength(2)]],
 			lastName: new FormControl('', [
 				Validators.required,
 				Validators.minLength(4)
@@ -126,9 +126,9 @@ export class ApplicationFormComponent implements OnInit {
 		const emergencyContactGroup = this.fb.group({
 			firstName: ['', [Validators.required, Validators.minLength(2)]],
 			lastName: ['', [Validators.required, Validators.minLength(4)]],
-			phone: ['', [Validators.required, 
-				Validators.min(1000000000),
-				Validators.max(10000000000)]],
+			phone: ['', [Validators.required,
+			Validators.min(1000000000),
+			Validators.max(10000000000)]],
 			email: ['', [Validators.required, Validators.email]],
 			relationship: ['', Validators.required]
 		});
@@ -198,8 +198,8 @@ export class ApplicationFormComponent implements OnInit {
 		);
 		let visa: Visa = new Visa(
 			visaInfo.type, //todo
-			visaInfo.workDateStart = this.datePipe.transform(visaInfo.workDateStart, "MM/dd/yyyy"),
-			visaInfo.workDateEnd = this.datePipe.transform(visaInfo.workDateEnd, "MM/dd/yyyy")
+			visaInfo.workDateStart = this.datePipe.transform(visaInfo.workDateStart, "MM-dd-yyyy"),
+			visaInfo.workDateEnd = this.datePipe.transform(visaInfo.workDateEnd, "MM-dd-yyyy")
 		);
 		let address: Address = new Address(
 			addressInfo.street,

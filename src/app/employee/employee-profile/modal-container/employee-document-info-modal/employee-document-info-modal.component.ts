@@ -18,7 +18,7 @@ export class EmployeeDocumentInfoModalComponent implements OnInit {
 		private fileService: FileService) { }
 
 	ngOnInit(): void {
-		this.fileService.getOptDocs().subscribe((data: string[]) => {
+		this.fileService.getMandatoryDocs().subscribe((data: string[]) => {
 			this.filenames = data;
 		});
 	}

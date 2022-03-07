@@ -15,6 +15,7 @@
 <div class="container">
     <div class="box">
         <h2 class="text-center">Add House</h2>
+        <pre>{{addHouseForm.value|json}}</pre>
         <form [formGroup]="addHouseForm" (ngSubmit)="onSubmit()">
 
             <div class="form-group" formGroupName="address">
@@ -45,17 +46,18 @@
 
                 <label>Chairs:</label>
                 <input class="number" type="number" formControlName="chairs">
+            </div>
 
-                <label>Landlord: </label>
-                <select class="form-select" formControlName="landlord">
+
+            <label>Landlord: </label>
+            <select class="form-select" formControlName="landlord">
                 <option *ngFor="let landlord of landlords" value="{{landlord.id}}">{{landlord.fullname}}
                     ({{landlord.email}})</option>
-                </select>
+            </select>
 
-                <label>Max number of people :</label>
-                <input class="number" type="number" formControlName="numPeople">
-                </div>
-            
+            <label>Max number of people :</label>
+            <input class="number" type="number" formControlName="numPeople">
+
             <button type="submit"
                 class="btn btn-primary btn-sm position-relative start-50 translate-middle-x">Submit</button>
         </form>
