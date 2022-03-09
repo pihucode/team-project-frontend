@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
         this.displayUsernameTaken = true;
       }
     });
-    this.register.clear()
+    // this.register.clear()
   }
 
   getTokenValidity() {
